@@ -1,7 +1,7 @@
 <!-- footer content -->
         <footer>
           <div class="pull-right">
-          <a href="#">WM-KPR</a> - KPR Information System 
+          <a href="#">WM-DUKCAPILSYS</a> - Sistem Layanan Kependudukan
           </div>
           <div class="clearfix"></div>
         </footer>

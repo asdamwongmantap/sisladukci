@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="<?=base_url();?>assets/images/logowmsia.png" type="image/ico" />
 
-  <title>WM-KPR</title>
+  <title>WM-DUKCAPILSYS</title>
 	<!-- Bootstrap -->
     <link href="<?=base_url();?>assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<!--JQUERY JS-->
@@ -44,7 +44,7 @@
           <section class="login_content">
 		  <img src="<?=base_url();?>assets/images/logowmsia.png" style="height:30%;width:30%;">
             <form action="<?=base_url();?>app/Sync/Cek_logincn" method="POST">
-			<h1>WM-KPR</h1>
+			<h1>WM-DUKCAPILSYS</h1>
               <div>
                 <input type="text" class="form-control" placeholder="Username" name="user" required="" />
               </div>

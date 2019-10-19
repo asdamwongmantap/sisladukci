@@ -22,7 +22,7 @@
 		   <div class="row">
             <div class="col-md-12 col-sm-4 col-xs-12">
               <div class="x_panel">
-				<marquee behavior="scroll" direction="left" scrollamount="3"><?php foreach($setting as $marquee){echo $marquee->value;};?></marquee>
+				<marquee behavior="scroll" direction="left" scrollamount="3"><?php foreach($setting as $marquee){echo $marquee->value." ".$namakry;};?></marquee>
               </div>
             </div>
           </div>
@@ -35,30 +35,30 @@
 			<div class="tile-stats">
 				<div class="icon"><i class="fa fa-briefcase"></i>
 				</div>
-				<div class="count">Syarat</div>
+				<div class="count">1</div>
 
-				<h3>KPR</h3>
-				<p>Persyaratan Pengambilan KPR</p>
+				<h3>Surat</h3>
+				<!-- <p>Surat permohonan KK</p> -->
 			</div>
 			</div>
 			<div class="animated flipInY col-lg-4 col-md-3 col-sm-6 col-xs-12">
 			<div class="tile-stats">
 				<div class="icon"><i class="fa fa-bars"></i>
 				</div>
-				<div class="count">Pricelist</div>
+				<div class="count">Rp.30000</div>
 
-				<h3>Rumah</h3>
-				<p>Price List Harga Rumah</p>
+				<h3>Kas Kelurahan</h3>
+				<!-- <p>Price List Harga Rumah</p> -->
 			</div>
 			</div>
 			<div class="animated flipInY col-lg-4 col-md-3 col-sm-6 col-xs-12">
 			<div class="tile-stats">
 				<div class="icon"><i class="fa fa-recycle"></i>
 				</div>
-				<div class="count">Simulasi</div>
+				<div class="count">20</div>
 
-				<h3>Angsuran</h3>
-				<p>Tentang Simulasi Angsuran</p>
+				<h3>Warga</h3>
+				<!-- <p>Tentang Simulasi Angsuran</p> -->
 			</div>
 			</div>
 			<!-- end widget -->

@@ -3,7 +3,7 @@
 
 		Function cek_user($data1) {
 			$this->load->database();
-			$query = $this->db->get_where('user', $data1);
+			$query = $this->db->get_where('tbl_petugas', $data1);
 			return $query;
 		}
 		function modulubahpass() { 
