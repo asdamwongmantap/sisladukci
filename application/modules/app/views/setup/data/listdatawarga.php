@@ -32,33 +32,43 @@
               <div class="col-md-12 col-sm-4 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>List Jenis Rekening</h2>
+                    <h2>List Data Warga</h2>
                     <div class="clearfix"></div>
 					
                   </div>
                   <div class="x_content">
 				  <input type="hidden" id="usergroup" value="<?=$this->session->userdata('usergroupid');?>">
-				  <a href="<?=base_url('app/jenis_rek/add_jnsrek');?>" class="btn btn-success" title="Tambah user group" data-target=".bs-example-modal-smadd" style="float:right;display:block;" 
-				  id="tomboltambah"><i class="fa fa-plus"></i> Tambah Data Jenis Rekening</a></br>
+				  <a href="<?=base_url('app/data/add_warga');?>" class="btn btn-success" title="Tambah user group" data-target=".bs-example-modal-smadd" style="float:right;display:block;" 
+				  id="tomboltambah"><i class="fa fa-plus"></i> Tambah Data Warga</a></br>
 				  </br>
-				  <table id="mydata" class="table table-striped table-bordered dt-responsive wrap" cellspacing="0" width="100%">
+				  <table id="mydata" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
                       <thead>
                         <tr>
-							<th>Kode Jenis Rekening</th>
-							<th>Deskripsi Jenis Rekening</th>
+							<th>NIK</th>
+							<th>Nama</th>
+							<th>Tanggal Lahir</th>
+							<th>Alamat</th>
+							<th>Pendidikan Terakhir</th>
+							<th>Pekerjaan</th>
+							<th>Status</th>
 							<th>Action</th>
                         </tr>
                       </thead>
                       <tbody id="show_data">
 					  
 							<?php 
-							foreach ($datajenisrekening as $row) {?>	 
+							foreach ($datawarga as $row) {?>	 
 							<tr>
-									<td> <?=$row->kd_jenisakun;?></td>							
-									<td> <?=$row->desc_jenisakun;?></td>
-									<td><a class="btn btn-success" href='detailjenis/<?=$row->kd_jenisakun;?>'><i class="glyphicon glyphicon-zoom-in icon-white"></i></a>
-									<a class="btn btn-primary" href='editjenis/<?=$row->kd_jenisakun;?>'><i class="glyphicon glyphicon-edit icon-white"></i></a>
-									<a class="btn btn-danger item_deletejenisrek" data-id="<?=$row->kd_jenisakun;?>"><i class="glyphicon glyphicon-trash icon-white"></i></a></td>
+									<td><?=$row->wrg_nik;?></td>							
+									<td><?=$row->wrg_nama;?></td>
+									<td><?=$row->wrg_tmpatlahir.",".$row->wrg_tgllahir;?></td>							
+									<td><?=$row->wrg_alamat;?></td>							
+									<td><?=$row->wrg_pendidikan;?></td>
+									<td><?=$row->wrg_pekerjaan;?></td>
+									<td><?=$row->wrg_statuskawin;?></td>
+									<td><a class="btn btn-success" href='detailwarga/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-zoom-in icon-white"></i></a>
+									<a class="btn btn-primary" href='editwarga/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-edit icon-white"></i></a>
+									<a class="btn btn-danger item_deletewarga" data-id="<?=$row->wrg_nik;?>"><i class="glyphicon glyphicon-trash icon-white"></i></a></td>
 								</tr>
 							<?php
 								}
