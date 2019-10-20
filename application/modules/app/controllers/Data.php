@@ -64,7 +64,7 @@ class Data extends CI_Controller
             }       
             // print_r($this->Modul_jenisrek->get_insertjnsrek($data));die;  
     }
-	public function editjenis($id)
+	public function editwarga($id)
 	{
 		
 		if (!$this->session->userdata('username')){
@@ -72,17 +72,31 @@ class Data extends CI_Controller
         }else{
             $generalcode = "SETTING_DASHBOARD";
 		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
-			$data['dataeditjenis']=$this->Modul_jenisrek->get_editjnsrek($id);
-			// print_r($this->Modul_jenisrek->get_editjnsrek($id));die;
-            $this->load->view('setup/data/editjenisrek',$data);
+			$data['dataeditwarga']=$this->Modul_warga->get_editwarga($id);
+			// print_r($this->Modul_warga->get_editjnsrek($id));die;
+            $this->load->view('setup/data/editwarga',$data);
         }
 
 	}
-	function saveeditjnsrek() { 
-		$this->form_validation->set_rules('kd_jenisakun','Kode Jenis Akun','required');
-		$this->form_validation->set_rules('desc_jenisakun','Deskripsi Jenis Akun','required');
+	public function saveeditwarga() { 
+		$this->form_validation->set_rules('wrg_nik','NIK','required');
+		$this->form_validation->set_rules('wrg_nama','Nama','required');
+		$data = array(
+			'wrg_nik' =>$this->input->post('wrg_nik'),
+			'wrg_nama' =>$this->input->post('wrg_nama'),
+			'wrg_tmpatlahir' =>$this->input->post('wrg_tmpatlahir'),
+			'wrg_tgllahir' =>$this->input->post('wrg_tgllahir'),
+			'wrg_kwarganegaraan' =>$this->input->post('wrg_kwarganegaraan'),
+			'wrg_jeniskel' =>$this->input->post('wrg_jeniskel'),
+			'wrg_alamat' =>$this->input->post('wrg_alamat'),
+			'wrg_pekerjaan' =>$this->input->post('wrg_pekerjaan'),
+			'wrg_agama' =>$this->input->post('wrg_agama'),
+			'wrg_pendidikan' =>$this->input->post('wrg_pendidikan'),
+			'wrg_statuskawin' =>$this->input->post('wrg_statuskawin'),
+			'is_active' =>"1"
+			);
 		if($this->form_validation->run()!=FALSE){
-            $this->Modul_jenisrek->moduleditjnsrek(); 
+            $this->Modul_warga->moduleditwarga($data); 
              echo "berhasil";
 			}else{
 				echo "error";

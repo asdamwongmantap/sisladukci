@@ -47,17 +47,14 @@
 		return null;
 	} 
 	}
-	// Function moduleditjnsrek() { 
+	public function moduleditwarga($data) { 
 		
-	// 	$id = $this->input->post('kd_jenisakun'); 
-	// 	$data = array(
-	// 			  'kd_jenisakun' =>$this->input->post('kd_jenisakun'),
-	// 			  'desc_jenisakun' =>$this->input->post('desc_jenisakun')
-	// 			  );
-	// 	$this->db->where('kd_jenisakun',$id); 
-    //     $this->db->update('tbl_jenisakun',$data); 
-	// }
-	// public function hapus_jnsrek($id){ 
+		$id = $this->input->post('wrg_nik'); 
+		
+		$this->db->where('wrg_nik',$id); 
+        $this->db->update('tbl_warga',$data); 
+	}
+	// public function hapus_warga($id){ 
 			
 	// 		$this->db->where('kd_jenisakun',$id);
 	// 		$query = $this->db->get('tbl_jenisakun');
