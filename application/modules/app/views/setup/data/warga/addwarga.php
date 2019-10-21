@@ -185,7 +185,7 @@
 				$.ajax({
 					type: "POST",
 					enctype: 'multipart/form-data',
-					url:'<?=base_url('app/data/savewarga');?>',
+					url:'<?=base_url('app/data/warga/savewarga');?>',
 					data: data,
 					processData: false,
 					contentType: false,
@@ -198,7 +198,7 @@
 						  text: "Data berhasil disimpan !.",
 						  type: "success"
 						},function(){
-							window.location='<?=base_url('app/data/warga');?>';
+							window.location='<?=base_url('app/data/warga/listwarga');?>';
 						  });
 						}
 						else{

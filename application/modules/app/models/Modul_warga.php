@@ -5,7 +5,7 @@
 	
 	Function viewwarga()
 	{
-		// $this->load->database();
+		$this->db->where('is_active',"1"); 
 		$query=$this->db->get('tbl_warga');
 		if ($query->num_rows()>0)
 	{
@@ -54,14 +54,14 @@
 		$this->db->where('wrg_nik',$id); 
         $this->db->update('tbl_warga',$data); 
 	}
-	// public function hapus_warga($id){ 
+	public function hapus_warga($data){ 
 			
-	// 		$this->db->where('kd_jenisakun',$id);
-	// 		$query = $this->db->get('tbl_jenisakun');
-	// 		$row = $query->row();
-	// 		$this->db->delete('tbl_jenisakun', array('kd_jenisakun' => $id));
+		$id = $data['wrg_nik']; 
+		
+		$this->db->where('wrg_nik',$id); 
+        $this->db->update('tbl_warga',$data); 
 
-	// 	}
+		}
 	
 	
 }

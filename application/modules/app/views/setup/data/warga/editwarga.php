@@ -190,7 +190,7 @@
 				$.ajax({
 					type: "POST",
 					enctype: 'multipart/form-data',
-					url:'<?=base_url('app/data/saveeditwarga');?>',
+					url:'<?=base_url('app/data/warga/saveeditwarga');?>',
 					data: data,
 					processData: false,
 					contentType: false,
@@ -203,7 +203,7 @@
 						  text: "Data berhasil disimpan !.",
 						  type: "success"
 						},function(){
-							window.location='<?=base_url('app/data/warga');?>';
+							window.location='<?=base_url('app/data/warga/listwarga');?>';
 						  });
 						}
 						else{

@@ -32,16 +32,16 @@
                
                <ul class="nav child_menu">
                 <li>
-                  <a href="<?=base_url();?>app/data/warga">Warga</a>
+                  <a href="<?=base_url();?>app/data/warga/listwarga">Warga</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/data/petugas">Petugas</a>
+                  <a href="<?=base_url();?>app/data/petugas/listpetugas">Petugas</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/data/kelurahan">Kelurahan</a>
+                  <a href="<?=base_url();?>app/data/kelurahan/listkelurahan">Kelurahan</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/data/kelurahan">Kategori</a>
+                  <a href="<?=base_url();?>app/data/kategori/listkategori">Kategori</a>
                 </li>
                 </ul>
                 </li>
@@ -124,16 +124,16 @@
                
                <ul class="nav child_menu">
                 <li>
-                  <a href="<?=base_url();?>app/data/warga">Warga</a>
+                  <a href="<?=base_url();?>app/data/warga/listwarga">Warga</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/data/petugas">Petugas</a>
+                  <a href="<?=base_url();?>app/data/petugas/listpetugas">Petugas</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/data/kelurahan">Kelurahan</a>
+                  <a href="<?=base_url();?>app/data/kelurahan/listkelurahan">Kelurahan</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/data/kelurahan">Kategori</a>
+                  <a href="<?=base_url();?>app/data/kategori/listkategori">Kategori</a>
                 </li>
                 </ul>
                 </li>

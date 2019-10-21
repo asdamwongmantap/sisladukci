@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 // error_reporting(0);
-class Data extends CI_Controller
+class Warga extends CI_Controller
 {
 	public function __construct()
 	{
@@ -11,7 +11,7 @@ class Data extends CI_Controller
         $this->load->model('Modul_setting');
     }
 	
-	public function warga()
+	public function listwarga()
 	{
         if (!$this->session->userdata('username')){
 			redirect(base_url());
@@ -19,7 +19,7 @@ class Data extends CI_Controller
             $generalcode = "SETTING_DASHBOARD";
 		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
             $data['datawarga']=$this->Modul_warga->viewwarga();
-            $this->load->view('setup/data/listdatawarga',$data);
+            $this->load->view('setup/data/warga/listdatawarga',$data);
 		}
 		// $this->load->view('setup/data/listdatawarga');
 		
@@ -32,7 +32,7 @@ class Data extends CI_Controller
             $generalcode = "SETTING_DASHBOARD";
 		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
             // $data['data']=$this->Modul_warga->viewjenisrek();
-            $this->load->view('setup/data/addwarga',$data);
+            $this->load->view('setup/data/warga/addwarga',$data);
         }
 
 	}
@@ -74,7 +74,7 @@ class Data extends CI_Controller
 		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
 			$data['dataeditwarga']=$this->Modul_warga->get_editwarga($id);
 			// print_r($this->Modul_warga->get_editjnsrek($id));die;
-            $this->load->view('setup/data/editwarga',$data);
+            $this->load->view('setup/data/warga/editwarga',$data);
         }
 
 	}
@@ -102,16 +102,16 @@ class Data extends CI_Controller
 				echo "error";
 			}
         }
-	public function hapusjenis($id)
+	public function hapuswarga($id)
 	{
-	    
-		$data['username'] = $this->session->userdata('username');
-		$id = $this->input->get("kdjenisrek");
-		$data['data']=$this->Modul_jenisrek->hapus_jnsrek($id);
-		if ($res <= 1) {
-            	 echo "berhasil";
-            }
-		
+		// $id = $this->input->get('wrg_nik');
+	    $data = array(
+			'wrg_nik' => $id,
+			'is_active' =>"0"
+			);
+		$this->Modul_warga->hapus_warga($data); 
+			echo "berhasil";
+			
 	}
 	public function detailwarga($id)
 	{
@@ -123,7 +123,7 @@ class Data extends CI_Controller
 		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
 			$data['dataeditwarga']=$this->Modul_warga->get_editwarga($id);
 			// print_r($this->Modul_warga->get_editjnsrek($id));die;
-            $this->load->view('setup/data/detailwarga',$data);
+            $this->load->view('setup/data/warga/detailwarga',$data);
         }
 
 	}

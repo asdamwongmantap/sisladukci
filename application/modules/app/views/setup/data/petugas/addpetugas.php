@@ -32,78 +32,77 @@
               <div class="col-md-12 col-sm-4 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Ubah Perkiraan</h2>
+                    <h2>Form Input Data Petugas</h2>
                     <div class="clearfix"></div>
 					
                   </div>
                   <div class="x_content">
-				  <?php foreach ($dataeditrekening as $row) {?>
-				  <form id="form-jenisrek" data-parsley-validate class="form-horizontal form-label-left" method="post">
-				  
+				  <form id="form-addpetugas" data-parsley-validate class="form-horizontal form-label-left" method="post">
 					   <input type="hidden" id="CRTUSR" name="CRTUSR" class="form-control col-md-7 col-xs-12" value="<?=$this->session->userdata('userid');?>">
 					
 					 <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="kd_akun">Kode Rekening 
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ptg_nip">NIP
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="kd_akun" name="kd_akun" required="" maxlength="100" 
-						  class="form-control col-md-7 col-xs-12" value="<?=$row->kd_akun;?>">
+                          <input type="text" id="ptg_nip" name="ptg_nip" required="" maxlength="16" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
 					  <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="desc_akun">Nama Rekening
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ptg_nama">Nama 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-						<input type="text" id="desc_akun" name="desc_akun" required="" 
-						maxlength="100" class="form-control col-md-7 col-xs-12" value="<?=$row->desc_akun;?>">
+                          <input type="text" id="ptg_nama" name="ptg_nama" required="" maxlength="50" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
+					  
 					 
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="kd_jenisakun">Jenis Rekening
+					  <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ptg_alamat">Alamat 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-						<select class="form-control"  name="kd_jenisakun">
-						<option value="">--Pilih Jenis Rekening--</option>
-						<?php foreach ($datajenisrekeningddl as $rowmaster) {
-							if ($row->kd_jenisakun == $rowmaster->kd_jenisakun){?>	
-							<option value="<?=$rowmaster->kd_jenisakun.":".$rowmaster->normal_balance;?>" selected><?=$rowmaster->desc_jenisakun;?></option>
-						<?php }else{?>
-							<option value="<?=$rowmaster->kd_jenisakun.":".$rowmaster->normal_balance;?>"><?=$rowmaster->desc_jenisakun;?></option>
-						<?php }}?>
-						</select>
+                         <textarea id="ptg_alamat" class="form-control" name="ptg_alamat" required="" maxlength="100" ></textarea>
                         </div>
                       </div>
 					  <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="posisi">Posisi
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ptg_email">Email 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-						<select class="form-control"  name="posisi">
-							<option value="">--Pilih Posisi Sebagai--</option>
-							<?php foreach ($dataposisiddl as $rowmasterposisi) {
-							if ($row->kd_posisi == $rowmasterposisi->kd_posisi){?>	
-							<option value="<?=$rowmasterposisi->kd_posisi;?>" selected><?=$rowmasterposisi->desc_posisi;?></option>
-						<?php }else{?>
-							<option value="<?=$rowmasterposisi->kd_posisi;?>"><?=$rowmasterposisi->desc_posisi;?></option>
-						<?php }}?>
-
-						</select>
+                          <input type="text" id="ptg_email" name="ptg_email" required="" maxlength="50" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
 					  <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="saldo_awal_debet">Debit Awal
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ptg_nohp">No. Handphone 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-						<input type="text" id="saldo_awal_debet" name="saldo_awal_debet" required=""
-						 maxlength="100" class="form-control col-md-7 col-xs-12" value="<?=$row->saldo_awal_debet;?>">
+                          <input type="text" id="ptg_nohp" name="ptg_nohp" required="" maxlength="50" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
 					  <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="saldo_awal_kredit">Kredit Awal
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ptg_posisi">Posisi 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-						<input type="text" id="saldo_awal_kredit" name="saldo_awal_kredit" required="" 
-						maxlength="100" class="form-control col-md-7 col-xs-12" value="<?=$row->saldo_awal_kredit;?>">
+                          <input type="text" id="ptg_posisi" name="ptg_posisi" required="" maxlength="50" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+					  <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ptg_username">Username 
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="ptg_username" name="ptg_username" required="" maxlength="50" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+					  <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ptg_password">Password
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="password" id="ptg_password" name="ptg_password" required="" maxlength="50" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+					  <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="ptg_usergroupid">Usergroup 
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="ptg_usergroupid" name="ptg_usergroupid" required="" maxlength="50" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
 					  <div class="form-group">
@@ -114,9 +113,6 @@
                       </div>
 					  
 					  </form>
-					  <?php
-						}
-						?>
                   </div>
                 </div>
               </div>
@@ -131,8 +127,8 @@
 		?>
 		<script type="text/javascript">
 			//proses add
-			$('#form-jenisrek').on('submit',function(e) {
-			var form = $('#form-jenisrek')[0];
+			$('#form-addpetugas').on('submit',function(e) {
+			var form = $('#form-addpetugas')[0];
 			var data = new FormData(form);
 			swal({
 			  title: "Simpan Data",
@@ -148,7 +144,7 @@
 				$.ajax({
 					type: "POST",
 					enctype: 'multipart/form-data',
-					url:'<?=base_url('app/perkiraan/proseseditrek');?>',
+					url:'<?=base_url('app/data/petugas/savepetugas');?>',
 					data: data,
 					processData: false,
 					contentType: false,
@@ -161,7 +157,7 @@
 						  text: "Data berhasil disimpan !.",
 						  type: "success"
 						},function(){
-							window.location='<?=base_url('app/perkiraan/rekening');?>';
+							window.location='<?=base_url('app/data/petugas/listpetugas');?>';
 						  });
 						}
 						else{
