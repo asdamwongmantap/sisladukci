@@ -17,7 +17,8 @@ class Warga extends CI_Controller
 			redirect(base_url());
         }else{
             $generalcode = "SETTING_DASHBOARD";
-		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['namakry'] = $this->session->userdata('fullname');
             $data['datawarga']=$this->Modul_warga->viewwarga();
             $this->load->view('setup/data/warga/listdatawarga',$data);
 		}
@@ -30,7 +31,8 @@ class Warga extends CI_Controller
 			redirect(base_url());
         }else{
             $generalcode = "SETTING_DASHBOARD";
-		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['namakry'] = $this->session->userdata('fullname');
             // $data['data']=$this->Modul_warga->viewjenisrek();
             $this->load->view('setup/data/warga/addwarga',$data);
         }
@@ -71,7 +73,8 @@ class Warga extends CI_Controller
 			redirect(base_url());
         }else{
             $generalcode = "SETTING_DASHBOARD";
-		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['namakry'] = $this->session->userdata('fullname');
 			$data['dataeditwarga']=$this->Modul_warga->get_editwarga($id);
 			// print_r($this->Modul_warga->get_editjnsrek($id));die;
             $this->load->view('setup/data/warga/editwarga',$data);
@@ -120,7 +123,8 @@ class Warga extends CI_Controller
 			redirect(base_url());
         }else{
             $generalcode = "SETTING_DASHBOARD";
-		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['namakry'] = $this->session->userdata('fullname');
 			$data['dataeditwarga']=$this->Modul_warga->get_editwarga($id);
 			// print_r($this->Modul_warga->get_editjnsrek($id));die;
             $this->load->view('setup/data/warga/detailwarga',$data);

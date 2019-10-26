@@ -17,7 +17,8 @@ class Petugas extends CI_Controller
 			redirect(base_url());
         }else{
             $generalcode = "SETTING_DASHBOARD";
-		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['namakry'] = $this->session->userdata('fullname');
             $data['datapetugas']=$this->Modul_petugas->viewpetugas();
             $this->load->view('setup/data/petugas/listdatapetugas',$data);
 		}
@@ -30,7 +31,8 @@ class Petugas extends CI_Controller
 			redirect(base_url());
         }else{
             $generalcode = "SETTING_DASHBOARD";
-		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['namakry'] = $this->session->userdata('fullname');
             // $data['data']=$this->Modul_petugas->viewjenisrek();
             $this->load->view('setup/data/petugas/addpetugas',$data);
         }
@@ -69,7 +71,8 @@ class Petugas extends CI_Controller
 			redirect(base_url());
         }else{
             $generalcode = "SETTING_DASHBOARD";
-		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['namakry'] = $this->session->userdata('fullname');
 			$data['dataeditpetugas']=$this->Modul_petugas->get_editpetugas($id);
 			// print_r($this->Modul_petugas->get_editjnsrek($id));die;
             $this->load->view('setup/data/petugas/editpetugas',$data);
@@ -116,7 +119,8 @@ class Petugas extends CI_Controller
 			redirect(base_url());
         }else{
             $generalcode = "SETTING_DASHBOARD";
-		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['namakry'] = $this->session->userdata('fullname');
 			$data['dataeditpetugas']=$this->Modul_petugas->get_editpetugas($id);
 			// print_r($this->Modul_petugas->get_editjnsrek($id));die;
             $this->load->view('setup/data/petugas/detailpetugas',$data);

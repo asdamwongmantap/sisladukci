@@ -22,7 +22,7 @@
 			<div class="row">
             <div class="col-md-12 col-sm-4 col-xs-12">
               <div class="x_panel">
-				<marquee behavior="scroll" direction="left" scrollamount="3"><?php foreach($setting as $marquee){echo $marquee->value." ".$namakry;};?></marquee>
+				<marquee behavior="scroll" direction="left" scrollamount="3"><?php foreach($setting as $marquee){echo $marquee->value;};?></marquee>
               </div>
             </div>
           </div>
@@ -32,28 +32,26 @@
               <div class="col-md-12 col-sm-4 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Form Ubah Data Kategori</h2>
+                    <h2>Form Input Data Kategori</h2>
                     <div class="clearfix"></div>
 					
                   </div>
                   <div class="x_content">
-				  <?php foreach ($dataeditkategori as $row) {?>
-				  <form id="form-editkategori" data-parsley-validate class="form-horizontal form-label-left" method="post">
-				  
+				  <form id="form-addkategori" data-parsley-validate class="form-horizontal form-label-left" method="post">
 					   <input type="hidden" id="CRTUSR" name="CRTUSR" class="form-control col-md-7 col-xs-12" value="<?=$this->session->userdata('userid');?>">
 					
-					   <div class="form-group">
+					 <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="kat_id">ID
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text"  id="kat_id" name="kat_id" required="" maxlength="16" class="form-control col-md-7 col-xs-12" value="<?=$row->kat_id;?>">
+                          <input type="text" id="kat_id" name="kat_id" required="" maxlength="16" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
 					  <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="kat_nama">Nama 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text"  id="kat_nama" name="kat_nama" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value="<?=$row->kat_nama;?>">
+                          <input type="text" id="kat_nama" name="kat_nama" required="" maxlength="50" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
 					  
@@ -62,7 +60,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="kat_desc">Desc 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                         <textarea id="kat_desc"  class="form-control" name="kat_desc" required="" maxlength="100" ><?=$row->kat_desc;?></textarea>
+                         <textarea id="kat_desc" class="form-control" name="kat_desc" required="" maxlength="100" ></textarea>
                         </div>
                       </div>
 					  
@@ -74,9 +72,6 @@
                       </div>
 					  
 					  </form>
-					  <?php
-						}
-						?>
                   </div>
                 </div>
               </div>
@@ -91,8 +86,8 @@
 		?>
 		<script type="text/javascript">
 			//proses add
-			$('#form-editkategori').on('submit',function(e) {
-			var form = $('#form-editkategori')[0];
+			$('#form-addkategori').on('submit',function(e) {
+			var form = $('#form-addkategori')[0];
 			var data = new FormData(form);
 			swal({
 			  title: "Simpan Data",
@@ -108,7 +103,7 @@
 				$.ajax({
 					type: "POST",
 					enctype: 'multipart/form-data',
-					url:'<?=base_url('app/data/kategori/saveeditkategori');?>',
+					url:'<?=base_url('app/data/kategori/savekategori');?>',
 					data: data,
 					processData: false,
 					contentType: false,

@@ -22,7 +22,7 @@
 			<div class="row">
             <div class="col-md-12 col-sm-4 col-xs-12">
               <div class="x_panel">
-				<marquee behavior="scroll" direction="left" scrollamount="3"><?php foreach($setting as $marquee){echo $marquee->value." ".$namakry;};?></marquee>
+				<marquee behavior="scroll" direction="left" scrollamount="3"><?php foreach($setting as $marquee){echo $marquee->value;};?></marquee>
               </div>
             </div>
           </div>
@@ -32,37 +32,37 @@
               <div class="col-md-12 col-sm-4 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Detail Kelurahan</h2>
+                    <h2>Detail Kategori</h2>
                     <div class="clearfix"></div>
 					
                   </div>
                   <div class="x_content">
-				  <?php foreach ($dataeditkelurahan as $row) {?>
-				  <form id="form-detailkelurahan" data-parsley-validate class="form-horizontal form-label-left" method="post">
+				  <?php foreach ($dataeditkategori as $row) {?>
+				  <form id="form-detailkategori" data-parsley-validate class="form-horizontal form-label-left" method="post">
 				  
 					   <input type="hidden" id="CRTUSR" name="CRTUSR" class="form-control col-md-7 col-xs-12" value="<?=$this->session->userdata('userid');?>">
 					
              <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="kel_id">ID
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="kat_id">ID
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" disabled id="kel_id" name="kel_id" required="" maxlength="16" class="form-control col-md-7 col-xs-12" value="<?=$row->kel_id;?>">
+                          <input type="text" disabled id="kat_id" name="kat_id" required="" maxlength="16" class="form-control col-md-7 col-xs-12" value="<?=$row->kat_id;?>">
                         </div>
                       </div>
 					  <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="kel_nama">Nama 
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="kat_nama">Nama 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" disabled id="kel_nama" name="kel_nama" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value="<?=$row->kel_nama;?>">
+                          <input type="text" disabled id="kat_nama" name="kat_nama" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value="<?=$row->kat_nama;?>">
                         </div>
                       </div>
 					  
 					 
 					  <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="kel_alamat">Alamat 
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="kat_desc">Desc 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                         <textarea id="kel_alamat" disabled class="form-control" name="kel_alamat" required="" maxlength="100" ><?=$row->kel_alamat;?></textarea>
+                         <textarea id="kat_desc" disabled class="form-control" name="kat_desc" required="" maxlength="100" ><?=$row->kat_desc;?></textarea>
                         </div>
                       </div>
 					  

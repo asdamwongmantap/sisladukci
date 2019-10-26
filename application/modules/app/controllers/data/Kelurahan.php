@@ -17,7 +17,8 @@ class Kelurahan extends CI_Controller
 			redirect(base_url());
         }else{
             $generalcode = "SETTING_DASHBOARD";
-		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['namakry'] = $this->session->userdata('fullname');
             $data['datakelurahan']=$this->Modul_kelurahan->viewkelurahan();
             $this->load->view('setup/data/kelurahan/listdatakelurahan',$data);
 		}
@@ -63,7 +64,8 @@ class Kelurahan extends CI_Controller
 			redirect(base_url());
         }else{
             $generalcode = "SETTING_DASHBOARD";
-		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['namakry'] = $this->session->userdata('fullname');
 			$data['dataeditkelurahan']=$this->Modul_kelurahan->get_editkelurahan($id);
 			// print_r($this->Modul_kelurahan->get_editjnsrek($id));die;
             $this->load->view('setup/data/kelurahan/editkelurahan',$data);
@@ -104,7 +106,8 @@ class Kelurahan extends CI_Controller
 			redirect(base_url());
         }else{
             $generalcode = "SETTING_DASHBOARD";
-		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['namakry'] = $this->session->userdata('fullname');
 			$data['dataeditkelurahan']=$this->Modul_kelurahan->get_editkelurahan($id);
 			// print_r($this->Modul_kelurahan->get_editjnsrek($id));die;
             $this->load->view('setup/data/kelurahan/detailkelurahan',$data);

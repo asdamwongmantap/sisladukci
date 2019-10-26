@@ -32,35 +32,39 @@
               <div class="col-md-12 col-sm-4 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>List Data Kelurahan</h2>
+                    <h2>List Data Permohonan KK</h2>
                     <div class="clearfix"></div>
 					
                   </div>
                   <div class="x_content">
 				  <input type="hidden" id="usergroup" value="<?=$this->session->userdata('usergroupid');?>">
-				  <a href="<?=base_url('app/data/kelurahan/add_kelurahan');?>" class="btn btn-success" title="Tambah user group" data-target=".bs-example-modal-smadd" style="float:right;display:block;" 
-				  id="tomboltambah"><i class="fa fa-plus"></i> Tambah Data Kelurahan</a></br>
+				  <a href="<?=base_url('app/surat/add_mohonkk');?>" class="btn btn-success" title="Tambah user group" data-target=".bs-example-modal-smadd" style="float:right;display:block;" 
+				  id="tomboltambah"><i class="fa fa-plus"></i> Buat Permohonan KK</a></br>
 				  </br>
 				  <table id="mydata" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
                       <thead>
                         <tr>
-							<th>ID Kelurahan</th>
-							<th>Nama</th>
-							<th>Alamat</th>
+							<th>No. Surat</th>
+							<th>NIK Pemohon</th>
+							<th>Nama Pemohon</th>
+							<th>Kewarganegaraan</th>
+							<th>Tanggal Pembuatan</th>
 							<th>Action</th>
                         </tr>
                       </thead>
                       <tbody id="show_data">
 					  
 							<?php 
-							foreach ($datakelurahan as $row) {?>	 
+							foreach ($datamohonkk as $row) {?>	 
 							<tr>
-									<td><?=$row->kel_id;?></td>							
-									<td><?=$row->kel_nama;?></td>
-									<td><?=$row->kel_alamat;?></td>							
-									<td><a class="btn btn-success" href='detailkelurahan/<?=$row->kel_id;?>'><i class="glyphicon glyphicon-zoom-in icon-white"></i></a>
-									<a class="btn btn-primary" href='editkelurahan/<?=$row->kel_id;?>'><i class="glyphicon glyphicon-edit icon-white"></i></a>
-									<a class="btn btn-danger item_deletekelurahan" data-id="<?=$row->kel_id;?>"><i class="glyphicon glyphicon-trash icon-white"></i></a></td>
+									<td><?=$row->srt_no;?></td>							
+									<td><?=$row->srt_nik;?></td>
+									<td><?=$row->wrg_nama;?></td>
+									<td><?=$row->wrg_kwarganegaraan;?></td>
+									<td><?=$row->dtm_crt;?></td>							
+									<td><a class="btn btn-success" href='detailmohonkk/<?=$row->srt_no;?>'><i class="glyphicon glyphicon-zoom-in icon-white"></i></a>
+									<a class="btn btn-primary" href='editmohonkk/<?=$row->srt_no;?>'><i class="glyphicon glyphicon-edit icon-white"></i></a>
+									<a class="btn btn-danger item_deletemohonkk" data-id="<?=$row->srt_no;?>"><i class="glyphicon glyphicon-trash icon-white"></i></a></td>
 								</tr>
 							<?php
 								}
@@ -87,12 +91,12 @@
 		$('#mydata').dataTable();
 		});
 			//prosesdelete
-			$(document).on('click','.item_deletekelurahan',function(e) {
+			$(document).on('click','.item_deletemohonkk',function(e) {
 			var wrg_nik = $(this).data('id');
 			
 			swal({
 			  title: "Delete Data",
-			  text: "Apakah anda yakin ingin menonaktifkan data kelurahan ini ?",
+			  text: "Apakah anda yakin ingin menonaktifkan data kategori ini ?",
 			  confirmButtonText:"Yakin",
 			  confirmButtonColor: "#002855",
 			  cancelButtonText:"Tidak",
@@ -104,7 +108,7 @@
 			  showLoaderOnConfirm: true
 			}, function () {
 				$.ajax({
-					url:'<?=base_url('app/data/kelurahan/hapuskelurahan/');?>'+wrg_nik,
+					url:'<?=base_url('app/data/kategori/hapuskategori/');?>'+wrg_nik,
 					dataType:'text',
 					data : {wrg_nik:wrg_nik},
 					success:function(e){
@@ -115,7 +119,7 @@
 						  text: e,
 						  type: "success"
 						},function(){
-							window.location='<?=base_url('app/data/kelurahan/listkelurahan');?>';
+							window.location='<?=base_url('app/data/kategori/listkategori');?>';
 						  });
 						}
 						else{

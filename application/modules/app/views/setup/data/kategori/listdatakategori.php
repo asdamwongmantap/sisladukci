@@ -22,7 +22,7 @@
 			<div class="row">
             <div class="col-md-12 col-sm-4 col-xs-12">
               <div class="x_panel">
-				<marquee behavior="scroll" direction="left" scrollamount="3"><?php foreach($setting as $marquee){echo $marquee->value;};?></marquee>
+				<marquee behavior="scroll" direction="left" scrollamount="3"><?php foreach($setting as $marquee){echo $marquee->value." ".$namakry;};?></marquee>
               </div>
             </div>
           </div>

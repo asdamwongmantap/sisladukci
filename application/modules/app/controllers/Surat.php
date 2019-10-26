@@ -1,17 +1,17 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 // error_reporting(0);
-class Kategori extends CI_Controller
+class Surat extends CI_Controller
 {
 	public function __construct()
 	{
 		parent::__construct();
 		// $this->load->helper(array('url','form')); //load helper url 
         $this->load->library('form_validation'); //load form validation
-        $this->load->model('Modul_kategori');
+        $this->load->model('Modul_surat');
         $this->load->model('Modul_setting');
     }
 	
-	public function listkategori()
+	public function mohonkk()
 	{
         if (!$this->session->userdata('username')){
 			redirect(base_url());
@@ -19,11 +19,11 @@ class Kategori extends CI_Controller
             $generalcode = "SETTING_DASHBOARD";
 			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
 			$data['namakry'] = $this->session->userdata('fullname');
-            $data['datakategori']=$this->Modul_kategori->viewkategori();
-            $this->load->view('setup/data/kategori/listdatakategori',$data);
+            $data['datamohonkk']=$this->Modul_surat->viewmohonkk();
+            $this->load->view('berkas/surat/listdatamohonkk',$data);
 		}
 		// $this->load->view('setup/data/listdatakategori');
-		
+		// print_r($this->session->userdata('fullname'));die;
 	}
 	public function add_kategori()
 	{
@@ -31,9 +31,8 @@ class Kategori extends CI_Controller
 			redirect(base_url());
         }else{
             $generalcode = "SETTING_DASHBOARD";
-			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
-			$data['namakry'] = $this->session->userdata('fullname');
-            // $data['data']=$this->Modul_kategori->viewjenisrek();
+		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+            // $data['data']=$this->Modul_surat->viewjenisrek();
             $this->load->view('setup/data/kategori/addkategori',$data);
         }
 
@@ -50,7 +49,7 @@ class Kategori extends CI_Controller
         // print_r($data);die;
 		if($this->form_validation->run()!=FALSE){
                 //pesan yang muncul jika berhasil diupload pada session flashdata
-				$this->Modul_kategori->get_insertkategori($data); //akses model untuk menyimpan ke database
+				$this->Modul_surat->get_insertkategori($data); //akses model untuk menyimpan ke database
                 echo "berhasil";
 			}else{
                 //pesan yang muncul jika terdapat error dimasukkan pada session flashdata
@@ -65,10 +64,9 @@ class Kategori extends CI_Controller
 			redirect(base_url());
         }else{
             $generalcode = "SETTING_DASHBOARD";
-			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
-			$data['namakry'] = $this->session->userdata('fullname');
-			$data['dataeditkategori']=$this->Modul_kategori->get_editkategori($id);
-			// print_r($this->Modul_kategori->get_editjnsrek($id));die;
+		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['dataeditkategori']=$this->Modul_surat->get_editkategori($id);
+			// print_r($this->Modul_surat->get_editjnsrek($id));die;
             $this->load->view('setup/data/kategori/editkategori',$data);
         }
 
@@ -83,7 +81,7 @@ class Kategori extends CI_Controller
 				  'is_active' =>"1"
                   );
 		if($this->form_validation->run()!=FALSE){
-            $this->Modul_kategori->moduleditkategori($data); 
+            $this->Modul_surat->moduleditkategori($data); 
              echo "berhasil";
 			}else{
 				echo "error";
@@ -96,7 +94,7 @@ class Kategori extends CI_Controller
 			'kat_id' => $id,
 			'is_active' =>"0"
 			);
-		$this->Modul_kategori->hapus_kategori($data); 
+		$this->Modul_surat->hapus_kategori($data); 
 			echo "berhasil";
 			
 	}
@@ -107,9 +105,8 @@ class Kategori extends CI_Controller
 			redirect(base_url());
         }else{
             $generalcode = "SETTING_DASHBOARD";
-			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
-			$data['namakry'] = $this->session->userdata('fullname');
-			$data['dataeditkategori']=$this->Modul_kategori->get_editkategori($id);
+		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['dataeditkategori']=$this->Modul_surat->get_editkategori($id);
 			// print_r($this->Modul_kategori->get_editjnsrek($id));die;
             $this->load->view('setup/data/kategori/detailkategori',$data);
         }
