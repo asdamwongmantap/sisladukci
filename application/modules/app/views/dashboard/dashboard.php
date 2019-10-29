@@ -30,41 +30,69 @@
 		  <!--list userakses-->
 			<div class="row">
 			
-			  <!-- widget -->
-			<div class="animated flipInY col-lg-4 col-md-3 col-sm-6 col-xs-12">
+			<div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
 			<div class="tile-stats">
-				<div class="icon"><i class="fa fa-briefcase"></i>
-				</div>
-				<div class="count">1</div>
-
-				<h3>Surat</h3>
-				<!-- <p>Surat permohonan KK</p> -->
-			</div>
-			</div>
-			<div class="animated flipInY col-lg-4 col-md-3 col-sm-6 col-xs-12">
-			<div class="tile-stats">
-				<div class="icon"><i class="fa fa-bars"></i>
+				<div class="icon"><i class="fa fa-calculator"></i>
 				</div>
 				<div class="count">Rp.30000</div>
 
-				<h3>Kas Kelurahan</h3>
+				<h3>Jumlah Uang KAS RT.007</h3>
 				<!-- <p>Price List Harga Rumah</p> -->
 			</div>
 			</div>
-			<div class="animated flipInY col-lg-4 col-md-3 col-sm-6 col-xs-12">
+			<div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
 			<div class="tile-stats">
-				<div class="icon"><i class="fa fa-recycle"></i>
+				<div class="icon"><i class="fa fa-users"></i>
 				</div>
 				<div class="count">20</div>
 
-				<h3>Warga</h3>
+				<h3>Jumlah Warga RT.007</h3>
 				<!-- <p>Tentang Simulasi Angsuran</p> -->
 			</div>
+			
 			</div>
 			<!-- end widget -->
 			  		  
             </div>
 			<!--end list userakses-->
+			<div class="row">
+			
+			<div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+			<!-- bar chart -->
+			<div class="col-md-12 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Charts <small>By Gender</small></h2>
+                    
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div id="graph_bar" style="width:100%; height:280px;"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- /bar charts -->
+			</div>
+			<div class="animated flipInY col-lg-6 col-md-3 col-sm-6 col-xs-12">
+			<!-- bar chart -->
+			<div class="col-md-12 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Charts <small>By Age</small></h2>
+                    
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <div id="graph_bar2" style="width:100%; height:280px;"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- /bar charts -->
+			
+			</div>
+			<!-- end widget -->
+			  		  
+            </div>
         </div>
         <!-- /page content -->
 		<?php

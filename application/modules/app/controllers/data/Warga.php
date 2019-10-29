@@ -131,6 +131,21 @@ class Warga extends CI_Controller
         }
 
 	}
+	// added 20191029 by asdam
+	public function listkepalakeluarga()
+	{
+        if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+            $generalcode = "SETTING_DASHBOARD";
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['namakry'] = $this->session->userdata('fullname');
+            $data['datawarga']=$this->Modul_warga->viewwarga();
+            $this->load->view('setup/data/warga/listdatakepalakeluarga',$data);
+		}
+		// $this->load->view('setup/data/listdatawarga');
+		
+	}
 	
 }
 

@@ -1,7 +1,7 @@
 <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border:0px solid black;">
-              <a href="#" class="site_title">WM-DUKCAPILSYS</a>
+              <a href="#" class="site_title">SISLADUK</a>
             </div>
 
             <div class="clearfix"></div>
@@ -24,63 +24,72 @@
               <div class="menu_section">
               <?php if ($this->session->userdata('usergroupid') =='1') {?>
                     <ul class="nav side-menu">
-                    <h3>General</h3>
-               <li><a href="<?=base_url();?>app/main/dashboard"><i class="fa fa-home"></i> Dashboard </a></li>
+                    <!-- <h3>General</h3> -->
+               <li><a href="<?=base_url();?>app/main/dashboard"><i class="fa fa-home"></i> Beranda </a></li>
                <h3>Setup</h3>
                <li>
-               <a href="#"><i class="fa fa-gear"></i> Data </a>
+               <a href="#"><i class="fa fa-gear"></i> Master Data Penduduk </a>
                
                <ul class="nav child_menu">
                 <li>
-                  <a href="<?=base_url();?>app/data/warga/listwarga">Warga</a>
+                  <a href="<?=base_url();?>app/data/warga/listkepalakeluarga">Data Kepala Keluarga</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/data/petugas/listpetugas">Petugas</a>
+                  <a href="<?=base_url();?>app/data/warga/listwarga">Data Keseluruhan Penduduk</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/data/kelurahan/listkelurahan">Kelurahan</a>
+                  <a href="<?=base_url();?>app/data/kelurahan/listkelurahan">Data Perpindahan Penduduk</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/data/kategori/listkategori">Kategori</a>
+                  <a href="<?=base_url();?>app/data/kategori/listkategori">Data Kematian Penduduk</a>
                 </li>
                 </ul>
                 </li>
     
-                <h3>Berkas</h3>
+                <!-- <h3>Berkas</h3> -->
                 
                <li>
-               <a href="#"><i class="fa fa-calculator"></i> Surat </a>
+               <a href="#"><i class="fa fa-file"></i> Surat </a>
                
                <ul class="nav child_menu">
                 <li>
-                  <a href="<?=base_url();?>app/surat/numpangnikah">Menumpang Menikah</a>
+                  <a href="<?=base_url();?>app/surat/numpangnikah">Surat Pengantar Domisili</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/surat/mohonkk">Permohonan KK</a>
+                  <a href="<?=base_url();?>app/surat/mohonkk">Surat Kuasa</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/surat/mohonskck">Permohonan SKCK</a>
+                  <a href="<?=base_url();?>app/surat/mohonskck">Surat Izin Menikah</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/surat/mohondomisili">Permohonan Domisili</a>
+                  <a href="<?=base_url();?>app/surat/mohondomisili">Surat Pengantar Biasa</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/surat/mohonktp">Permohonan KTP</a>
+                  <a href="<?=base_url();?>app/surat/mohonktp">Surat Kematian</a>
                 </li>
                 </ul>
                 </li>
-                <h3>Laporan</h3>
+                <!-- <h3>Laporan</h3> -->
+                <li>
+                  <a href="<?=base_url();?>app/surat/mohonktp"><i class="fa fa-calculator"></i>Keuangan</a>
+                </li>
+                <li>
+                  <a href="<?=base_url();?>app/surat/mohonktp"><i class="fa fa-file"></i>SMS Blast</a>
+                </li>
+                <!-- <h3>Laporan</h3> -->
               <li>
-               <a href="#"><i class="fa fa-file"></i>Laporan </a>
+               <a href="#"><i class="fa fa-file"></i>Report </a>
                
                <ul class="nav child_menu">
                 <li>
-                  <a href="<?=base_url();?>app/laporan/warga">Warga</a>
+                  <a href="<?=base_url();?>app/laporan/warga">Report Data Penduduk</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/laporan/keuangan">Keuangan</a>
+                  <a href="<?=base_url();?>app/laporan/keuangan">Report Data Surat</a>
                 </li>
-                
+                <li>
+                  <a href="<?=base_url();?>app/laporan/keuangan">Report Data Keuangan</a>
+                </li>
                 </ul>
                 </li>
               <h3>Others</h3>
@@ -92,87 +101,95 @@
                     <ul class="nav side-menu">
                     <h3>General</h3>
                <li><a href="<?=base_url();?>app/main/dashboard"><i class="fa fa-home"></i> Dashboard </a></li>
-              
-    
-                
-                <h3>Laporan</h3>
+               <li>
+                  <a href="<?=base_url();?>app/surat/mohonktp"><i class="fa fa-calculator"></i>Keuangan</a>
+                </li>
               <li>
-               <a href="#"><i class="fa fa-file"></i>Laporan </a>
+               <a href="#"><i class="fa fa-file"></i>Report </a>
                
                <ul class="nav child_menu">
                 <li>
-                  <a href="<?=base_url();?>app/laporan/warga">Warga</a>
+                  <a href="<?=base_url();?>app/laporan/warga">Report Data Penduduk</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/laporan/keuangan">Keuangan</a>
+                  <a href="<?=base_url();?>app/laporan/keuangan">Report Data Surat</a>
                 </li>
-                
+                <li>
+                  <a href="<?=base_url();?>app/laporan/keuangan">Report Data Keuangan</a>
+                </li>
                 </ul>
                 </li>
-              <h3>Others</h3>
               <li><a href="<?=base_url();?>app/login_c/logout"><i class="fa fa-sign-out"></i> Logout </a></li>
               
                     </ul>
                    <?php }
                     else if ($this->session->userdata('usergroupid')=='3'){?>
                       <ul class="nav side-menu">
-                    <h3>General</h3>
-               <li><a href="<?=base_url();?>app/main/dashboard"><i class="fa fa-home"></i> Dashboard </a></li>
+                      <li><a href="<?=base_url();?>app/main/dashboard"><i class="fa fa-home"></i> Beranda </a></li>
                <h3>Setup</h3>
                <li>
-               <a href="#"><i class="fa fa-gear"></i> Data </a>
+               <a href="#"><i class="fa fa-gear"></i> Master Data Penduduk </a>
                
                <ul class="nav child_menu">
                 <li>
-                  <a href="<?=base_url();?>app/data/warga/listwarga">Warga</a>
+                  <a href="<?=base_url();?>app/data/warga/listwarga">Data Kepala Keluarga</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/data/petugas/listpetugas">Petugas</a>
+                  <a href="<?=base_url();?>app/data/petugas/listpetugas">Data Keseluruhan Penduduk</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/data/kelurahan/listkelurahan">Kelurahan</a>
+                  <a href="<?=base_url();?>app/data/kelurahan/listkelurahan">Data Perpindahan Penduduk</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/data/kategori/listkategori">Kategori</a>
+                  <a href="<?=base_url();?>app/data/kategori/listkategori">Data Kematian Penduduk</a>
                 </li>
                 </ul>
                 </li>
     
-                <h3>Berkas</h3>
+                <!-- <h3>Berkas</h3> -->
                 
                <li>
-               <a href="#"><i class="fa fa-calculator"></i> Surat </a>
+               <a href="#"><i class="fa fa-file"></i> Surat </a>
                
                <ul class="nav child_menu">
                 <li>
-                  <a href="<?=base_url();?>app/surat/numpangnikah">Menumpang Menikah</a>
+                  <a href="<?=base_url();?>app/surat/numpangnikah">Surat Pengantar Domisili</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/surat/mohonkk">Permohonan KK</a>
+                  <a href="<?=base_url();?>app/surat/mohonkk">Surat Kuasa</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/surat/mohonskck">Permohonan SKCK</a>
+                  <a href="<?=base_url();?>app/surat/mohonskck">Surat Izin Menikah</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/surat/mohondomisili">Permohonan Domisili</a>
+                  <a href="<?=base_url();?>app/surat/mohondomisili">Surat Pengantar Biasa</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/surat/mohonktp">Permohonan KTP</a>
+                  <a href="<?=base_url();?>app/surat/mohonktp">Surat Kematian</a>
                 </li>
                 </ul>
                 </li>
-                <h3>Laporan</h3>
+                <!-- <h3>Laporan</h3> -->
+                <li>
+                  <a href="<?=base_url();?>app/surat/mohonktp"><i class="fa fa-calculator"></i>Keuangan</a>
+                </li>
+                <li>
+                  <a href="<?=base_url();?>app/surat/mohonktp"><i class="fa fa-file"></i>SMS Blast</a>
+                </li>
+                <!-- <h3>Laporan</h3> -->
               <li>
-               <a href="#"><i class="fa fa-file"></i>Laporan </a>
+               <a href="#"><i class="fa fa-file"></i>Report </a>
                
                <ul class="nav child_menu">
                 <li>
-                  <a href="<?=base_url();?>app/laporan/warga">Warga</a>
+                  <a href="<?=base_url();?>app/laporan/warga">Report Data Penduduk</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/laporan/keuangan">Keuangan</a>
+                  <a href="<?=base_url();?>app/laporan/keuangan">Report Data Surat</a>
                 </li>
-                
+                <li>
+                  <a href="<?=base_url();?>app/laporan/keuangan">Report Data Keuangan</a>
+                </li>
                 </ul>
                 </li>
               <h3>Others</h3>
@@ -182,21 +199,24 @@
                     <?php  }
                       else if ($this->session->userdata('usergroupid')=='4'){?>
                         <ul class="nav side-menu">
-                    <h3>General</h3>
-               <li><a href="<?=base_url();?>app/main/dashboard"><i class="fa fa-home"></i> Dashboard </a></li>
-               
-                <h3>Laporan</h3>
+                        <li>
+                  <a href="<?=base_url();?>app/surat/mohonktp"><i class="fa fa-calculator"></i>Keuangan</a>
+                </li>
+                
+                <!-- <h3>Laporan</h3> -->
               <li>
-               <a href="#"><i class="fa fa-file"></i>Laporan </a>
+               <a href="#"><i class="fa fa-file"></i>Report </a>
                
                <ul class="nav child_menu">
                 <li>
-                  <a href="<?=base_url();?>app/laporan/warga">Warga</a>
+                  <a href="<?=base_url();?>app/laporan/warga">Report Data Penduduk</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/laporan/keuangan">Keuangan</a>
+                  <a href="<?=base_url();?>app/laporan/keuangan">Report Data Surat</a>
                 </li>
-                
+                <li>
+                  <a href="<?=base_url();?>app/laporan/keuangan">Report Data Keuangan</a>
+                </li>
                 </ul>
                 </li>
               <h3>Others</h3>

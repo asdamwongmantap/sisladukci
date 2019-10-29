@@ -40,3 +40,5 @@
 <script src="<?=base_url();?>assets/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
 <script src="<?=base_url();?>assets/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
 <script src="<?=base_url();?>assets/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+<script src="<?=base_url();?>assets/vendors/raphael/raphael.min.js"></script>
+<script src="<?=base_url();?>assets/vendors/morris.js/morris.min.js"></script>

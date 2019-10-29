@@ -32,7 +32,7 @@
               <div class="col-md-12 col-sm-4 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Data Kepala Keluarga</h2>
+                    <h2>Data Keseluruhan Penduduk</h2>
                     <div class="clearfix"></div>
 					
                   </div>
@@ -45,8 +45,10 @@
                       <thead>
                         <tr>
 						<th>No</th>
-							<th>No. KK</th>
-							<th>Nama Kepala Keluarga</th>
+							<th>No. KTP</th>
+							<th>Nama Penduduk</th>
+							<th>Jenis Kelamin</th>
+							<th>Tanggal Lahir</th>
 							<th>Alamat</th>
 							<th>Action</th>
                         </tr>
@@ -61,6 +63,8 @@
 									<td><a href='detailwarga/<?=$row->wrg_nik;?>'>
 									<?=$row->wrg_nik;?></a></td>							
 									<td><?=$row->wrg_nama;?></td>
+									<td><?=$row->wrg_jeniskelamin;?></td>	
+									<td><?=$row->wrg_tgllahir;?></td>	
 									<td><?=$row->wrg_alamat;?></td>							
 									<td>
 									<a class="btn btn-primary" href='editwarga/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-edit icon-white"></i></a>
