@@ -3,9 +3,10 @@
 		
 	var $tbl_warga='tbl_warga';
 	
-	Function viewwarga()
+	public function viewwarga($nokk)
 	{
 		$this->db->where('is_active',"1"); 
+		$this->db->where('wrg_nokk',$nokk); 
 		$query=$this->db->get('tbl_warga');
 		if ($query->num_rows()>0)
 	{
@@ -16,19 +17,6 @@
 		return array();
 	}
 	}
-	// Function viewposisi()
-	// {
-	// 	// $this->load->database();
-	// 	$query=$this->db->get('tbl_posisi');
-	// 	if ($query->num_rows()>0)
-	// {
-	// 	return $query->result();
-	// }
-	// 	else
-	// {
-	// 	return array();
-	// }
-	// }
 	public function get_insertwarga($data){
 		// $this->load->database();
        $this->db->insert($this->tbl_warga, $data);
@@ -62,6 +50,47 @@
         $this->db->update('tbl_warga',$data); 
 
 		}
+		// added 20191031 by asdam
+		public function viewkepalakeluarga()
+	{
+		$this->db->where('is_active',"1"); 
+		$this->db->where('wrg_statushubungan',"Kepala Keluarga"); 
+		$query=$this->db->get('tbl_warga');
+		if ($query->num_rows()>0)
+	{
+		return $query->result();
+	}
+		else
+	{
+		return array();
+	}
+	}
+	public function viewallwarga()
+	{
+		$this->db->where('is_active',"1"); 
+		$query=$this->db->get('tbl_warga');
+		if ($query->num_rows()>0)
+	{
+		return $query->result();
+	}
+		else
+	{
+		return array();
+	}
+	}
+	public function viewpindahwarga()
+	{
+		$this->db->where('is_active',"1"); 
+		$query=$this->db->get('view_wargapindah');
+		if ($query->num_rows()>0)
+	{
+		return $query->result();
+	}
+		else
+	{
+		return array();
+	}
+	}
 	
 	
 }

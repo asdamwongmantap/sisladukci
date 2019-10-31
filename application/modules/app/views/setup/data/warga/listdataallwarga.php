@@ -32,7 +32,7 @@
               <div class="col-md-12 col-sm-4 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Data Detail Anggota Keluarga</h2>
+                    <h2>Data Keseluruhan Penduduk</h2>
                     <div class="clearfix"></div>
 					
                   </div>
@@ -47,7 +47,9 @@
 						<th>No</th>
 							<th>No. KTP</th>
 							<th>Nama</th>
-							<th>Status</th>
+							<th>Jenis Kelamin</th>
+							<th>Tanggal Lahir</th>
+							<th>Alamat</th>
 							<th>Action</th>
                         </tr>
                       </thead>
@@ -55,14 +57,16 @@
 					  
 							<?php 
 							$no = 1;
-							foreach ($datawarga as $row) {?>	 
+							foreach ($dataallwarga as $row) {?>	 
 							<tr>
 									<td><?=$no;?></td>
-									<td><?=$row->wrg_nik;?></td>							
+									<td><a href='detailwarga/<?=$row->wrg_nik;?>'><?=$row->wrg_nik;?></a></td>							
 									<td><?=$row->wrg_nama;?></td>
-									<td><?=$row->wrg_statushubungan;?></td>							
+									<td><?=$row->wrg_jeniskel;?></td>
+									<td><?=$row->wrg_tgllahir;?></td>
+									<td><?=$row->wrg_alamat;?></td>							
 									<td>
-									<a class="btn btn-success" href='detailwarga/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-zoom-in icon-white"></i></a>
+									<!-- <a class="btn btn-success" href='detailwarga/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-zoom-in icon-white"></i></a> -->
 									<a class="btn btn-primary" href='editwarga/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-edit icon-white"></i></a>
 									<!-- <a class="btn btn-danger item_deletewarga" data-id="<?=$row->wrg_nik;?>"><i class="glyphicon glyphicon-trash icon-white"></i></a> -->
 								</td>

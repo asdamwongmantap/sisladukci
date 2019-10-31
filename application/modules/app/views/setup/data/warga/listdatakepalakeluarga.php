@@ -57,10 +57,10 @@
 					  
 							<?php 
 							$no = 1;
-							foreach ($datawarga as $row) {?>	 
+							foreach ($datakepalakeluarga as $row) {?>	 
 							<tr>
 									<td><?=$no;?></td>
-									<td><a href='detailwarga/<?=$row->wrg_nik;?>'>
+									<td><a href='listwarga/<?=$row->wrg_nokk;?>'>
 									<?=$row->wrg_nik;?></a></td>							
 									<td><?=$row->wrg_nama;?></td>
 									<td><?=$row->wrg_jeniskelamin;?></td>	

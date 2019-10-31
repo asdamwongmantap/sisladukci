@@ -64,7 +64,8 @@
 									<td><?=$row->ptg_email;?></td>
 									<td><?=$row->ptg_nohp;?></td>
 									<td><?=$row->ptg_posisi;?></td>
-									<td><a class="btn btn-success" href='detailpetugas/<?=$row->ptg_nip;?>'><i class="glyphicon glyphicon-zoom-in icon-white"></i></a>
+									<td>
+										<a class="btn btn-success" href='detailpetugas/<?=$row->ptg_nip;?>'><i class="glyphicon glyphicon-zoom-in icon-white"></i></a>
 									<a class="btn btn-primary" href='editpetugas/<?=$row->ptg_nip;?>'><i class="glyphicon glyphicon-edit icon-white"></i></a>
 									<a class="btn btn-danger item_deletepetugas" data-id="<?=$row->ptg_nip;?>"><i class="glyphicon glyphicon-trash icon-white"></i></a></td>
 								</tr>

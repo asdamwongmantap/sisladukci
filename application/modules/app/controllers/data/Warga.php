@@ -11,15 +11,17 @@ class Warga extends CI_Controller
         $this->load->model('Modul_setting');
     }
 	
-	public function listwarga()
+	public function listwarga($id)
 	{
         if (!$this->session->userdata('username')){
 			redirect(base_url());
         }else{
+			$nokk = $this->uri->segment(5);
             $generalcode = "SETTING_DASHBOARD";
 			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
 			$data['namakry'] = $this->session->userdata('fullname');
-            $data['datawarga']=$this->Modul_warga->viewwarga();
+			// print_r($nokk);die;
+            $data['datawarga']=$this->Modul_warga->viewwarga($nokk);
             $this->load->view('setup/data/warga/listdatawarga',$data);
 		}
 		// $this->load->view('setup/data/listdatawarga');
@@ -140,8 +142,40 @@ class Warga extends CI_Controller
             $generalcode = "SETTING_DASHBOARD";
 			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
 			$data['namakry'] = $this->session->userdata('fullname');
-            $data['datawarga']=$this->Modul_warga->viewwarga();
+            $data['datakepalakeluarga']=$this->Modul_warga->viewkepalakeluarga();
             $this->load->view('setup/data/warga/listdatakepalakeluarga',$data);
+		}
+		// $this->load->view('setup/data/listdatawarga');
+		
+	}
+	public function listallwarga($id)
+	{
+        if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+			$nokk = $this->uri->segment(5);
+            $generalcode = "SETTING_DASHBOARD";
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['namakry'] = $this->session->userdata('fullname');
+			// print_r($nokk);die;
+            $data['dataallwarga']=$this->Modul_warga->viewallwarga();
+            $this->load->view('setup/data/warga/listdataallwarga',$data);
+		}
+		// $this->load->view('setup/data/listdatawarga');
+		
+	}
+	public function listpindahwarga()
+	{
+        if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+			// $nokk = $this->uri->segment(5);
+            $generalcode = "SETTING_DASHBOARD";
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['namakry'] = $this->session->userdata('fullname');
+			// print_r($nokk);die;
+            $data['datapindahwarga']=$this->Modul_warga->viewpindahwarga();
+            $this->load->view('setup/data/warga/listdatapindahwarga',$data);
 		}
 		// $this->load->view('setup/data/listdatawarga');
 		

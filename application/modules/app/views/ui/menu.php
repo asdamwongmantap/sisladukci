@@ -35,10 +35,10 @@
                   <a href="<?=base_url();?>app/data/warga/listkepalakeluarga">Data Kepala Keluarga</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/data/warga/listwarga">Data Keseluruhan Penduduk</a>
+                  <a href="<?=base_url();?>app/data/warga/listallwarga">Data Keseluruhan Penduduk</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/data/kelurahan/listkelurahan">Data Perpindahan Penduduk</a>
+                  <a href="<?=base_url();?>app/data/warga/listpindahwarga">Data Perpindahan Penduduk</a>
                 </li>
                 <li>
                   <a href="<?=base_url();?>app/data/kategori/listkategori">Data Kematian Penduduk</a>
