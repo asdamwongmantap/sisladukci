@@ -32,23 +32,21 @@
               <div class="col-md-12 col-sm-4 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Data Keseluruhan Penduduk</h2>
+                    <h2>Data Kepala Keluarga</h2>
                     <div class="clearfix"></div>
 					
                   </div>
                   <div class="x_content">
 				  <input type="hidden" id="usergroup" value="<?=$this->session->userdata('usergroupid');?>">
-				  <a href="<?=base_url('app/data/warga/add_warga');?>" class="btn btn-success" title="Tambah user group" data-target=".bs-example-modal-smadd" style="float:right;display:block;" 
+				  <a href="<?=base_url('app/data/warga/addkepalakeluarga');?>" class="btn btn-success" title="Tambah user group" data-target=".bs-example-modal-smadd" style="float:right;display:block;" 
 				  id="tomboltambah"><i class="fa fa-plus"></i> Tambah Data</a></br>
 				  </br>
 				  <table id="mydata" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
                       <thead>
                         <tr>
 						<th>No</th>
-							<th>No. KTP</th>
-							<th>Nama Penduduk</th>
-							<th>Jenis Kelamin</th>
-							<th>Tanggal Lahir</th>
+							<th>No. KK</th>
+							<th>Nama Kepala Keluarga</th>
 							<th>Alamat</th>
 							<th>Action</th>
                         </tr>
@@ -61,13 +59,11 @@
 							<tr>
 									<td><?=$no;?></td>
 									<td><a href='listwarga/<?=$row->wrg_nokk;?>'>
-									<?=$row->wrg_nik;?></a></td>							
+									<?=$row->wrg_nokk;?></a></td>							
 									<td><?=$row->wrg_nama;?></td>
-									<td><?=$row->wrg_jeniskelamin;?></td>	
-									<td><?=$row->wrg_tgllahir;?></td>	
 									<td><?=$row->wrg_alamat;?></td>							
 									<td>
-									<a class="btn btn-primary" href='editwarga/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-edit icon-white"></i></a>
+									<a class="btn btn-primary" href='editkepalakeluarga/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-edit icon-white"></i></a>
 									<!-- <a class="btn btn-danger item_deletewarga" data-id="<?=$row->wrg_nik;?>"><i class="glyphicon glyphicon-trash icon-white"></i></a> -->
 								</td>
 								</tr>

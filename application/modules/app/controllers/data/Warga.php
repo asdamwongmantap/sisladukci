@@ -180,6 +180,53 @@ class Warga extends CI_Controller
 		// $this->load->view('setup/data/listdatawarga');
 		
 	}
+	public function addkepalakeluarga()
+	{
+        if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+            $generalcode = "SETTING_DASHBOARD";
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['namakry'] = $this->session->userdata('fullname');
+            // $data['data']=$this->Modul_warga->viewjenisrek();
+            $this->load->view('setup/data/warga/addkepalakeluarga',$data);
+        }
+
+	}
+	public function savekepalakeluarga(){
+		$this->form_validation->set_rules('wrg_nokk','No. KK','required');
+		
+		$data = array(
+				  'wrg_nokk' =>$this->input->post('wrg_nokk'),
+				  'wrg_alamat' =>$this->input->post('wrg_alamat'),
+				  'is_active' =>"1"
+                  );
+        // print_r($data);die;
+		if($this->form_validation->run()!=FALSE){
+                //pesan yang muncul jika berhasil diupload pada session flashdata
+				$this->Modul_warga->get_insertkepalakeluarga($data); //akses model untuk menyimpan ke database
+                echo "berhasil";
+			}else{
+                //pesan yang muncul jika terdapat error dimasukkan pada session flashdata
+                echo "error";
+            }       
+            // print_r($this->Modul_jenisrek->get_insertjnsrek($data));die;  
+	}
+	public function editkepalakeluarga($id)
+	{
+		
+		if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+            $generalcode = "SETTING_DASHBOARD";
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['namakry'] = $this->session->userdata('fullname');
+			$data['dataeditkepalakeluarga']=$this->Modul_warga->get_editkepalakeluarga($id);
+			// print_r($this->Modul_warga->get_editjnsrek($id));die;
+            $this->load->view('setup/data/warga/editkepalakeluarga',$data);
+        }
+
+	}
 	
 }
 
