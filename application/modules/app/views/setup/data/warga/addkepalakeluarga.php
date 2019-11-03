@@ -48,6 +48,13 @@
                         </div>
                       </div>
 					  <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_nik">NIK 
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="wrg_nik" name="wrg_nik" required="" maxlength="16" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+					  <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_alamat">Alamat 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">

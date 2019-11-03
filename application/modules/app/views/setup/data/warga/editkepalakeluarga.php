@@ -46,7 +46,15 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_nokk">No. KK 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="wrg_nokk" name="wrg_nokk" required="" maxlength="16" class="form-control col-md-7 col-xs-12" value="<?=$row->wrg_nik;?>">
+                          <input type="text" id="wrg_nokk" name="wrg_nokk" required="" maxlength="16" class="form-control col-md-7 col-xs-12" value="<?=$row->wrg_nokk;?>">
+                        </div>
+                      </div>
+
+					  <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_nik">NIK 
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="wrg_nik" name="wrg_nik" required="" maxlength="16" class="form-control col-md-7 col-xs-12" value="<?=$row->wrg_nik;?>">
                         </div>
                       </div>
 					  
@@ -54,7 +62,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_alamat">Alamat 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                         <textarea id="wrg_alamat" class="form-control" name="wrg_alamat" required="" maxlength="100" ><?=$row->wrg_nik;?></textarea>
+                         <textarea id="wrg_alamat" class="form-control" name="wrg_alamat" required="" maxlength="100" ><?=$row->wrg_alamat;?></textarea>
                         </div>
                       </div>
 					  
@@ -100,7 +108,7 @@
 				$.ajax({
 					type: "POST",
 					enctype: 'multipart/form-data',
-					url:'<?=base_url('app/data/warga/saveeditwarga');?>',
+					url:'<?=base_url('app/data/warga/saveeditkepalakeluarga');?>',
 					data: data,
 					processData: false,
 					contentType: false,
@@ -113,7 +121,7 @@
 						  text: "Data berhasil disimpan !.",
 						  type: "success"
 						},function(){
-							window.location='<?=base_url('app/data/warga/listwarga');?>';
+							window.location='<?=base_url('app/data/warga/listkepalakeluarga');?>';
 						  });
 						}
 						else{

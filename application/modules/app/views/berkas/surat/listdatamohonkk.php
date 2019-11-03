@@ -45,7 +45,6 @@
                       <thead>
                         <tr>
 							<th>No. Surat</th>
-							<th>NIK Pemohon</th>
 							<th>Nama Pemohon</th>
 							<th>Kewarganegaraan</th>
 							<th>Tanggal Pembuatan</th>
@@ -58,9 +57,8 @@
 							foreach ($datamohonkk as $row) {?>	 
 							<tr>
 									<td><?=$row->srt_no;?></td>							
-									<td><?=$row->srt_nik;?></td>
-									<td><?=$row->wrg_nama;?></td>
-									<td><?=$row->wrg_kwarganegaraan;?></td>
+									<td><?=$row->srt_nama;?></td>
+									<td><?=$row->srt_kwarganegaraan;?></td>
 									<td><?=$row->dtm_crt;?></td>							
 									<td><a class="btn btn-success" href='detailmohonkk/<?=$row->srt_no;?>'><i class="glyphicon glyphicon-zoom-in icon-white"></i></a>
 									<a class="btn btn-primary" href='editmohonkk/<?=$row->srt_no;?>'><i class="glyphicon glyphicon-edit icon-white"></i></a>

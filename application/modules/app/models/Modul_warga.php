@@ -8,7 +8,7 @@
 	{
 		$this->db->where('is_active',"1"); 
 		$this->db->where('wrg_nokk',$nokk); 
-		$query=$this->db->get('tbl_kkdetail');
+		$query=$this->db->get('view_detailkeluarga');
 		if ($query->num_rows()>0)
 	{
 		return $query->result();
@@ -57,6 +57,7 @@
 		$this->db->where('is_active',"1"); 
 		$this->db->where('wrg_statushubungan',"Kepala Keluarga"); 
 		$query=$this->db->get('tbl_kkdetail');
+		
 		if ($query->num_rows()>0)
 	{
 		return $query->result();
@@ -92,16 +93,17 @@
 		return array();
 	}
 	}
-	public function get_insertkepalkeluarga($data){
+	public function get_insertkepalakeluarga($data,$datadetail){
 		// $this->load->database();
-       $this->db->insert($this->tbl_kkheader, $data);
+	   $this->db->insert($this->tbl_kkheader, $data);
+	   $this->db->insert($this->tbl_kkdetail, $datadetail);
        return TRUE;
 	}
 	public function get_editkepalakeluarga($id)
 	{
 		 $this->db->where('wrg_nokk',$id); 
-         $query = $this->db->get('tbl_kkheader'); 
-                if ($query->num_rows()>0)
+         $query = $this->db->get('view_kepalakeluarga'); 
+    	if ($query->num_rows()>0)
 	{
 		return $query->result();
 	}
@@ -109,6 +111,22 @@
 	{
 		return null;
 	} 
+	}
+	public function moduleditkepalakeluarga($data,$datadetail) { 
+		
+		$id = $this->input->post('wrg_nokk'); 
+		
+		$this->db->where('wrg_nokk',$id); 
+		$this->db->update('tbl_kkheader',$data); 
+
+		$this->db->where('wrg_nokk',$id); 
+        $this->db->update('tbl_kkdetail',$datadetail); 
+	}
+	public function get_noktpmod($datanik) { 
+	
+		$query = $this->db->get_where('tbl_kkdetail', $datanik);
+		echo json_encode($query->result());
+		// return $query->result();
 	}
 	
 	

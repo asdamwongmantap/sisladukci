@@ -58,12 +58,12 @@
 							foreach ($datakepalakeluarga as $row) {?>	 
 							<tr>
 									<td><?=$no;?></td>
-									<td><a href='listwarga/<?=$row->wrg_nokk;?>'>
+									<td><a href='listdetailkeluarga/<?=$row->wrg_nokk;?>'>
 									<?=$row->wrg_nokk;?></a></td>							
 									<td><?=$row->wrg_nama;?></td>
 									<td><?=$row->wrg_alamat;?></td>							
 									<td>
-									<a class="btn btn-primary" href='editkepalakeluarga/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-edit icon-white"></i></a>
+									<a class="btn btn-primary" href='editkepalakeluarga/<?=$row->wrg_nokk;?>'><i class="glyphicon glyphicon-edit icon-white"></i></a>
 									<!-- <a class="btn btn-danger item_deletewarga" data-id="<?=$row->wrg_nik;?>"><i class="glyphicon glyphicon-trash icon-white"></i></a> -->
 								</td>
 								</tr>

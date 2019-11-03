@@ -25,7 +25,7 @@ class Surat extends CI_Controller
 		// $this->load->view('setup/data/listdatakategori');
 		// print_r($this->session->userdata('fullname'));die;
 	}
-	public function add_kategori()
+	public function add_mohonkk()
 	{
         if (!$this->session->userdata('username')){
 			redirect(base_url());
@@ -33,7 +33,7 @@ class Surat extends CI_Controller
             $generalcode = "SETTING_DASHBOARD";
 		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
             // $data['data']=$this->Modul_surat->viewjenisrek();
-            $this->load->view('setup/data/kategori/addkategori',$data);
+            $this->load->view('berkas/surat/addmohonkk',$data);
         }
 
 	}
