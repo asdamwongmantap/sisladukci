@@ -56,7 +56,7 @@
 	{
 		$this->db->where('is_active',"1"); 
 		$this->db->where('wrg_statushubungan',"Kepala Keluarga"); 
-		$query=$this->db->get('tbl_kkdetail');
+		$query=$this->db->get('view_kepalakeluarga');
 		
 		if ($query->num_rows()>0)
 	{
@@ -127,6 +127,11 @@
 		$query = $this->db->get_where('tbl_kkdetail', $datanik);
 		echo json_encode($query->result());
 		// return $query->result();
+	}
+	public function cek_nik($datanik) { 
+	
+		$query = $this->db->get_where('tbl_kkdetail', $datanik);
+		return $query;
 	}
 	
 	

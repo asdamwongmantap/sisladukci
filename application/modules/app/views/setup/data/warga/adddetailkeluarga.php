@@ -94,7 +94,7 @@ $(document).ready(function(){
                   <div class="x_content">
 				  <form id="form-adddetailkeluarga" data-parsley-validate class="form-horizontal form-label-left" method="post">
 					   <input type="hidden" id="CRTUSR" name="CRTUSR" class="form-control col-md-7 col-xs-12" value="<?=$this->session->userdata('userid');?>">
-					
+					   <input type="hidden" id="wrg_nokk" name="wrg_nokk" required="" maxlength="16" class="form-control col-md-4 col-xs-12" value="<?=$this->uri->segment(5);?>">
 					 <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_nik">Nomor KTP 
                         </label>
@@ -253,6 +253,7 @@ $(document).ready(function(){
 			$('#form-adddetailkeluarga').on('submit',function(e) {
 			var form = $('#form-adddetailkeluarga')[0];
 			var data = new FormData(form);
+			var wrgnokk = $('#wrg_nokk').val();
 			swal({
 			  title: "Simpan Data",
 			  text: "Apakah anda ingin menyimpan data ini ?",
@@ -280,7 +281,7 @@ $(document).ready(function(){
 						  text: "Data berhasil disimpan !.",
 						  type: "success"
 						},function(){
-							window.location='<?=base_url('app/data/warga/listdetailkeluarga');?>';
+							window.location='<?=base_url('app/data/warga/listdetailkeluarga/');?>'+wrgnokk;
 						  });
 						}
 						else{

@@ -91,21 +91,7 @@ class Warga extends CI_Controller
 			echo "berhasil";
 			
 	}
-	public function detailwarga($id)
-	{
-		
-		if (!$this->session->userdata('username')){
-			redirect(base_url());
-        }else{
-            $generalcode = "SETTING_DASHBOARD";
-			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
-			$data['namakry'] = $this->session->userdata('fullname');
-			$data['dataeditwarga']=$this->Modul_warga->get_editwarga($id);
-			// print_r($this->Modul_warga->get_editjnsrek($id));die;
-            $this->load->view('setup/data/warga/detailwarga',$data);
-        }
-
-	}
+	
 	// added 20191029 by asdam
 	public function listkepalakeluarga()
 	{
@@ -179,7 +165,7 @@ class Warga extends CI_Controller
 				'wrg_nokk' =>$this->input->post('wrg_nokk'),
 				'wrg_alamat' =>$this->input->post('wrg_alamat'),
 				'wrg_statushubungan' =>"Kepala Keluarga",
-				'is_active' =>"1"
+				'is_active' =>"0"
 		);
         // print_r($data);die;
 		if($this->form_validation->run()!=FALSE){
@@ -271,7 +257,63 @@ class Warga extends CI_Controller
 			'wrg_nik' => $wrgnik
 		);
 		echo $this->Modul_warga->get_noktpmod($datanik);
-    }
+	}
+	public function savedetailkeluarga(){
+		$this->form_validation->set_rules('wrg_nik','NIK','required');
+		$this->form_validation->set_rules('wrg_nama','Nama','required');
+		
+		$data = array(
+				  'wrg_nik' =>$this->input->post('wrg_nik'),
+				  'wrg_nama' =>$this->input->post('wrg_nama'),
+				  'wrg_tmpatlahir' =>$this->input->post('wrg_tmpatlahir'),
+				  'wrg_tgllahir' =>$this->input->post('wrg_tgllahir'),
+				  'wrg_kwarganegaraan' =>$this->input->post('wrg_kwarganegaraan'),
+				  'wrg_jeniskel' =>$this->input->post('wrg_jeniskel'),
+				  'wrg_alamat' =>$this->input->post('wrg_alamat'),
+				  'wrg_pekerjaan' =>$this->input->post('wrg_pekerjaan'),
+				  'wrg_agama' =>$this->input->post('wrg_agama'),
+				  'wrg_pendidikan' =>$this->input->post('wrg_pendidikan'),
+				  'wrg_statuskawin' =>$this->input->post('wrg_statuskawin'),
+				  'wrg_nohp' =>$this->input->post('wrg_nohp'),
+				  'is_active' =>"1"
+                  );
+		$datanik = array(
+				   'wrg_nik' =>$this->input->post('wrg_nik')
+				);
+		$hasilnik = $this->Modul_warga->cek_nik($datanik);
+		// print_r($hasilnik);die;
+	
+		if($this->form_validation->run()!=FALSE){
+			if ($hasilnik->num_rows() == 1) {
+				$this->Modul_warga->moduleditwarga($data); //akses model untuk menyimpan ke database
+                echo "berhasil";
+			}else{
+				$this->Modul_warga->get_insertwarga($data); //akses model untuk menyimpan ke database
+				echo "berhasil";
+				// echo e;
+			}
+        }else{
+                //pesan yang muncul jika terdapat error dimasukkan pada session flashdata
+                echo "error";
+				// echo e;
+			}       
+            // print_r($this->Modul_jenisrek->get_insertjnsrek($data));die;  
+	}
+	public function detailkeluarga($id)
+	{
+		
+		if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+            $generalcode = "SETTING_DASHBOARD";
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['namakry'] = $this->session->userdata('fullname');
+			$data['dataeditwarga']=$this->Modul_warga->get_editwarga($id);
+			// print_r($this->Modul_warga->get_editjnsrek($id));die;
+            $this->load->view('setup/data/warga/detailkeluarga',$data);
+        }
+
+	}
 	
 }
 

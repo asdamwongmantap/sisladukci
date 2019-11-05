@@ -38,7 +38,7 @@
                   </div>
                   <div class="x_content">
 				  <input type="hidden" id="usergroup" value="<?=$this->session->userdata('usergroupid');?>">
-				  <a href="<?=base_url('app/data/warga/adddetailkeluarga');?>" class="btn btn-success" title="Tambah user group" data-target=".bs-example-modal-smadd" style="float:right;display:block;" 
+				  <a href="<?=base_url('app/data/warga/adddetailkeluarga/'.$this->uri->segment(5).'');?>" class="btn btn-success" title="Tambah user group" data-target=".bs-example-modal-smadd" style="float:right;display:block;" 
 				  id="tomboltambah"><i class="fa fa-plus"></i> Tambah Data</a></br>
 				  </br>
 				  <table id="mydata" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
@@ -62,8 +62,8 @@
 									<td><?=$row->wrg_nama;?></td>
 									<td><?=$row->wrg_statushubungan;?></td>							
 									<td>
-									<a class="btn btn-success" href='detailwarga/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-zoom-in icon-white"></i></a>
-									<a class="btn btn-primary" href='editwarga/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-edit icon-white"></i></a>
+									<a class="btn btn-success" href='<?=base_url();?>app/data/warga/detailkeluarga/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-zoom-in icon-white"></i></a>
+									<a class="btn btn-primary" href='editkeluarga/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-edit icon-white"></i></a>
 									<!-- <a class="btn btn-danger item_deletewarga" data-id="<?=$row->wrg_nik;?>"><i class="glyphicon glyphicon-trash icon-white"></i></a> -->
 								</td>
 								</tr>
