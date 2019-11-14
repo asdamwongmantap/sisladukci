@@ -281,10 +281,13 @@ class Warga extends CI_Controller
 				   'wrg_nik' =>$this->input->post('wrg_nik')
 				);
 		$hasilnik = $this->Modul_warga->cek_nik($datanik);
-		// print_r($hasilnik);die;
+		print_r($hasilnik->result()[0]->wrg_nik);die;
 	
 		if($this->form_validation->run()!=FALSE){
 			if ($hasilnik->num_rows() == 1) {
+				// if ($hasilnik->result()[0]->wrg_nokk != $this->input->post('wrg_nokk')){
+
+				// }
 				$this->Modul_warga->moduleditwarga($data); //akses model untuk menyimpan ke database
                 echo "berhasil";
 			}else{

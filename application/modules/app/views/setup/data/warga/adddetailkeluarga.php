@@ -92,7 +92,7 @@ $(document).ready(function(){
 					
                   </div>
                   <div class="x_content">
-				  <form id="form-adddetailkeluarga" data-parsley-validate class="form-horizontal form-label-left" method="post">
+				  <form id="form-adddetailkeluarga" data-parsley-validate class="form-horizontal form-label-left" method="post" action="<?=base_url('app/data/warga/savedetailkeluarga');?>">
 					   <input type="hidden" id="CRTUSR" name="CRTUSR" class="form-control col-md-7 col-xs-12" value="<?=$this->session->userdata('userid');?>">
 					   <input type="hidden" id="wrg_nokk" name="wrg_nokk" required="" maxlength="16" class="form-control col-md-4 col-xs-12" value="<?=$this->uri->segment(5);?>">
 					 <div class="form-group">
@@ -250,64 +250,64 @@ $(document).ready(function(){
 		?>
 		<script type="text/javascript">
 			//proses add
-			$('#form-adddetailkeluarga').on('submit',function(e) {
-			var form = $('#form-adddetailkeluarga')[0];
-			var data = new FormData(form);
-			var wrgnokk = $('#wrg_nokk').val();
-			swal({
-			  title: "Simpan Data",
-			  text: "Apakah anda ingin menyimpan data ini ?",
-			  confirmButtonText:"Yakin",
-			  confirmButtonColor: "#002855",
-			  cancelButtonText:"Tidak",
-			  showCancelButton: true,
-			  closeOnConfirm: false,
-			  type: "warning",
-			  showLoaderOnConfirm: true
-			}, function () {
-				$.ajax({
-					type: "POST",
-					enctype: 'multipart/form-data',
-					url:'<?=base_url('app/data/warga/savedetailkeluarga');?>',
-					data: data,
-					processData: false,
-					contentType: false,
-					cache: false,
-					success:function(e){
-						if (e !== "error") {
-						swal({
-						  title: "Success",
-						  confirmButtonColor: "#002855",
-						  text: "Data berhasil disimpan !.",
-						  type: "success"
-						},function(){
-							window.location='<?=base_url('app/data/warga/listdetailkeluarga/');?>'+wrgnokk;
-						  });
-						}
-						else{
-						swal({
-						  title: "Failed",
-						  confirmButtonColor: "#002855",
-						  text: e+"1",
-						  type: "error"
-						});
-						}
+		// 	$('#form-adddetailkeluarga').on('submit',function(e) {
+		// 	var form = $('#form-adddetailkeluarga')[0];
+		// 	var data = new FormData(form);
+		// 	var wrgnokk = $('#wrg_nokk').val();
+		// 	swal({
+		// 	  title: "Simpan Data",
+		// 	  text: "Apakah anda ingin menyimpan data ini ?",
+		// 	  confirmButtonText:"Yakin",
+		// 	  confirmButtonColor: "#002855",
+		// 	  cancelButtonText:"Tidak",
+		// 	  showCancelButton: true,
+		// 	  closeOnConfirm: false,
+		// 	  type: "warning",
+		// 	  showLoaderOnConfirm: true
+		// 	}, function () {
+		// 		$.ajax({
+		// 			type: "POST",
+		// 			enctype: 'multipart/form-data',
+		// 			url:'<?=base_url('app/data/warga/savedetailkeluarga');?>',
+		// 			data: data,
+		// 			processData: false,
+		// 			contentType: false,
+		// 			cache: false,
+		// 			success:function(e){
+		// 				if (e !== "error") {
+		// 				swal({
+		// 				  title: "Success",
+		// 				  confirmButtonColor: "#002855",
+		// 				  text: "Data berhasil disimpan !.",
+		// 				  type: "success"
+		// 				},function(){
+		// 					window.location='<?=base_url('app/data/warga/listdetailkeluarga/');?>'+wrgnokk;
+		// 				  });
+		// 				}
+		// 				else{
+		// 				swal({
+		// 				  title: "Failed",
+		// 				  confirmButtonColor: "#002855",
+		// 				  text: e+"1",
+		// 				  type: "error"
+		// 				});
+		// 				}
 						
-					},
-					error:function(xhr, ajaxOptions, thrownError){
-						swal({
-						  title: "Failed",
-						  confirmButtonColor: "#002855",
-						  text: e+"2",
-						  type: "error"
-						});
-					}
+		// 			},
+		// 			error:function(xhr, ajaxOptions, thrownError){
+		// 				swal({
+		// 				  title: "Failed",
+		// 				  confirmButtonColor: "#002855",
+		// 				  text: e+"2",
+		// 				  type: "error"
+		// 				});
+		// 			}
 					
-				});
-				return false;
-			});
-			e.preventDefault(); 
-		  });
+		// 		});
+		// 		return false;
+		// 	});
+		// 	e.preventDefault(); 
+		//   });
 		  
 		</script>
   </body>
