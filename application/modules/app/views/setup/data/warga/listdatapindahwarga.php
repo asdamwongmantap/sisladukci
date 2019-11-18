@@ -38,7 +38,7 @@
                   </div>
                   <div class="x_content">
 				  <input type="hidden" id="usergroup" value="<?=$this->session->userdata('usergroupid');?>">
-				  <a href="<?=base_url('app/data/warga/add_warga');?>" class="btn btn-success" title="Tambah user group" data-target=".bs-example-modal-smadd" style="float:right;display:block;" 
+				  <a href="<?=base_url('app/data/warga/addpindahwarga');?>" class="btn btn-success" title="Tambah user group" data-target=".bs-example-modal-smadd" style="float:right;display:block;" 
 				  id="tomboltambah"><i class="fa fa-plus"></i> Tambah Data</a></br>
 				  </br>
 				  <table id="mydata" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">

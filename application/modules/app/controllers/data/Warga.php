@@ -340,7 +340,20 @@ class Warga extends CI_Controller
 			}else{
 				echo "error";
 			}
-        }
+		}
+		public function addpindahwarga()
+		{
+			if (!$this->session->userdata('username')){
+				redirect(base_url());
+			}else{
+				$generalcode = "SETTING_DASHBOARD";
+				$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+				$data['namakry'] = $this->session->userdata('fullname');
+				// $data['data']=$this->Modul_warga->viewjenisrek();
+				$this->load->view('setup/data/warga/addpindahwarga',$data);
+			}
+	
+		}
 	
 }
 
