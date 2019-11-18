@@ -63,7 +63,7 @@
 									<td><?=$row->wrg_statushubungan;?></td>							
 									<td>
 									<a class="btn btn-success" href='<?=base_url();?>app/data/warga/detailkeluarga/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-zoom-in icon-white"></i></a>
-									<a class="btn btn-primary" href='<?=base_url();?>app/data/warga/editkeluarga/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-edit icon-white"></i></a>
+									<a class="btn btn-primary" href='<?=base_url();?>app/data/warga/editdetailkeluarga/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-edit icon-white"></i></a>
 									<!-- <a class="btn btn-danger item_deletewarga" data-id="<?=$row->wrg_nik;?>"><i class="glyphicon glyphicon-trash icon-white"></i></a> -->
 								</td>
 								</tr>

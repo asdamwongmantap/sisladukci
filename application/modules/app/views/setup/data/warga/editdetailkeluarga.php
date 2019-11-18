@@ -41,19 +41,30 @@
 				  <form id="form-editwarga" data-parsley-validate class="form-horizontal form-label-left" method="post">
 				  
 					   <input type="hidden" id="CRTUSR" name="CRTUSR" class="form-control col-md-7 col-xs-12" value="<?=$this->session->userdata('userid');?>">
-					
+					   <input type="hidden" id="wrg_nokk" name="wrg_nokk" required="" maxlength="16" class="form-control col-md-4 col-xs-12" value="<?=$row->wrg_nokk;?>">
              <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_nik">NIK 
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_nik">No. KTP 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input type="text" id="wrg_nik" name="wrg_nik" required="" maxlength="16" class="form-control col-md-7 col-xs-12" value="<?=$row->wrg_nik;?>">
                         </div>
                       </div>
 					  <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_nama">Nama 
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_nama">Nama Lengkap
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input type="text" id="wrg_nama" name="wrg_nama" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value="<?=$row->wrg_nama;?>">
+                        </div>
+                      </div>
+					  <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_statushubungan">Status Dalam Keluarga 
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="select2_single form-control" tabindex="-1" id="wrg_statushubungan" name="wrg_statushubungan">
+							<option value='Kepala Keluarga'>Kepala Keluarga</option>
+							<option value='Istri'>Istri</option>
+							<option value='Anak'>Anak</option>
+						  </select>
                         </div>
                       </div>
 					  <div class="form-group">
@@ -71,41 +82,12 @@
                         </div>
                       </div>
 					  <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_kwarganegaraan">Kewarganegaraan 
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select class="select2_single form-control" tabindex="-1" id="wrg_kwarganegaraan" name="wrg_kwarganegaraan">
-							<option value="WNI">WNI</option>
-							<option value="WNA">WNA</option>
-						  </select>
-                        </div>
-                      </div>
-					  <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_jeniskel">Jenis Kelamin 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <select class="select2_single form-control" tabindex="-1" id="wrg_jeniskel" name="wrg_jeniskel">
 							<option value="Laki-Laki">Laki-Laki</option>
 							<option value="Perempuan">Perempuan</option>
-						  </select>
-                        </div>
-                      </div>
-					  <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_alamat">Alamat 
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                         <textarea id="wrg_alamat" class="form-control" name="wrg_alamat" required="" maxlength="100" ><?=$row->wrg_nik;?></textarea>
-                        </div>
-                      </div>
-					  <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_pekerjaan">Pekerjaan 
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select class="select2_single form-control" tabindex="-1" id="wrg_pekerjaan" name="wrg_pekerjaan">
-							<option value="Pegawai Swasta">Pegawai Swasta</option>
-							<option value="Pegawai Negeri">Pegawai Negeri</option>
-							<option value="Petani">Petani</option>
-							<option value="Pedagang">Pedagang</option>
 						  </select>
                         </div>
                       </div>
@@ -123,20 +105,27 @@
 						  </select>
                         </div>
                       </div>
+					  
+					  
 					  <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_pendidikan">Pendidikan Terakhir 
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_alamat">Domisili 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select class="select2_single form-control" tabindex="-1" id="wrg_pendidikan" name="wrg_pendidikan">
-							<option value="SD">SD</option>
-							<option value="SMP">SMP</option>
-							<option value="SMA/SMK/SMU/STM">SMA/SMK/SMU/STM</option>
-							<option value="S1">S1</option>
-							<option value="S2">S2</option>
-							<option value="S3">S3</option>
+                         <textarea id="wrg_alamat" class="form-control" name="wrg_alamat" required="" maxlength="100" ><?=$row->wrg_nik;?></textarea>
+                        </div>
+                      </div>
+					  <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_kwarganegaraan">Kewarganegaraan 
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <select class="select2_single form-control" tabindex="-1" id="wrg_kwarganegaraan" name="wrg_kwarganegaraan">
+							<option value="WNI">WNI</option>
+							<option value="WNA">WNA</option>
 						  </select>
                         </div>
                       </div>
+					  
+					  
 					  <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_statuskawin">Status Menikah 
                         </label>
@@ -148,6 +137,13 @@
 						  </select>
                         </div>
                       </div>
+					  <div class="form-group">
+						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_nohp">No. Handphone
+						</label>
+						<div class="col-md-6 col-sm-6 col-xs-12">
+							<input type="text" id="wrg_nohp" name="wrg_nohp" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value="<?=$row->wrg_nohp;?>">
+						</div>
+						</div>
 					  <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                           <button type="submit" class="btn btn-primary" id="savebtn">Simpan</button>
@@ -176,6 +172,7 @@
 			$('#form-editwarga').on('submit',function(e) {
 			var form = $('#form-editwarga')[0];
 			var data = new FormData(form);
+			var wrgnokk = $('#wrg_nokk').val();
 			swal({
 			  title: "Simpan Data",
 			  text: "Apakah anda ingin menyimpan data ini ?",
@@ -190,20 +187,29 @@
 				$.ajax({
 					type: "POST",
 					enctype: 'multipart/form-data',
-					url:'<?=base_url('app/data/warga/saveeditwarga');?>',
+					url:'<?=base_url('app/data/warga/saveeditdetailkeluarga');?>',
 					data: data,
 					processData: false,
 					contentType: false,
 					cache: false,
 					success:function(e){
-						if (e !== "error") {
+						if (e === "duplicate") {
+						
+						  swal({
+							title: "DUPLICATE",
+						  confirmButtonColor: "#002855",
+						  text: "Nomor KTP sudah ada di database! Silahkan Koreksi!",
+						  type: "error"
+						});
+						}
+						else if (e === "berhasil") {
 						swal({
 						  title: "Success",
 						  confirmButtonColor: "#002855",
 						  text: "Data berhasil disimpan !.",
 						  type: "success"
 						},function(){
-							window.location='<?=base_url('app/data/warga/listwarga');?>';
+							window.location='<?=base_url('app/data/warga/listdetailkeluarga');?>'+wrgnokk+'';
 						  });
 						}
 						else{

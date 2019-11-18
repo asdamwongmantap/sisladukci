@@ -29,11 +29,14 @@ $(document).ready(function(){
 					var nama = items.wrg_nama;
 					var alamat = items.wrg_alamat;
 					var statushubungan = items.wrg_statushubungan;
+					var nokk = items.wrg_nokk;
 
 						$("#wrg_nama").html(nama);
 						$("#wrg_nama").val(nama);
 						$("#wrg_alamat").html(alamat);
 						$("#wrg_alamat").val(alamat);
+						$("#wrg_nokkdb").html(nokk);
+						$("#wrg_nokkdb").val(nokk);
 						// $("#wrg_statushubungan").html(statushubungan);
 						// $("#wrg_statushubungan").val(statushubungan);
 					
@@ -92,9 +95,10 @@ $(document).ready(function(){
 					
                   </div>
                   <div class="x_content">
-				  <form id="form-adddetailkeluarga" data-parsley-validate class="form-horizontal form-label-left" method="post" action="<?=base_url('app/data/warga/savedetailkeluarga');?>">
+				  <form id="form-adddetailkeluarga" data-parsley-validate class="form-horizontal form-label-left" method="post">
 					   <input type="hidden" id="CRTUSR" name="CRTUSR" class="form-control col-md-7 col-xs-12" value="<?=$this->session->userdata('userid');?>">
 					   <input type="hidden" id="wrg_nokk" name="wrg_nokk" required="" maxlength="16" class="form-control col-md-4 col-xs-12" value="<?=$this->uri->segment(5);?>">
+					   <input type="hidden" id="wrg_nokkdb" name="wrg_nokkdb" required="" maxlength="16" class="form-control col-md-4 col-xs-12">
 					 <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_nik">Nomor KTP 
                         </label>
@@ -200,37 +204,13 @@ $(document).ready(function(){
                           <input type="text" id="wrg_nohp" name="wrg_nohp" required="" maxlength="50" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
-					  <!-- <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_pekerjaan">Pekerjaan 
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select class="select2_single form-control" tabindex="-1" id="wrg_pekerjaan" name="wrg_pekerjaan">
-							<option value="Pegawai Swasta">Pegawai Swasta</option>
-							<option value="Pegawai Negeri">Pegawai Negeri</option>
-							<option value="Petani">Petani</option>
-							<option value="Pedagang">Pedagang</option>
-						  </select>
-                        </div>
-                      </div>
+					  
 					 
 					  <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_pendidikan">Pendidikan Terakhir 
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select class="select2_single form-control" tabindex="-1" id="wrg_pendidikan" name="wrg_pendidikan">
-							<option value="SD">SD</option>
-							<option value="SMP">SMP</option>
-							<option value="SMA/SMK/SMU/STM">SMA/SMK/SMU/STM</option>
-							<option value="S1">S1</option>
-							<option value="S2">S2</option>
-							<option value="S3">S3</option>
-						  </select>
-                        </div>
-                      </div> -->
-					 
-					  <div class="form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                        <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3">
                           <button type="submit" class="btn btn-primary" id="savebtn">Tambah</button>
+						  
+                          <a href="<?=base_url();?>app/data/warga/listdetailkeluarga/<?=$this->uri->segment(5);?>" class="btn btn-primary" id="savebtn">Kembali</a>
 						  
                         </div>
                       </div>
@@ -250,64 +230,75 @@ $(document).ready(function(){
 		?>
 		<script type="text/javascript">
 			//proses add
-		// 	$('#form-adddetailkeluarga').on('submit',function(e) {
-		// 	var form = $('#form-adddetailkeluarga')[0];
-		// 	var data = new FormData(form);
-		// 	var wrgnokk = $('#wrg_nokk').val();
-		// 	swal({
-		// 	  title: "Simpan Data",
-		// 	  text: "Apakah anda ingin menyimpan data ini ?",
-		// 	  confirmButtonText:"Yakin",
-		// 	  confirmButtonColor: "#002855",
-		// 	  cancelButtonText:"Tidak",
-		// 	  showCancelButton: true,
-		// 	  closeOnConfirm: false,
-		// 	  type: "warning",
-		// 	  showLoaderOnConfirm: true
-		// 	}, function () {
-		// 		$.ajax({
-		// 			type: "POST",
-		// 			enctype: 'multipart/form-data',
-		// 			url:'<?=base_url('app/data/warga/savedetailkeluarga');?>',
-		// 			data: data,
-		// 			processData: false,
-		// 			contentType: false,
-		// 			cache: false,
-		// 			success:function(e){
-		// 				if (e !== "error") {
-		// 				swal({
-		// 				  title: "Success",
-		// 				  confirmButtonColor: "#002855",
-		// 				  text: "Data berhasil disimpan !.",
-		// 				  type: "success"
-		// 				},function(){
-		// 					window.location='<?=base_url('app/data/warga/listdetailkeluarga/');?>'+wrgnokk;
-		// 				  });
-		// 				}
-		// 				else{
-		// 				swal({
-		// 				  title: "Failed",
-		// 				  confirmButtonColor: "#002855",
-		// 				  text: e+"1",
-		// 				  type: "error"
-		// 				});
-		// 				}
+			
+			$('#form-adddetailkeluarga').on('submit',function(e) {
+			var form = $('#form-adddetailkeluarga')[0];
+			var data = new FormData(form);
+			var wrgnokk = $('#wrg_nokk').val();
+			var wrgnokkdb = $('#wrg_nokkdb').val();
+			if (wrgnokkdb != wrgnokk) {
+				var texttitle = "Ubah No KK";
+				var textalert = "Apakah Penduduk ingin pindah KK Baru ?"
+			}else {
+				var texttitle = "Simpan Data";
+				var textalert = "Apakah anda ingin menyimpan data ini ?"
+				
+			}
+			swal({
+			  title: texttitle,
+			  text: textalert,
+			  confirmButtonText:"Yakin",
+			  confirmButtonColor: "#002855",
+			  cancelButtonText:"Tidak",
+			  showCancelButton: true,
+			  closeOnConfirm: false,
+			  type: "warning",
+			  showLoaderOnConfirm: true
+			}, function () {
+				$.ajax({
+					type: "POST",
+					enctype: 'multipart/form-data',
+					url:'<?=base_url('app/data/warga/savedetailkeluarga');?>',
+					data: data,
+					processData: false,
+					contentType: false,
+					cache: false,
+					success:function(e){
+						if (e !== "error") {
+						swal({
+						  title: "Success",
+						  confirmButtonColor: "#002855",
+						  text: "Data berhasil disimpan !.",
+						  type: "success"
+						},function(){
+							window.location='<?=base_url('app/data/warga/listdetailkeluarga/');?>'+wrgnokk;
+						  });
+						}
+						else{
+						swal({
+						  title: "Failed",
+						  confirmButtonColor: "#002855",
+						  text: e+"1",
+						  type: "error"
+						});
+						}
 						
-		// 			},
-		// 			error:function(xhr, ajaxOptions, thrownError){
-		// 				swal({
-		// 				  title: "Failed",
-		// 				  confirmButtonColor: "#002855",
-		// 				  text: e+"2",
-		// 				  type: "error"
-		// 				});
-		// 			}
+					},
+					error:function(xhr, ajaxOptions, thrownError){
+						swal({
+						  title: "Failed",
+						  confirmButtonColor: "#002855",
+						  text: e+"2",
+						  type: "error"
+						});
+					}
 					
-		// 		});
-		// 		return false;
-		// 	});
-		// 	e.preventDefault(); 
-		//   });
+				});
+				return false;
+			});
+			e.preventDefault(); 
+			
+		  });
 		  
 		</script>
   </body>
