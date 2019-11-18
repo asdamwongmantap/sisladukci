@@ -60,14 +60,14 @@
 							foreach ($dataallwarga as $row) {?>	 
 							<tr>
 									<td><?=$no;?></td>
-									<td><a href='detailwarga/<?=$row->wrg_nik;?>'><?=$row->wrg_nik;?></a></td>							
+									<td><a href='detailkeluarga/<?=$row->wrg_nik;?>'><?=$row->wrg_nik;?></a></td>							
 									<td><?=$row->wrg_nama;?></td>
 									<td><?=$row->wrg_jeniskel;?></td>
 									<td><?=$row->wrg_tgllahir;?></td>
 									<td><?=$row->wrg_alamat;?></td>							
 									<td>
-									<!-- <a class="btn btn-success" href='detailwarga/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-zoom-in icon-white"></i></a> -->
-									<a class="btn btn-primary" href='editwarga/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-edit icon-white"></i></a>
+									<!-- <a class="btn btn-success" href='detailkeluarga/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-zoom-in icon-white"></i></a> -->
+									<a class="btn btn-primary" href='editdetailkeluarga/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-edit icon-white"></i></a>
 									<!-- <a class="btn btn-danger item_deletewarga" data-id="<?=$row->wrg_nik;?>"><i class="glyphicon glyphicon-trash icon-white"></i></a> -->
 								</td>
 								</tr>

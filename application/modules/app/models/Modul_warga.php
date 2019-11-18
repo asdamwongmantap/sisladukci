@@ -70,7 +70,7 @@
 	public function viewallwarga()
 	{
 		$this->db->where('is_active',"1"); 
-		$query=$this->db->get('tbl_warga');
+		$query=$this->db->get('tbl_kkdetail');
 		if ($query->num_rows()>0)
 	{
 		return $query->result();
