@@ -9,10 +9,33 @@
   </head>
   <script type="text/javascript">
 $(document).ready(function(){
-		$("#idbtn").click(function(){
-			var wrgnik = document.getElementById('wrg_nik').value;
+	
+	$(document).on('change','#searchby',function(e){
+		var searchby = document.getElementById("searchby").value;
+		if (searchby == "noktp"){
+			$("#labelwrg_nik").text("Nomor KTP");
+			$("#labelwrg_nama").text("Nama Penduduk");
+			$("#idbtn").text("Check No.KTP");
+			document.getElementById("wrg_nik").style.display = "block";
+			document.getElementById("wrg_nokk").style.display = "none";
+		}else {
+			$("#labelwrg_nik").text("Nomor KK");
+			$("#labelwrg_nama").text("Nama Kepala Keluarga");
+			$("#idbtn").text("Check No.KK");
+			document.getElementById("wrg_nokk").style.display = "block";
+			document.getElementById("wrg_nik").style.display = "none";
+		}
+	});
+	$("#idbtn").click(function(){
+		var searchby = document.getElementById("searchby").value;
+			if (searchby == "noktp"){
+				var wrgnik = document.getElementById('wrg_nik').value;
+			}else {
+				var wrgnik = document.getElementById('wrg_nokk').value;
+			}
+			// var wrgnik = document.getElementById('wrg_nik').value;
 			
-                $.post( "<?php echo base_url("app/data/warga/get_noktp"); ?>",{ wrgnik : wrgnik}, function(data) {
+                $.post( "<?php echo base_url("app/data/warga/get_noktp"); ?>",{ wrgnik : wrgnik,searchby:searchby}, function(data) {
 
                 var obj = JSON.parse(data);
 				if (data == "[]"){
@@ -52,7 +75,7 @@ $(document).ready(function(){
 							$("#wrg_statushubungan").html("<option value='Kepala Keluarga'>Kepala Keluarga</option><option value='Istri'>Istri</option><option value='Anak'>Anak</option>");
 						}
 						
-						$("#savebtn").text("Ubah");
+						// $("#savebtn").text("Ubah");
 				
 			
 					});
@@ -95,10 +118,8 @@ $(document).ready(function(){
 					
                   </div>
                   <div class="x_content">
-				  <form id="form-adddetailkeluarga" data-parsley-validate class="form-horizontal form-label-left" method="post">
+				  <form id="form-addpindahwarga" data-parsley-validate class="form-horizontal form-label-left" method="post">
 					   <input type="hidden" id="CRTUSR" name="CRTUSR" class="form-control col-md-7 col-xs-12" value="<?=$this->session->userdata('userid');?>">
-					   <input type="hidden" id="wrg_nokk" name="wrg_nokk" required="" maxlength="16" class="form-control col-md-4 col-xs-12" value="<?=$this->uri->segment(5);?>">
-					   <input type="hidden" id="wrg_nokkdb" name="wrg_nokkdb" required="" maxlength="16" class="form-control col-md-4 col-xs-12">
 					   <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="searchby">Search By 
                         </label>
@@ -111,10 +132,11 @@ $(document).ready(function(){
                         </div>
                       </div>
 					  <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_nik">Nomor KTP 
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_nik" id="labelwrg_nik">Nomor KTP 
                         </label>
                         <div class="col-md-4 col-sm-4 col-xs-12">
-                          <input type="text" id="wrg_nik" name="wrg_nik" required="" maxlength="16" class="form-control col-md-4 col-xs-12">
+						  <input type="text" id="wrg_nik" name="wrg_nik" maxlength="16" class="form-control col-md-4 col-xs-12" style="display:block;">
+						  <input type="text" id="wrg_nokk" name="wrg_nokk" maxlength="16" class="form-control col-md-4 col-xs-12" style="display:none;">
 						  
 						</div>
 						<div class="col-md-5 col-sm-5 col-xs-12">
@@ -125,7 +147,7 @@ $(document).ready(function(){
                       </div>
 					  
 					  <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_nama">Nama Penduduk
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_nama" id="labelwrg_nama">Nama Penduduk
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <input type="text" id="wrg_nama" name="wrg_nama" required="" maxlength="50" class="form-control col-md-7 col-xs-12">
@@ -158,7 +180,7 @@ $(document).ready(function(){
                         <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-3">
                           <button type="submit" class="btn btn-primary" id="savebtn">Tambah</button>
 						  
-                          <a href="<?=base_url();?>app/data/warga/listdetailkeluarga/<?=$this->uri->segment(5);?>" class="btn btn-primary" id="savebtn">Kembali</a>
+                          <a href="<?=base_url();?>app/data/warga/listpindahwarga" class="btn btn-primary" id="savebtn">Kembali</a>
 						  
                         </div>
                       </div>
@@ -179,19 +201,11 @@ $(document).ready(function(){
 		<script type="text/javascript">
 			//proses add
 			
-			$('#form-adddetailkeluarga').on('submit',function(e) {
-			var form = $('#form-adddetailkeluarga')[0];
+			$('#form-addpindahwarga').on('submit',function(e) {
+			var form = $('#form-addpindahwarga')[0];
 			var data = new FormData(form);
-			var wrgnokk = $('#wrg_nokk').val();
-			var wrgnokkdb = $('#wrg_nokkdb').val();
-			if (wrgnokkdb != wrgnokk) {
-				var texttitle = "Ubah No KK";
-				var textalert = "Apakah Penduduk ingin pindah KK Baru ?"
-			}else {
-				var texttitle = "Simpan Data";
-				var textalert = "Apakah anda ingin menyimpan data ini ?"
-				
-			}
+			// var wrgnokk = $('#wrg_nokk').val();
+			alert("ok");
 			swal({
 			  title: texttitle,
 			  text: textalert,
@@ -206,7 +220,7 @@ $(document).ready(function(){
 				$.ajax({
 					type: "POST",
 					enctype: 'multipart/form-data',
-					url:'<?=base_url('app/data/warga/savedetailkeluarga');?>',
+					url:'<?=base_url('app/data/warga/savepindahwarga');?>',
 					data: data,
 					processData: false,
 					contentType: false,
@@ -219,7 +233,7 @@ $(document).ready(function(){
 						  text: "Data berhasil disimpan !.",
 						  type: "success"
 						},function(){
-							window.location='<?=base_url('app/data/warga/listdetailkeluarga/');?>'+wrgnokk;
+							window.location='<?=base_url('app/data/warga/listpindahwarga');?>';
 						  });
 						}
 						else{

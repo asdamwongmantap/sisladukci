@@ -3,6 +3,7 @@
 		
 		var $tbl_kkheader='tbl_kkheader';
 	var $tbl_kkdetail='tbl_kkdetail';
+	var $tbl_wargapindah='tbl_wargapindah';
 	
 	public function viewwarga($nokk)
 	{
@@ -133,6 +134,11 @@
 		$query = $this->db->get_where('tbl_kkdetail', $datanik);
 		return $query;
 	}
+	public function get_insertpindahwarga($data){
+		// $this->load->database();
+       $this->db->insert($this->tbl_wargapindah, $data);
+       return TRUE;
+    }
 	
 	
 }

@@ -230,10 +230,20 @@ class Warga extends CI_Controller
 	public function get_noktp()
     {
 		$wrgnik = $this->input->get_post("wrgnik");
-		$datanik = array(
-			'wrg_nik' => $wrgnik
-		);
+		$searchby = $this->input->get_post("searchby");
+		if ($searchby == "noktp"){
+			$datanik = array(
+				'wrg_nik' => $wrgnik
+			);
+			// echo $this->Modul_warga->get_noktpmod($datanik);
+		}else {
+			$datanik = array(
+				'wrg_nokk' => $wrgnik
+			);
+			// echo $this->Modul_warga->get_noktpmod($datanik);
+		}
 		echo $this->Modul_warga->get_noktpmod($datanik);
+	
 	}
 	public function savedetailkeluarga(){
 		$this->form_validation->set_rules('wrg_nik','NIK','required');
@@ -353,6 +363,27 @@ class Warga extends CI_Controller
 				$this->load->view('setup/data/warga/addpindahwarga',$data);
 			}
 	
+		}
+		public function savepindahwarga(){
+			$this->form_validation->set_rules('wrg_nik','NIK','required');
+			
+			$data = array(
+					  'wrgpindah_nik' =>$this->input->post('wrg_nik'),
+					  'wrgpindah_tgl' =>$this->input->post('wrgpindah_tgl'),
+					  'wrgpindah_alamat' =>$this->input->post('wrgpindah_tujuan'),
+					  'is_active' =>"1",
+					  'wrgpindah_alasan' =>$this->input->post('wrgpindah_alasan')
+					  );
+			// print_r($data);die;
+			if($this->form_validation->run()!=FALSE){
+					//pesan yang muncul jika berhasil diupload pada session flashdata
+					$this->Modul_warga->get_insertpindahwarga($data); //akses model untuk menyimpan ke database
+					echo "berhasil";
+				}else{
+					//pesan yang muncul jika terdapat error dimasukkan pada session flashdata
+					echo "error";
+				}       
+				// print_r($this->Modul_jenisrek->get_insertjnsrek($data));die;  
 		}
 	
 }
