@@ -205,10 +205,10 @@ $(document).ready(function(){
 			var form = $('#form-addpindahwarga')[0];
 			var data = new FormData(form);
 			// var wrgnokk = $('#wrg_nokk').val();
-			alert("ok");
+			// alert("ok");
 			swal({
-			  title: texttitle,
-			  text: textalert,
+			  title: "Simpan Data",
+			  text: "Apakah anda ingin menyimpan data ini ?",
 			  confirmButtonText:"Yakin",
 			  confirmButtonColor: "#002855",
 			  cancelButtonText:"Tidak",

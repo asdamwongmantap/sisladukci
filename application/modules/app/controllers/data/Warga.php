@@ -365,10 +365,14 @@ class Warga extends CI_Controller
 	
 		}
 		public function savepindahwarga(){
-			$this->form_validation->set_rules('wrg_nik','NIK','required');
-			
+			$this->form_validation->set_rules('wrg_nama','NAMA','required');
+			if ($this->input->post('wrg_nik') != ""){
+				$wrgnik = $this->input->post('wrg_nik');
+			}else {
+				$wrgnik = $this->input->post('wrg_nokk');
+			}
 			$data = array(
-					  'wrgpindah_nik' =>$this->input->post('wrg_nik'),
+					  'wrgpindah_nik' =>$wrgnik,
 					  'wrgpindah_tgl' =>$this->input->post('wrgpindah_tgl'),
 					  'wrgpindah_alamat' =>$this->input->post('wrgpindah_tujuan'),
 					  'is_active' =>"1",
