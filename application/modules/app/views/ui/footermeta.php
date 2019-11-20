@@ -42,3 +42,6 @@
 <script src="<?=base_url();?>assets/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
 <script src="<?=base_url();?>assets/vendors/raphael/raphael.min.js"></script>
 <script src="<?=base_url();?>assets/vendors/morris.js/morris.min.js"></script>
+<!-- bootstrap-datetimepicker -->  
+<script src="<?=base_url();?>assets/vendors/moment/min/moment.min.js"></script>	
+    <script src="<?=base_url();?>assets/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>

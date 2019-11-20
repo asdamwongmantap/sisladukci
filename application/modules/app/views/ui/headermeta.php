@@ -9,7 +9,7 @@
 	<script src="<?=base_url();?>assets/js/fungsicheckboxpersonal.js"></script>
 	<script src="<?=base_url();?>assets/js/fungsicheckboxphone.js"></script>
 	<script src="<?=base_url();?>assets/js/fungsicheckboxbankacc.js"></script>
-	<script src="<?=base_url();?>assets/js/fungsicheckboxlegaladdr.js"></script>
+	<!-- <script src="<?=base_url();?>assets/js/fungsicheckboxlegaladdr.js"></script> -->
 	<script src="<?=base_url();?>assets/js/fungsicheckboxresaddr.js"></script>
 	<script src="<?=base_url();?>assets/js/fungsicheckboxmailaddr.js"></script>
 	<script src="<?=base_url();?>assets/js/fungsicheckboxec.js"></script>
@@ -29,3 +29,7 @@
     <link href="<?=base_url();?>assets/build/css/custom.min.css" rel="stylesheet">
 	<!-- sweet alert -->
 	<link rel="stylesheet" href="<?=base_url();?>assets/alert/css/sweetalert.css">
+	<!-- bootstrap-datetimepicker -->
+<link href="<?=base_url();?>assets/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+
+<script type="text/javascript" src="<?=base_url();?>assets/chartjs/Chart.js"></script>

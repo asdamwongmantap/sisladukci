@@ -157,8 +157,14 @@ $(document).ready(function(){
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrgpindah_tgl">Tanggal Pindah 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="date" id="wrgpindah_tgl" name="wrgpindah_tgl" required="" class="form-control col-md-7 col-xs-12">
-                        </div>
+                          <!-- <input type="date" id="wrgpindah_tgl" name="wrgpindah_tgl" required="" class="form-control col-md-7 col-xs-12"> -->
+						  <div class="input-group date" id="myDatepicker2">
+							<input type="text" class="form-control" id="wrgpindah_tgl" name="wrgpindah_tgl" value="<?=$dateto;?>"/>
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-calendar"></span>
+							</span>
+							</div>	
+						</div>
                       </div>
 					  
 					  <div class="form-group">
@@ -200,7 +206,9 @@ $(document).ready(function(){
 		?>
 		<script type="text/javascript">
 			//proses add
-			
+			$('#myDatepicker2').datetimepicker({
+        		format: 'DD/MM/YYYY'
+			});
 			$('#form-addpindahwarga').on('submit',function(e) {
 			var form = $('#form-addpindahwarga')[0];
 			var data = new FormData(form);

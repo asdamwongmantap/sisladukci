@@ -13,34 +13,34 @@ class Warga extends CI_Controller
 	
 	
 	
-	public function savewarga(){
-		$this->form_validation->set_rules('wrg_nik','NIK','required');
-		$this->form_validation->set_rules('wrg_nama','Nama','required');
-		$data = array(
-				  'wrg_nik' =>$this->input->post('wrg_nik'),
-				  'wrg_nama' =>$this->input->post('wrg_nama'),
-				  'wrg_tmpatlahir' =>$this->input->post('wrg_tmpatlahir'),
-				  'wrg_tgllahir' =>$this->input->post('wrg_tgllahir'),
-				  'wrg_kwarganegaraan' =>$this->input->post('wrg_kwarganegaraan'),
-				  'wrg_jeniskel' =>$this->input->post('wrg_jeniskel'),
-				  'wrg_alamat' =>$this->input->post('wrg_alamat'),
-				  'wrg_pekerjaan' =>$this->input->post('wrg_pekerjaan'),
-				  'wrg_agama' =>$this->input->post('wrg_agama'),
-				  'wrg_pendidikan' =>$this->input->post('wrg_pendidikan'),
-				  'wrg_statuskawin' =>$this->input->post('wrg_statuskawin'),
-				  'is_active' =>"1"
-                  );
-        // print_r($data);die;
-		if($this->form_validation->run()!=FALSE){
-                //pesan yang muncul jika berhasil diupload pada session flashdata
-				$this->Modul_warga->get_insertwarga($data); //akses model untuk menyimpan ke database
-                echo "berhasil";
-			}else{
-                //pesan yang muncul jika terdapat error dimasukkan pada session flashdata
-                echo "error";
-            }       
-            // print_r($this->Modul_jenisrek->get_insertjnsrek($data));die;  
-    }
+	// public function savewarga(){
+	// 	$this->form_validation->set_rules('wrg_nik','NIK','required');
+	// 	$this->form_validation->set_rules('wrg_nama','Nama','required');
+	// 	$data = array(
+	// 			  'wrg_nik' =>$this->input->post('wrg_nik'),
+	// 			  'wrg_nama' =>$this->input->post('wrg_nama'),
+	// 			  'wrg_tmpatlahir' =>$this->input->post('wrg_tmpatlahir'),
+	// 			  'wrg_tgllahir' =>$this->input->post('wrg_tgllahir'),
+	// 			  'wrg_kwarganegaraan' =>$this->input->post('wrg_kwarganegaraan'),
+	// 			  'wrg_jeniskel' =>$this->input->post('wrg_jeniskel'),
+	// 			  'wrg_alamat' =>$this->input->post('wrg_alamat'),
+	// 			  'wrg_pekerjaan' =>$this->input->post('wrg_pekerjaan'),
+	// 			  'wrg_agama' =>$this->input->post('wrg_agama'),
+	// 			  'wrg_pendidikan' =>$this->input->post('wrg_pendidikan'),
+	// 			  'wrg_statuskawin' =>$this->input->post('wrg_statuskawin'),
+	// 			  'is_active' =>"1"
+    //               );
+    //     // print_r($data);die;
+	// 	if($this->form_validation->run()!=FALSE){
+    //             //pesan yang muncul jika berhasil diupload pada session flashdata
+	// 			$this->Modul_warga->get_insertwarga($data); //akses model untuk menyimpan ke database
+    //             echo "berhasil";
+	// 		}else{
+    //             //pesan yang muncul jika terdapat error dimasukkan pada session flashdata
+    //             echo "error";
+    //         }       
+    //         // print_r($this->Modul_jenisrek->get_insertjnsrek($data));die;  
+    // }
 	public function editwarga($id)
 	{
 		
@@ -250,15 +250,20 @@ class Warga extends CI_Controller
 		$this->form_validation->set_rules('wrg_nama','Nama','required');
 		
 		
-  $datanik = array(
+  		$datanik = array(
 			 'wrg_nik' =>$this->input->post('wrg_nik')
 		  );
+		  $wrgtgllahirawal = explode("/",$this->input->post('wrg_tgllahir'));
+		  $wrgtgllahirtgl = $wrgtgllahirawal[0];
+		  $wrgtgllahirbln = $wrgtgllahirawal[1];
+		  $wrgtgllahirthn = $wrgtgllahirawal[2];
+		  $wrgtgllahirformat = $wrgtgllahirthn."-".$wrgtgllahirbln."-".$wrgtgllahirtgl;
 		$hasilnik = $this->Modul_warga->cek_nik($datanik);
 		$data = array(
 			'wrg_nik' =>$this->input->post('wrg_nik'),
 			'wrg_nama' =>$this->input->post('wrg_nama'),
 			'wrg_tmpatlahir' =>$this->input->post('wrg_tmpatlahir'),
-			'wrg_tgllahir' =>$this->input->post('wrg_tgllahir'),
+			'wrg_tgllahir' =>$wrgtgllahirformat,
 			'wrg_kwarganegaraan' =>$this->input->post('wrg_kwarganegaraan'),
 			'wrg_jeniskel' =>$this->input->post('wrg_jeniskel'),
 			'wrg_alamat' =>$this->input->post('wrg_alamat'),

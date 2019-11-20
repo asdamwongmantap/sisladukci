@@ -141,8 +141,14 @@ $(document).ready(function(){
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_tgllahir">Tanggal Lahir 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="date" id="wrg_tgllahir" name="wrg_tgllahir" required="" class="form-control col-md-7 col-xs-12">
-                        </div>
+                          <!-- <input type="date" id="wrg_tgllahir" name="wrg_tgllahir" required="" class="form-control col-md-7 col-xs-12"> -->
+						  <div class="input-group date" id="myDatepicker2">
+							<input type="text" class="form-control" id="wrg_tgllahir" name="wrg_tgllahir" value="<?=$dateto;?>"/>
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-calendar"></span>
+							</span>
+							</div>	
+						</div>
                       </div>
 					  <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_jeniskel">Jenis Kelamin 
@@ -230,7 +236,9 @@ $(document).ready(function(){
 		?>
 		<script type="text/javascript">
 			//proses add
-			
+			$('#myDatepicker2').datetimepicker({
+        		format: 'DD/MM/YYYY'
+			});
 			$('#form-adddetailkeluarga').on('submit',function(e) {
 			var form = $('#form-adddetailkeluarga')[0];
 			var data = new FormData(form);

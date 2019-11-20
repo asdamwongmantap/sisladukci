@@ -22,6 +22,7 @@ class Main extends CI_Controller {
 		// $this->load->model('Mmenu');
 		 $this->load->model('Modul_login');
 		// $this->load->library('global_setting');
+		$this->load->model('Modul_warga');
 		
 	}
 	
@@ -41,6 +42,9 @@ class Main extends CI_Controller {
 		$generalcode = "SETTING_DASHBOARD";
 		$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
 		// print_r($this->Modul_login->get_listgeneralsetting($generalcode));die;
+		
+		// $data['hasilnik'] =$this->Modul_warga->hitungwarga();
+
 		$this->load->view('dashboard/dashboard',$data);
 		}
 		

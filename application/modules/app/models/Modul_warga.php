@@ -138,7 +138,12 @@
 		// $this->load->database();
        $this->db->insert($this->tbl_wargapindah, $data);
        return TRUE;
-    }
+	}
+	public function hitungwarga() { 
+	
+		$query = $this->db->get('tbl_kkdetail');
+		return $query;
+	}
 	
 	
 }

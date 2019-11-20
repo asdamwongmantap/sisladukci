@@ -67,7 +67,8 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <div id="graph_bar" style="width:100%; height:280px;"></div>
+					<!-- <div id="diagramgender" style="width:100%; height:280px;"></div> -->
+					<canvas id="diagramgender"></canvas>
                   </div>
                 </div>
               </div>
@@ -78,12 +79,12 @@
 			<div class="col-md-12 col-sm-6 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Charts <small>By Age</small></h2>
+                    <h2>Charts <small>By Age <?php echo $hasilnik->num_rows();?></small></h2>
                     
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <div id="graph_bar2" style="width:100%; height:280px;"></div>
+                    <div id="graph_bar" style="width:100%; height:280px;"></div>
                   </div>
                 </div>
               </div>
@@ -100,104 +101,49 @@
 			$this->load->view('ui/footermeta.php');
 		?>
 		
-		<script type="text/javascript">
-			$(document).ready(function(){
-			show_userall(); //call function show all product
-            
-			$('#mydata').dataTable();
-			  
-			//function show all product
-			function show_userall(){
-				var userappid = "<i>NULL</i>";
-				$.ajax({
-					type  : 'GET',
-					url   : '<?=base_url('app/user/listuserallbyuserappjson');?>',
-					async : false,
-					"processing": true, //Feature control the processing indicator.
-					"serverSide": true, //Feature control DataTables' server-side processing mode.
-					"order": [], //Initial no order.
-					dataType : 'JSON',
-					data : {userappid:userappid},
-					success : function(data){
-						var html = '';
-						$.each(data,function(data, value) {
-							if (value.IS_ACTIVE == "1"){
-								html += '<tr style="background-color:#F7F7F7;color:#000000;">'+
-									'<td><a href="<?=base_url('app/user/detailuserakses/');?>'+value.USER_ID+'" style="text-decoration:underline;color:#000000;">'+value.USERNAME+'</a></td>'+
-									'<td>'+value.FULLNAME+'</td>'+
-									'<td>'+value.USER_GROUP_NAME+'</td>'+
-									'<td>'+value.EMAIL+'</td>'+
-									'<td><a href="" class="btn btn-danger item_resetpassword" data-id="'+value.USER_ID+'" data-reset="'+value.need_reset_password+'" data-usr="<?=$this->session->userdata('userid');?>" data-password="ff9f2372bc75db7be8094438ff342054" title="Reset Password" data-target=".bs-example-modal-smresetpass"><i class="fa fa-refresh"></i> Reset Password</a></td>'+
-									'</tr>';
-							}else{
-								html += '<tr style="background-color:#ff8080;color:#000000;">'+
-									'<td><a href="<?=base_url('app/user/detailuserakses/');?>'+value.USER_ID+'" style="text-decoration:underline;color:#000000;">'+value.USERNAME+'</a></td>'+
-									'<td>'+value.FULLNAME+'</td>'+
-									'<td>'+value.USER_GROUP_NAME+'</td>'+
-									'<td>'+value.EMAIL+'</td>'+
-									'<td><a href="" class="btn btn-danger item_resetpassword" data-id="'+value.USER_ID+'" data-reset="'+value.need_reset_password+'" data-usr="<?=$this->session->userdata('userid');?>" data-password="ff9f2372bc75db7be8094438ff342054" title="Reset Password" data-target=".bs-example-modal-smresetpass"><i class="fa fa-refresh"></i> Reset Password</a></td>'+
-									'</tr>';
-							}
-							
-									
-						})
-						$('#show_data').html(html);
-						
-					}
-	 
-				});
-			}
-			//prosesreset password
-			$(document).on('click','.item_resetpassword',function(e) {
-			var userid = $(this).data('id');
-			var reset = $(this).data('reset');
-			var password = $(this).data('password');
-			var crtusr = $(this).data('usr');
-			var appid = '<?=$this->session->userdata('appid');?>';
-			//alert(crtusr);
-			swal({
-			  title: "Reset Password",
-			  text: "Apakah anda yakin ingin melakukan reset password ?",
-			  confirmButtonText:"Yakin",
-			  confirmButtonColor: "#002855",
-			  cancelButtonText:"Tidak",
-			  showCancelButton: true,
-			  closeOnConfirm: false,
-			  imageUrl: '<?=base_url('assets/images/imagessure.png');?>',
-			  animation: "slide-from-top",
-			  header: "Test Header",
-			  showLoaderOnConfirm: true
-			}, function () {
-				$.ajax({
-					url:'<?=base_url('app/user/resetpassword');?>',
-					dataType:'text',
-					data : {userid:userid,reset:reset,password:password,crtusr:crtusr},
-					success:function(e){
-						swal({
-						  title: "Reset",
-						  confirmButtonColor: "#002855",
-						  text: "Password berhasil direset !.",
-						  imageUrl: '<?=base_url('assets/images/emotgood1.png');?>'
-						},function(){
-							window.location='<?=base_url('app/main/dashboard/');?>'+crtusr+'/'+appid;
-						  });
-					},
-					error:function(xhr, ajaxOptions, thrownError){
-						swal({
-						  title: "Failed",
-						  confirmButtonColor: "#002855",
-						  text: "Password tidak berhasil direset !.",
-						  imageUrl: '<?=base_url('assets/images/emotsad.png');?>'
-						});
-					}
+		<script>
+		var ctx = document.getElementById("diagramgender").getContext('2d');
+		var myChart = new Chart(ctx, {
+			type: 'bar',
+			data: {
+				labels: ["Laki-Laki", "Perempuan"],
+				datasets: [{
+					label: '',
+					data: [
+					<?php 
+					$querylaki = $this->db->query("SELECT * FROM tbl_kkdetail WHERE wrg_jeniskel like '%Laki%'");
+					echo $querylaki->num_rows();
+					?>, 
+					<?php 
+					$queryperempuan = $this->db->query("SELECT * FROM tbl_kkdetail WHERE wrg_jeniskel like '%Perempuan%'");
+					echo $queryperempuan->num_rows();
+					?>, 
 					
-				});
-				return false;
-			});
-			e.preventDefault(); 
-		  });
-			
+					],
+					backgroundColor: [
+					'rgba(54, 162, 235, 0.2)',
+					'rgba(255, 99, 132, 0.2)'
+					
+					
+					],
+					borderColor: [
+					'rgba(54, 162, 235, 1)',
+					'rgba(255,99,132,1)'
+					
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero:true
+						}
+					}]
+				}
+			}
 		});
-		</script>
+	</script>
   </body>
 </html>

@@ -74,7 +74,15 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_tgllahir">Tanggal Lahir 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" disabled id="wrg_tgllahir" name="wrg_tgllahir" required="" class="form-control col-md-7 col-xs-12" value="<?=$row->wrg_tgllahir;?>">
+                          <!-- <input type="text" disabled id="wrg_tgllahir" name="wrg_tgllahir" required="" class="form-control col-md-7 col-xs-12" value="<?=$row->wrg_tgllahir;?>"> -->
+                          <?php
+                          $wrgtgllahirawal = explode("-",$row->wrg_tgllahir);
+                          $wrgtgllahirtgl = $wrgtgllahirawal[2];
+                          $wrgtgllahirbln = $wrgtgllahirawal[1];
+                          $wrgtgllahirthn = $wrgtgllahirawal[0];
+                          $wrgtgllahirformat = $wrgtgllahirtgl."/".$wrgtgllahirbln."/".$wrgtgllahirthn;
+                          ?>
+                          <input type="text" disabled id="wrg_tgllahir" name="wrg_tgllahir" required="" class="form-control col-md-7 col-xs-12" value="<?=$wrgtgllahirformat;?>">		
                         </div>
                       </div>
                       <div class="form-group">
