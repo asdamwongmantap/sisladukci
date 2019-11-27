@@ -153,24 +153,24 @@
 		var myChartage = new Chart(ctxage, {
 			type: 'bar',
 			data: {
-				labels: ["0-10", "11-20","21-30", "31-50","Lebih dari 50"],
+				labels: ["Balita", "Kanak","Remaja", "Dewasa","Lansia"],
 				datasets: [{
 					label: '',
 					data: [
 					<?php 
-					$query010 = $this->db->query("SELECT * FROM view_detailkeluarga WHERE wrg_usia BETWEEN 0 AND 10");
+					$query010 = $this->db->query("SELECT * FROM view_detailkeluarga WHERE wrg_usia BETWEEN 0 AND 5");
 					echo $query010->num_rows();
 					?>, 
 					<?php 
-					$query1120 = $this->db->query("SELECT * FROM view_detailkeluarga WHERE wrg_usia BETWEEN 11 AND 20");
+					$query1120 = $this->db->query("SELECT * FROM view_detailkeluarga WHERE wrg_usia BETWEEN 6 AND 10");
 					echo $query1120->num_rows();
 					?>, 
 					<?php 
-					$query2130 = $this->db->query("SELECT * FROM view_detailkeluarga WHERE wrg_usia BETWEEN 21 AND 30");
+					$query2130 = $this->db->query("SELECT * FROM view_detailkeluarga WHERE wrg_usia BETWEEN 11 AND 20");
 					echo $query2130->num_rows();
 					?>, 
 					<?php 
-					$query3150 = $this->db->query("SELECT * FROM view_detailkeluarga WHERE wrg_usia BETWEEN 31 AND 50");
+					$query3150 = $this->db->query("SELECT * FROM view_detailkeluarga WHERE wrg_usia BETWEEN 21 AND 50");
 					echo $query3150->num_rows();
 					?>, 
 					<?php 

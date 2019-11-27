@@ -11,10 +11,11 @@
 $(document).ready(function(){
 		$("#idbtn").click(function(){
 			var wrgnik = document.getElementById('wrg_nik').value;
-			
-                $.post( "<?php echo base_url("app/data/warga/get_noktp"); ?>",{ wrgnik : wrgnik}, function(data) {
+			var searchby = "noktp";
+                $.post( "<?php echo base_url("app/data/warga/get_noktp"); ?>",{ wrgnik : wrgnik,searchby:searchby}, function(data) {
 
-                var obj = JSON.parse(data);
+				var obj = JSON.parse(data);
+				// console.log(data)
 				if (data == "[]"){
 						alert("Data Tidak ditemukan");
 						$("#wrg_statushubungan").html("<option value='Kepala Keluarga'>Kepala Keluarga</option><option value='Istri'>Istri</option><option value='Anak'>Anak</option>");
@@ -98,7 +99,7 @@ $(document).ready(function(){
 				  <form id="form-adddetailkeluarga" data-parsley-validate class="form-horizontal form-label-left" method="post">
 					   <input type="hidden" id="CRTUSR" name="CRTUSR" class="form-control col-md-7 col-xs-12" value="<?=$this->session->userdata('userid');?>">
 					   <input type="hidden" id="wrg_nokk" name="wrg_nokk" required="" maxlength="16" class="form-control col-md-4 col-xs-12" value="<?=$this->uri->segment(5);?>">
-					   <input type="hidden" id="wrg_nokkdb" name="wrg_nokkdb" required="" maxlength="16" class="form-control col-md-4 col-xs-12">
+					   <input type="hidden" id="wrg_nokkdb" name="wrg_nokkdb"  maxlength="16" class="form-control col-md-4 col-xs-12">
 					 <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_nik">Nomor KTP 
                         </label>
@@ -244,7 +245,12 @@ $(document).ready(function(){
 			var data = new FormData(form);
 			var wrgnokk = $('#wrg_nokk').val();
 			var wrgnokkdb = $('#wrg_nokkdb').val();
-			if (wrgnokkdb != wrgnokk) {
+			if (wrgnokkdb == "") {
+				var texttitle = "Simpan Data";
+				var textalert = "Apakah anda ingin menyimpan data ini ?"
+				
+			}
+			else if (wrgnokkdb != wrgnokk) {
 				var texttitle = "Ubah No KK";
 				var textalert = "Apakah Penduduk ingin pindah KK Baru ?"
 			}else {
