@@ -4,6 +4,7 @@
 		var $tbl_kkheader='tbl_kkheader';
 	var $tbl_kkdetail='tbl_kkdetail';
 	var $tbl_wargapindah='tbl_wargapindah';
+	var $tbl_wargameninggal='tbl_wargameninggal';
 	
 	public function viewwarga($nokk)
 	{
@@ -143,6 +144,19 @@
 	
 		$query = $this->db->get('tbl_kkdetail');
 		return $query;
+	}
+	public function viewmeninggalwarga()
+	{
+		
+		$query=$this->db->get('view_wargameninggal');
+		if ($query->num_rows()>0)
+	{
+		return $query->result();
+	}
+		else
+	{
+		return array();
+	}
 	}
 	
 	

@@ -41,7 +41,7 @@
                   <a href="<?=base_url();?>app/data/warga/listpindahwarga">Data Perpindahan Penduduk</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/data/kategori/listkategori">Data Kematian Penduduk</a>
+                  <a href="<?=base_url();?>app/data/warga/listmeninggalwarga">Data Kematian Penduduk</a>
                 </li>
                 </ul>
                 </li>
@@ -132,16 +132,16 @@
                
                <ul class="nav child_menu">
                 <li>
-                  <a href="<?=base_url();?>app/data/warga/listwarga">Data Kepala Keluarga</a>
+                  <a href="<?=base_url();?>app/data/warga/listkepalakeluarga">Data Kepala Keluarga</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/data/petugas/listpetugas">Data Keseluruhan Penduduk</a>
+                  <a href="<?=base_url();?>app/data/warga/listallwarga">Data Keseluruhan Penduduk</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/data/kelurahan/listkelurahan">Data Perpindahan Penduduk</a>
+                  <a href="<?=base_url();?>app/data/warga/listpindahwarga">Data Perpindahan Penduduk</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/data/kategori/listkategori">Data Kematian Penduduk</a>
+                  <a href="<?=base_url();?>app/data/warga/listmeninggalwarga">Data Kematian Penduduk</a>
                 </li>
                 </ul>
                 </li>

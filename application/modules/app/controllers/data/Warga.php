@@ -394,6 +394,22 @@ class Warga extends CI_Controller
 				}       
 				// print_r($this->Modul_jenisrek->get_insertjnsrek($data));die;  
 		}
+		public function listmeninggalwarga()
+	{
+        if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+			// $nokk = $this->uri->segment(5);
+            $generalcode = "SETTING_DASHBOARD";
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['namakry'] = $this->session->userdata('fullname');
+			// print_r($nokk);die;
+            $data['datameninggalwarga']=$this->Modul_warga->viewmeninggalwarga();
+            $this->load->view('setup/data/warga/listdatameninggalwarga',$data);
+		}
+		// $this->load->view('setup/data/listdatawarga');
+		
+	}
 	
 }
 
