@@ -53,7 +53,7 @@
                
                <ul class="nav child_menu">
                 <li>
-                  <a href="<?=base_url();?>app/surat/numpangnikah">Surat Pengantar Domisili</a>
+                  <a href="<?=base_url();?>app/surat/listketdomisili">Surat Pengantar Domisili</a>
                 </li>
                 <li>
                   <a href="<?=base_url();?>app/surat/mohonkk">Surat Kuasa</a>
@@ -153,7 +153,7 @@
                
                <ul class="nav child_menu">
                 <li>
-                  <a href="<?=base_url();?>app/surat/numpangnikah">Surat Pengantar Domisili</a>
+                  <a href="<?=base_url();?>app/surat/listketdomisili">Surat Pengantar Domisili</a>
                 </li>
                 <li>
                   <a href="<?=base_url();?>app/surat/mohonkk">Surat Kuasa</a>

@@ -11,7 +11,7 @@ class Surat extends CI_Controller
         $this->load->model('Modul_setting');
     }
 	
-	public function mohonkk()
+	public function listketdomisili()
 	{
         if (!$this->session->userdata('username')){
 			redirect(base_url());
@@ -19,8 +19,8 @@ class Surat extends CI_Controller
             $generalcode = "SETTING_DASHBOARD";
 			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
 			$data['namakry'] = $this->session->userdata('fullname');
-            $data['datamohonkk']=$this->Modul_surat->viewmohonkk();
-            $this->load->view('berkas/surat/listdatamohonkk',$data);
+            $data['dataketdomisili']=$this->Modul_surat->viewketdomisili();
+            $this->load->view('berkas/surat/listdataketdomisili',$data);
 		}
 		// $this->load->view('setup/data/listdatakategori');
 		// print_r($this->session->userdata('fullname'));die;
@@ -112,6 +112,22 @@ class Surat extends CI_Controller
         }
 
 	}
+	// added 20191129 by asdam
+	public function pdfketdomisili($id)
+	{
+		
+		if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+            $generalcode = "SETTING_DASHBOARD";
+		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['data1']=$this->Modul_surat->get_pdfketdomisili($id);
+			print_r($this->Modul_surat->get_pdfketdomisili($id));die;
+            $this->load->view('berkas/surat/pdfketdomisili',$data);
+        }
+
+	}
+	// end added
 	
 }
 

@@ -3,10 +3,10 @@
 		
 	var $tbl_surat='tbl_surat';
 	
-	Function viewmohonkk()
+	Function viewketdomisili()
 	{
 		// $this->db->where('kat_id',"KK"); 
-		$query=$this->db->get('view_mohonkk');
+		$query=$this->db->get('view_ketdomisili');
 		if ($query->num_rows()>0)
 	{
 		return $query->result();
@@ -62,6 +62,19 @@
         $this->db->update('tbl_kategori',$data); 
 
 		}
+	public function get_pdfketdomisili($id)
+	{
+			$this->db->where('no_surat',$id); 
+			$query = $this->db->get('tbl_suratheader'); 
+				if ($query->num_rows()>0)
+	{
+		return $query->result();
+	}
+		else
+	{
+		return null;
+	} 
+	}
 	
 	
 }

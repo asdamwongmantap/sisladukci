@@ -228,7 +228,7 @@ $(document).ready(function(){
 				$.ajax({
 					type: "POST",
 					enctype: 'multipart/form-data',
-					url:'<?=base_url('app/data/warga/savepindahwarga');?>',
+					url:'<?=base_url('app/data/warga/savemeninggalwarga');?>',
 					data: data,
 					processData: false,
 					contentType: false,
@@ -241,7 +241,7 @@ $(document).ready(function(){
 						  text: "Data berhasil disimpan !.",
 						  type: "success"
 						},function(){
-							window.location='<?=base_url('app/data/warga/listpindahwarga');?>';
+							window.location='<?=base_url('app/data/warga/listmeninggalwarga');?>';
 						  });
 						}
 						else{

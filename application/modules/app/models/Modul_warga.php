@@ -158,6 +158,11 @@
 		return array();
 	}
 	}
+	public function get_insertmeninggalwarga($data){
+		// $this->load->database();
+       $this->db->insert($this->tbl_wargameninggal, $data);
+       return TRUE;
+	}
 	
 	
 }

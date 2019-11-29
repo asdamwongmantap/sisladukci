@@ -50,7 +50,7 @@
 							<th>Tanggal Pindah</th>
 							<th>Alamat Pindah</th>
 							<th>Alasan Pindah</th>
-							<th>Action</th>
+							<!-- <th>Action</th> -->
                         </tr>
                       </thead>
                       <tbody id="show_data">
@@ -65,11 +65,11 @@
 									<td><?=$row->wrgpindah_tgl;?></td>
 									<td><?=$row->wrgpindah_alamat;?></td>
 									<td><?=$row->wrgpindah_alasan;?></td>							
-									<td>
+									<!-- <td> -->
 									<!-- <a class="btn btn-success" href='detailwarga/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-zoom-in icon-white"></i></a> -->
-									<a class="btn btn-primary" href='editwarga/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-edit icon-white"></i></a>
+									<!-- <a class="btn btn-primary" href='editwarga/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-edit icon-white"></i></a> -->
 									<!-- <a class="btn btn-danger item_deletewarga" data-id="<?=$row->wrg_nik;?>"><i class="glyphicon glyphicon-trash icon-white"></i></a> -->
-								</td>
+								<!-- </td> -->
 								</tr>
 							<?php
 							$no++;

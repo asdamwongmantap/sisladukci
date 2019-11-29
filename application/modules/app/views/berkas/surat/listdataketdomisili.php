@@ -32,14 +32,14 @@
               <div class="col-md-12 col-sm-4 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>List Data Permohonan KK</h2>
+                    <h2>List Data Pengantar Domisili</h2>
                     <div class="clearfix"></div>
 					
                   </div>
                   <div class="x_content">
 				  <input type="hidden" id="usergroup" value="<?=$this->session->userdata('usergroupid');?>">
 				  <a href="<?=base_url('app/surat/add_mohonkk');?>" class="btn btn-success" title="Tambah user group" data-target=".bs-example-modal-smadd" style="float:right;display:block;" 
-				  id="tomboltambah"><i class="fa fa-plus"></i> Buat Permohonan KK</a></br>
+				  id="tomboltambah"><i class="fa fa-plus"></i> Buat Pengantar Domisili</a></br>
 				  </br>
 				  <table id="mydata" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
                       <thead>
@@ -54,15 +54,15 @@
                       <tbody id="show_data">
 					  
 							<?php 
-							foreach ($datamohonkk as $row) {?>	 
+							foreach ($dataketdomisili as $row) {?>	 
 							<tr>
-									<td><?=$row->srt_no;?></td>							
-									<td><?=$row->srt_nama;?></td>
-									<td><?=$row->srt_kwarganegaraan;?></td>
-									<td><?=$row->dtm_crt;?></td>							
-									<td><a class="btn btn-success" href='detailmohonkk/<?=$row->srt_no;?>'><i class="glyphicon glyphicon-zoom-in icon-white"></i></a>
-									<a class="btn btn-primary" href='editmohonkk/<?=$row->srt_no;?>'><i class="glyphicon glyphicon-edit icon-white"></i></a>
-									<a class="btn btn-danger item_deletemohonkk" data-id="<?=$row->srt_no;?>"><i class="glyphicon glyphicon-trash icon-white"></i></a></td>
+									<td><?=$row->no_surat;?></td>							
+									<td><?=$row->wrg_nama;?></td>
+									<td><?=$row->wrg_kwarganegaraan;?></td>
+									<td><?=$row->tgl_surat;?></td>							
+									<td><a class="btn btn-success" href='pdfketdomisili/<?=$row->no_surat;?>'><i class="glyphicon glyphicon-zoom-in icon-white"></i></a>
+									<a class="btn btn-primary" href='editmohonkk/<?=$row->no_surat;?>'><i class="glyphicon glyphicon-edit icon-white"></i></a>
+									<a class="btn btn-danger item_deletemohonkk" data-id="<?=$row->no_surat;?>"><i class="glyphicon glyphicon-trash icon-white"></i></a></td>
 								</tr>
 							<?php
 								}

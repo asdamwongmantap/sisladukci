@@ -410,6 +410,53 @@ class Warga extends CI_Controller
 		// $this->load->view('setup/data/listdatawarga');
 		
 	}
+	public function addmeninggalwarga()
+		{
+			if (!$this->session->userdata('username')){
+				redirect(base_url());
+			}else{
+				$generalcode = "SETTING_DASHBOARD";
+				$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+				$data['namakry'] = $this->session->userdata('fullname');
+				// $data['data']=$this->Modul_warga->viewjenisrek();
+				$this->load->view('setup/data/warga/addmeninggalwarga',$data);
+			}
+	
+		}
+		public function savemeninggalwarga(){
+			$this->form_validation->set_rules('wrg_nama','NAMA','required');
+			if ($this->input->post('wrg_nik') != ""){
+				$wrgnik = $this->input->post('wrg_nik');
+			}else {
+				$wrgnik = $this->input->post('wrg_nokk');
+			}
+			$wrgtgllahirawal = explode("/",$this->input->post('wrgmeninggal_tgl'));
+		  $wrgtgllahirtgl = $wrgtgllahirawal[0];
+		  $wrgtgllahirbln = $wrgtgllahirawal[1];
+		  $wrgtgllahirthn = $wrgtgllahirawal[2];
+		  $wrgtgllahirformat = $wrgtgllahirthn."-".$wrgtgllahirbln."-".$wrgtgllahirtgl;
+			$datameninggal = array(
+					  'wrgmeninggal_nik' =>$wrgnik,
+					  'wrgmeninggal_tgl' =>$wrgtgllahirformat,
+					  'wrgmeninggal_tempat' =>$this->input->post('wrgmeninggal_tempat'),
+					  'wrgmeninggal_sebab' =>$this->input->post('wrgmeninggal_sebab')
+					  );
+			$data = array(
+					'wrg_nik' =>$wrgnik,
+					'is_active' =>"0"
+			);
+			// print_r($data);die;
+			if($this->form_validation->run()!=FALSE){
+					//pesan yang muncul jika berhasil diupload pada session flashdata
+					$this->Modul_warga->get_insertmeninggalwarga($datameninggal); //akses model untuk menyimpan ke database
+					$this->Modul_warga->moduleditwarga($data);
+					echo "berhasil";
+				}else{
+					//pesan yang muncul jika terdapat error dimasukkan pada session flashdata
+					echo "error";
+				}       
+				// print_r($this->Modul_jenisrek->get_insertjnsrek($data));die;  
+		}
 	
 }
 
