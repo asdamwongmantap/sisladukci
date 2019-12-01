@@ -122,7 +122,7 @@ class Surat extends CI_Controller
             $generalcode = "SETTING_DASHBOARD";
 		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
 			$data['data1']=$this->Modul_surat->get_pdfketdomisili($id);
-			print_r($this->Modul_surat->get_pdfketdomisili($id));die;
+			// print_r($this->Modul_surat->get_pdfketdomisili($id));die;
             $this->load->view('berkas/surat/pdfketdomisili',$data);
         }
 
