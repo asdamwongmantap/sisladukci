@@ -66,14 +66,87 @@
 	{
 			$this->db->where('no_surat',$id); 
 			$query = $this->db->get('view_ketdomisili'); 
-	// 			if ($query->num_rows()>0)
-	// {
-	// 	return $query->result();
-	// }
-	// 	else
-	// {
-	// 	return null;
-	// }
+	
+	return $query->result(); 
+	}
+	Function viewkuasa()
+	{
+		// $this->db->where('kat_id',"KK"); 
+		$query=$this->db->get('view_suratkuasa');
+		if ($query->num_rows()>0)
+	{
+		return $query->result();
+	}
+		else
+	{
+		return array();
+	}
+	}
+	public function get_pdfkuasa($id)
+	{
+			$this->db->where('no_surat',$id); 
+			$query = $this->db->get('view_suratkuasa'); 
+	
+	return $query->result(); 
+	}
+	Function viewizinmenikah()
+	{
+		// $this->db->where('kat_id',"KK"); 
+		$query=$this->db->get('view_izinmenikah');
+		if ($query->num_rows()>0)
+	{
+		return $query->result();
+	}
+		else
+	{
+		return array();
+	}
+	}
+	public function get_pdfizinmenikah($id)
+	{
+			$this->db->where('no_surat',$id); 
+			$query = $this->db->get('view_izinmenikah'); 
+	
+	return $query->result(); 
+	}
+	Function viewsuratpengantar()
+	{
+		// $this->db->where('kat_id',"KK"); 
+		$query=$this->db->get('view_ketdomisili');
+		if ($query->num_rows()>0)
+	{
+		return $query->result();
+	}
+		else
+	{
+		return array();
+	}
+	}
+	public function get_pdfsuratpengantar($id)
+	{
+			$this->db->where('no_surat',$id); 
+			$query = $this->db->get('view_ketdomisili'); 
+	
+	return $query->result(); 
+	}
+	Function viewsuratkematian()
+	{
+		// $this->db->where('kat_id',"KK"); 
+		$query=$this->db->get('view_ketkematian');
+		if ($query->num_rows()>0)
+	{
+		return $query->result();
+	}
+		else
+	{
+		return array();
+	}
+	}
+	public function get_pdfsuratkematian($id)
+	{
+			$this->db->where('no_surat',$id); 
+			$query = $this->db->get('view_ketkematian'); 
+	
 	return $query->result(); 
 	}
 	

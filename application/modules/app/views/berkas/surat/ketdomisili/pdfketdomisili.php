@@ -145,26 +145,26 @@ class PDF extends FPDF
                 $this->cell(77,6,'',0,0,'C',0); 
                 // $this->WordWrap($text,120);
                  $this->cell(20,6,"Bahwa yang namanya tersebut diatas, benar berdomisili diwilayah kami,",0,1,'C',1);
-                 $this->cell(78,6,'',0,0,'C',0);
-                 $this->cell(20,6,"Kontrak / Kost / Tinggal dirumah: Bpk/Ibu ...................................................................",0,1,'C',1);
+                 $this->cell(49,6,'',0,0,'C',0);
+                 $this->cell(20,6,"Kontrak / Kost / Tinggal dirumah: Bpk/Ibu ".$u->nama_pihak2,0,1,'C',1);
 
-                 $this->cell(52,6,'',0,0,'C',0);
+                 $this->cell(50,6,'',0,0,'C',0);
                  $this->cell(20,6,"Dan surat keterangan domisili ini untuk keperluan: ",0,1,'C',1);
-                 $this->cell(34,6,'',0,0,'C',0);
+                 $this->cell(31,6,'',0,0,'C',0);
                  $this->cell(20,6,$u->tujuan,0,1,'C',1);
 
                  $this->Ln(5);
                 $this->cell(87,6,'',0,0,'C',0); 
                 // $this->WordWrap($text,120);
                  $this->cell(20,6,"Surat keterangan domisili ini berlaku selama yang bersangkutan bertempat tinggal   ",0,1,'C',1);
-                 $this->cell(87,6,'',0,0,'C',0);
+                 $this->cell(84,6,'',0,0,'C',0);
                  $this->cell(20,6,"diwilayah kami, Apabila yang bersangkutan pindah alamat agar melapor kepada pengurus RT",0,1,'C',1);
                  
                  $this->Ln(5);
                 $this->cell(77,6,'',0,0,'C',0); 
                 // $this->WordWrap($text,120);
                  $this->cell(20,6,"Demikian surat keterangan domisili kami buat agar dapat dipergunakan",0,1,'C',1);
-                 $this->cell(32,6,'',0,0,'C',0);
+                 $this->cell(29,6,'',0,0,'C',0);
                  $this->cell(20,6,"sebagaimana mestinya",0,1,'C',1);
 
                  $this->Ln(13);

@@ -56,16 +56,16 @@
                   <a href="<?=base_url();?>app/surat/listketdomisili">Surat Pengantar Domisili</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/surat/mohonkk">Surat Kuasa</a>
+                  <a href="<?=base_url();?>app/surat/listkuasa">Surat Kuasa</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/surat/mohonskck">Surat Izin Menikah</a>
+                  <a href="<?=base_url();?>app/surat/listizinmenikah">Surat Izin Menikah</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/surat/mohondomisili">Surat Pengantar Biasa</a>
+                  <a href="<?=base_url();?>app/surat/listsuratpengantar">Surat Pengantar Biasa</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/surat/mohonktp">Surat Kematian</a>
+                  <a href="<?=base_url();?>app/surat/listsuratkematian">Surat Kematian</a>
                 </li>
                 </ul>
                 </li>
@@ -156,16 +156,16 @@
                   <a href="<?=base_url();?>app/surat/listketdomisili">Surat Pengantar Domisili</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/surat/mohonkk">Surat Kuasa</a>
+                  <a href="<?=base_url();?>app/surat/listkuasa">Surat Kuasa</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/surat/mohonskck">Surat Izin Menikah</a>
+                  <a href="<?=base_url();?>app/surat/listizinmenikah">Surat Izin Menikah</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/surat/mohondomisili">Surat Pengantar Biasa</a>
+                  <a href="<?=base_url();?>app/surat/listsuratpengantar">Surat Pengantar Biasa</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/surat/mohonktp">Surat Kematian</a>
+                  <a href="<?=base_url();?>app/surat/listsuratkematian">Surat Kematian</a>
                 </li>
                 </ul>
                 </li>

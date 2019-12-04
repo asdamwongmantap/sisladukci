@@ -20,7 +20,7 @@ class Surat extends CI_Controller
 			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
 			$data['namakry'] = $this->session->userdata('fullname');
             $data['dataketdomisili']=$this->Modul_surat->viewketdomisili();
-            $this->load->view('berkas/surat/listdataketdomisili',$data);
+            $this->load->view('berkas/surat/ketdomisili/listdataketdomisili',$data);
 		}
 		// $this->load->view('setup/data/listdatakategori');
 		// print_r($this->session->userdata('fullname'));die;
@@ -123,7 +123,119 @@ class Surat extends CI_Controller
 		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
 			$data['data1']=$this->Modul_surat->get_pdfketdomisili($id);
 			// print_r($this->Modul_surat->get_pdfketdomisili($id));die;
-            $this->load->view('berkas/surat/pdfketdomisili',$data);
+            $this->load->view('berkas/surat/ketdomisili/pdfketdomisili',$data);
+        }
+
+	}
+	public function listkuasa()
+	{
+        if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+            $generalcode = "SETTING_DASHBOARD";
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['namakry'] = $this->session->userdata('fullname');
+            $data['datakuasa']=$this->Modul_surat->viewkuasa();
+            $this->load->view('berkas/surat/kuasa/listdatakuasa',$data);
+		}
+		// $this->load->view('setup/data/listdatakategori');
+		// print_r($this->session->userdata('fullname'));die;
+	}
+	public function pdfkuasa($id)
+	{
+		
+		if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+            $generalcode = "SETTING_DASHBOARD";
+		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['data1']=$this->Modul_surat->get_pdfkuasa($id);
+			// print_r($this->Modul_surat->get_pdfkuasa($id));die;
+            $this->load->view('berkas/surat/kuasa/pdfkuasa',$data);
+        }
+
+	}
+	public function listizinmenikah()
+	{
+        if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+            $generalcode = "SETTING_DASHBOARD";
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['namakry'] = $this->session->userdata('fullname');
+            $data['dataizinmenikah']=$this->Modul_surat->viewizinmenikah();
+            $this->load->view('berkas/surat/izinmenikah/listdataizinmenikah',$data);
+		}
+		// $this->load->view('setup/data/listdatakategori');
+		// print_r($this->session->userdata('fullname'));die;
+	}
+	public function pdfizinmenikah($id)
+	{
+		
+		if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+            $generalcode = "SETTING_DASHBOARD";
+		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['data1']=$this->Modul_surat->get_pdfizinmenikah($id);
+			// print_r($this->Modul_surat->get_pdfizinmenikah($id));die;
+            $this->load->view('berkas/surat/izinmenikah/pdfizinmenikah',$data);
+        }
+
+	}
+	public function listsuratpengantar()
+	{
+        if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+            $generalcode = "SETTING_DASHBOARD";
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['namakry'] = $this->session->userdata('fullname');
+            $data['datasuratpengantar']=$this->Modul_surat->viewsuratpengantar();
+            $this->load->view('berkas/surat/pengantar/listdatasuratpengantar',$data);
+		}
+		// $this->load->view('setup/data/listdatakategori');
+		// print_r($this->session->userdata('fullname'));die;
+	}
+	public function pdfsuratpengantar($id)
+	{
+		
+		if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+            $generalcode = "SETTING_DASHBOARD";
+		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['data1']=$this->Modul_surat->get_pdfsuratpengantar($id);
+			// print_r($this->Modul_surat->get_pdfsuratpengantar($id));die;
+            $this->load->view('berkas/surat/pengantar/pdfsuratpengantar',$data);
+        }
+
+	}
+	public function listsuratkematian()
+	{
+        if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+            $generalcode = "SETTING_DASHBOARD";
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['namakry'] = $this->session->userdata('fullname');
+            $data['datasuratkematian']=$this->Modul_surat->viewsuratkematian();
+            $this->load->view('berkas/surat/kematian/listdatasuratkematian',$data);
+		}
+		// $this->load->view('setup/data/listdatakategori');
+		// print_r($this->session->userdata('fullname'));die;
+	}
+	public function pdfsuratkematian($id)
+	{
+		
+		if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+            $generalcode = "SETTING_DASHBOARD";
+		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['data1']=$this->Modul_surat->get_pdfsuratkematian($id);
+			// print_r($this->Modul_surat->get_pdfsuratkematian($id));die;
+            $this->load->view('berkas/surat/kematian/pdfsuratkematian',$data);
         }
 
 	}
