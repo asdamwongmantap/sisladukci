@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="<?=base_url();?>assets/images/logowmsia.png" type="image/ico" />
 	
-    <title>WM-DUKCAPILSYS</title>
+    <title>SISLADUK</title>
 	<script src="<?=base_url();?>assets/js/fungsicheckboxpersonal.js"></script>
 	<script src="<?=base_url();?>assets/js/fungsicheckboxphone.js"></script>
 	<script src="<?=base_url();?>assets/js/fungsicheckboxbankacc.js"></script>

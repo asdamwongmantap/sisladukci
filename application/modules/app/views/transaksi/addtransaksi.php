@@ -123,8 +123,8 @@ $(document).ready(function(){
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <select class="select2_single form-control" tabindex="-1" id="jenis_transaksi" name="jenis_transaksi">
-							<option value="Debit">Debit</option>
-							<option value="Kredit">Kredit</option>
+							<option value="Debit">Pemasukan</option>
+							<option value="Kredit">Pengeluaran</option>
 						  </select>
                         </div>
 					  </div>
