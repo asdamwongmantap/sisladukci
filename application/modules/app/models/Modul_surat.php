@@ -1,7 +1,8 @@
 <?php 
 	Class Modul_surat extends CI_Model {
 		
-	var $tbl_surat='tbl_surat';
+	var $tbl_suratheader='tbl_suratheader';
+	var $tbl_suratdetail='tbl_suratdetail';
 	
 	Function viewketdomisili()
 	{
@@ -112,7 +113,7 @@
 	Function viewsuratpengantar()
 	{
 		// $this->db->where('kat_id',"KK"); 
-		$query=$this->db->get('view_ketdomisili');
+		$query=$this->db->get('view_pengantar');
 		if ($query->num_rows()>0)
 	{
 		return $query->result();
@@ -125,7 +126,7 @@
 	public function get_pdfsuratpengantar($id)
 	{
 			$this->db->where('no_surat',$id); 
-			$query = $this->db->get('view_ketdomisili'); 
+			$query = $this->db->get('view_pengantar'); 
 	
 	return $query->result(); 
 	}
@@ -149,6 +150,26 @@
 	
 	return $query->result(); 
 	}
+	public function get_insertketdomisiliheader($dataheader){
+		// $this->load->database();
+       $this->db->insert($this->tbl_suratheader, $dataheader);
+       return TRUE;
+	}
+	public function get_insertketdomisilidetail($datadetail){
+		// $this->load->database();
+       $this->db->insert($this->tbl_suratdetail, $datadetail);
+       return TRUE;
+	}
+	// public function get_insertkuasaheader($dataheader){
+	// 	// $this->load->database();
+    //    $this->db->insert($this->tbl_suratheader, $dataheader);
+    //    return TRUE;
+	// }
+	// public function get_insertkuasadetail($datadetail){
+	// 	// $this->load->database();
+    //    $this->db->insert($this->tbl_suratdetail, $datadetail);
+    //    return TRUE;
+    // }
 	
 	
 }

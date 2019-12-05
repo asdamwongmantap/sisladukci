@@ -108,7 +108,8 @@ class PDF extends FPDF
 		        {
                  $this->setFont('Arial','',10);
                  $this->setFillColor(255,255,255);
-				 $this->cell(87,6,'',0,0,'C',0); 
+                 $this->cell(87,6,'',0,0,'C',0); 
+                //  $nosurat = preg_replace("/-/", '/', $u->no_surat);
 				 $this->cell(20,6,"Nomor: ".$u->no_surat,0,1,'C',1);
                 // }
                 $this->Ln(7);

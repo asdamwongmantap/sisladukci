@@ -8,7 +8,8 @@ class Surat extends CI_Controller
 		// $this->load->helper(array('url','form')); //load helper url 
         $this->load->library('form_validation'); //load form validation
         $this->load->model('Modul_surat');
-        $this->load->model('Modul_setting');
+		$this->load->model('Modul_setting');
+		$this->load->model('Modul_warga');
     }
 	
 	public function listketdomisili()
@@ -25,38 +26,8 @@ class Surat extends CI_Controller
 		// $this->load->view('setup/data/listdatakategori');
 		// print_r($this->session->userdata('fullname'));die;
 	}
-	public function add_mohonkk()
-	{
-        if (!$this->session->userdata('username')){
-			redirect(base_url());
-        }else{
-            $generalcode = "SETTING_DASHBOARD";
-		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
-            // $data['data']=$this->Modul_surat->viewjenisrek();
-            $this->load->view('berkas/surat/addmohonkk',$data);
-        }
 
-	}
-	public function savekategori(){
-		$this->form_validation->set_rules('kat_id','ID','required');
-		$this->form_validation->set_rules('kat_nama','Nama','required');
-		$data = array(
-				  'kat_id' =>$this->input->post('kat_id'),
-				  'kat_nama' =>$this->input->post('kat_nama'),
-				 'kat_desc' =>$this->input->post('kat_desc'),
-				  'is_active' =>"1"
-                  );
-        // print_r($data);die;
-		if($this->form_validation->run()!=FALSE){
-                //pesan yang muncul jika berhasil diupload pada session flashdata
-				$this->Modul_surat->get_insertkategori($data); //akses model untuk menyimpan ke database
-                echo "berhasil";
-			}else{
-                //pesan yang muncul jika terdapat error dimasukkan pada session flashdata
-                echo "error";
-            }       
-            // print_r($this->Modul_jenisrek->get_insertjnsrek($data));die;  
-    }
+	
 	public function editkategori($id)
 	{
 		
@@ -121,6 +92,7 @@ class Surat extends CI_Controller
         }else{
             $generalcode = "SETTING_DASHBOARD";
 		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$id = preg_replace("/-/", '/', $id);
 			$data['data1']=$this->Modul_surat->get_pdfketdomisili($id);
 			// print_r($this->Modul_surat->get_pdfketdomisili($id));die;
             $this->load->view('berkas/surat/ketdomisili/pdfketdomisili',$data);
@@ -149,9 +121,9 @@ class Surat extends CI_Controller
         }else{
             $generalcode = "SETTING_DASHBOARD";
 		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$id = preg_replace("/-/", '/', $id);
 			$data['data1']=$this->Modul_surat->get_pdfkuasa($id);
-			// print_r($this->Modul_surat->get_pdfkuasa($id));die;
-            $this->load->view('berkas/surat/kuasa/pdfkuasa',$data);
+			$this->load->view('berkas/surat/kuasa/pdfkuasa',$data);
         }
 
 	}
@@ -163,6 +135,7 @@ class Surat extends CI_Controller
             $generalcode = "SETTING_DASHBOARD";
 			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
 			$data['namakry'] = $this->session->userdata('fullname');
+			
             $data['dataizinmenikah']=$this->Modul_surat->viewizinmenikah();
             $this->load->view('berkas/surat/izinmenikah/listdataizinmenikah',$data);
 		}
@@ -177,9 +150,9 @@ class Surat extends CI_Controller
         }else{
             $generalcode = "SETTING_DASHBOARD";
 		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$id = preg_replace("/-/", '/', $id);
 			$data['data1']=$this->Modul_surat->get_pdfizinmenikah($id);
-			// print_r($this->Modul_surat->get_pdfizinmenikah($id));die;
-            $this->load->view('berkas/surat/izinmenikah/pdfizinmenikah',$data);
+			$this->load->view('berkas/surat/izinmenikah/pdfizinmenikah',$data);
         }
 
 	}
@@ -205,9 +178,9 @@ class Surat extends CI_Controller
         }else{
             $generalcode = "SETTING_DASHBOARD";
 		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$id = preg_replace("/-/", '/', $id);
 			$data['data1']=$this->Modul_surat->get_pdfsuratpengantar($id);
-			// print_r($this->Modul_surat->get_pdfsuratpengantar($id));die;
-            $this->load->view('berkas/surat/pengantar/pdfsuratpengantar',$data);
+			$this->load->view('berkas/surat/pengantar/pdfsuratpengantar',$data);
         }
 
 	}
@@ -233,11 +206,278 @@ class Surat extends CI_Controller
         }else{
             $generalcode = "SETTING_DASHBOARD";
 		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$id = preg_replace("/-/", '/', $id);
 			$data['data1']=$this->Modul_surat->get_pdfsuratkematian($id);
-			// print_r($this->Modul_surat->get_pdfsuratkematian($id));die;
-            $this->load->view('berkas/surat/kematian/pdfsuratkematian',$data);
+			$this->load->view('berkas/surat/kematian/pdfsuratkematian',$data);
         }
 
+	}
+	public function addketdomisili()
+	{
+        if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+            $generalcode = "SETTING_DASHBOARD";
+		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+            // $data['data']=$this->Modul_surat->viewjenisrek();
+            $this->load->view('berkas/surat/ketdomisili/addketdomisili',$data);
+        }
+
+	}
+	public function saveketdomisili(){
+		$this->form_validation->set_rules('no_surat','No. Surat','required');
+		$this->form_validation->set_rules('wrg_nik','NIK','required');
+		$tgl_suratawal = explode("/",$this->input->post('tgl_surat'));
+		  $tgl_surattgl = $tgl_suratawal[0];
+		  $tgl_suratbln = $tgl_suratawal[1];
+		  $tgl_suratthn = $tgl_suratawal[2];
+		  $tgl_suratformat = $tgl_suratthn."-".$tgl_suratbln."-".$tgl_surattgl;
+		$dataheader = array(
+				  'no_surat' =>$this->input->post('no_surat'),
+				  'tgl_surat' =>$tgl_suratformat,
+				 'kat_id' =>'3',
+				 'nik_pemohon' =>$this->input->post('wrg_nik'),
+				 'tujuan' =>$this->input->post('tujuan')
+				  );
+		$datadetail = array(
+				'no_surat' =>$this->input->post('no_surat'),
+				'nama_pihak2' =>$this->input->post('wrg_namapemilik')
+				
+		);
+        // print_r($data);die;
+		if($this->form_validation->run()!=FALSE){
+                //pesan yang muncul jika berhasil diupload pada session flashdata
+				$this->Modul_surat->get_insertketdomisiliheader($dataheader); //akses model untuk menyimpan ke database
+				$this->Modul_surat->get_insertketdomisilidetail($datadetail);
+                echo "berhasil";
+			}else{
+                //pesan yang muncul jika terdapat error dimasukkan pada session flashdata
+                echo "error";
+            }       
+            // print_r($this->Modul_jenisrek->get_insertjnsrek($data));die;  
+	}
+	public function addsuratkuasa()
+	{
+        if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+            $generalcode = "SETTING_DASHBOARD";
+		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+            // $data['data']=$this->Modul_surat->viewjenisrek();
+            $this->load->view('berkas/surat/kuasa/addkuasa',$data);
+        }
+
+	}
+	public function savekuasa(){
+		$this->form_validation->set_rules('no_surat','No. Surat','required');
+		$this->form_validation->set_rules('wrg_nik','NIK','required');
+		$tgl_suratawal = explode("/",$this->input->post('tgl_surat'));
+		  $tgl_surattgl = $tgl_suratawal[0];
+		  $tgl_suratbln = $tgl_suratawal[1];
+		  $tgl_suratthn = $tgl_suratawal[2];
+		  $tgl_suratformat = $tgl_suratthn."-".$tgl_suratbln."-".$tgl_surattgl;
+
+		  $tgllahir_pihak2awal = explode("/",$this->input->post('tgllahir_pihak2'));
+		  $tgllahir_pihak2tgl = $tgllahir_pihak2awal[0];
+		  $tgllahir_pihak2bln = $tgllahir_pihak2awal[1];
+		  $tgllahir_pihak2thn = $tgllahir_pihak2awal[2];
+		  $tgllahir_pihak2format = $tgllahir_pihak2thn."-".$tgllahir_pihak2bln."-".$tgllahir_pihak2tgl;
+		$dataheader = array(
+				  'no_surat' =>$this->input->post('no_surat'),
+				  'tgl_surat' =>$tgl_suratformat,
+				 'kat_id' =>'1',
+				 'nik_pemohon' =>$this->input->post('wrg_nik'),
+				 'tujuan' =>$this->input->post('tujuan')
+				  );
+		$datadetail = array(
+				'no_surat' =>$this->input->post('no_surat'),
+				'nama_pihak2' =>$this->input->post('wrg_namapihak2'),
+				'tmpatlahir_pihak2' =>$this->input->post('tmpatlahir_pihak2'),
+				'tgllahir_pihak2' =>$tgllahir_pihak2format,
+				'pekerjaan_pihak2' =>$this->input->post('pekerjaan_pihak2'),
+				'alamat_pihak2' =>$this->input->post('alamat_pihak2')
+				
+		);
+        // print_r($data);die;
+		if($this->form_validation->run()!=FALSE){
+                //pesan yang muncul jika berhasil diupload pada session flashdata
+				$this->Modul_surat->get_insertketdomisiliheader($dataheader); //akses model untuk menyimpan ke database
+				$this->Modul_surat->get_insertketdomisilidetail($datadetail);
+                echo "berhasil";
+			}else{
+                //pesan yang muncul jika terdapat error dimasukkan pada session flashdata
+                echo "error";
+            }       
+            // print_r($this->Modul_jenisrek->get_insertjnsrek($data));die;  
+	}
+	public function addizinmenikah()
+	{
+        if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+            $generalcode = "SETTING_DASHBOARD";
+		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+            // $data['data']=$this->Modul_surat->viewjenisrek();
+            $this->load->view('berkas/surat/izinmenikah/addizinmenikah',$data);
+        }
+
+	}
+	public function saveizinmenikah(){
+		$this->form_validation->set_rules('no_surat','No. Surat','required');
+		$this->form_validation->set_rules('wrg_nik','NIK','required');
+		$tgl_suratawal = explode("/",$this->input->post('tgl_surat'));
+		  $tgl_surattgl = $tgl_suratawal[0];
+		  $tgl_suratbln = $tgl_suratawal[1];
+		  $tgl_suratthn = $tgl_suratawal[2];
+		  $tgl_suratformat = $tgl_suratthn."-".$tgl_suratbln."-".$tgl_surattgl;
+
+		  $tgllahir_pihak2awal = explode("/",$this->input->post('tgllahir_pihak2'));
+		  $tgllahir_pihak2tgl = $tgllahir_pihak2awal[0];
+		  $tgllahir_pihak2bln = $tgllahir_pihak2awal[1];
+		  $tgllahir_pihak2thn = $tgllahir_pihak2awal[2];
+		  $tgllahir_pihak2format = $tgllahir_pihak2thn."-".$tgllahir_pihak2bln."-".$tgllahir_pihak2tgl;
+
+		  $tgllahir_pihak3awal = explode("/",$this->input->post('tgllahir_pihak3'));
+		  $tgllahir_pihak3tgl = $tgllahir_pihak3awal[0];
+		  $tgllahir_pihak3bln = $tgllahir_pihak3awal[1];
+		  $tgllahir_pihak3thn = $tgllahir_pihak3awal[2];
+		  $tgllahir_pihak3format = $tgllahir_pihak3thn."-".$tgllahir_pihak3bln."-".$tgllahir_pihak3tgl;
+		$dataheader = array(
+				  'no_surat' =>$this->input->post('no_surat'),
+				  'tgl_surat' =>$tgl_suratformat,
+				 'kat_id' =>'2',
+				 'nik_pemohon' =>$this->input->post('wrg_nik'),
+				 'tujuan' =>$this->input->post('tujuan')
+				  );
+		$datadetail = array(
+				'no_surat' =>$this->input->post('no_surat'),
+				'nama_pihak2' =>$this->input->post('wrg_namapihak2'),
+				'tmpatlahir_pihak2' =>$this->input->post('tmpatlahir_pihak2'),
+				'tgllahir_pihak2' =>$tgllahir_pihak2format,
+				'pekerjaan_pihak2' =>$this->input->post('pekerjaan_pihak2'),
+				'alamat_pihak2' =>$this->input->post('alamat_pihak2'),
+				'nama_pihak3' =>$this->input->post('wrg_namapihak3'),
+				'tmpatlahir_pihak3' =>$this->input->post('tmpatlahir_pihak3'),
+				'tgllahir_pihak3' =>$tgllahir_pihak3format,
+				
+		);
+        // print_r($data);die;
+		if($this->form_validation->run()!=FALSE){
+                //pesan yang muncul jika berhasil diupload pada session flashdata
+				$this->Modul_surat->get_insertketdomisiliheader($dataheader); //akses model untuk menyimpan ke database
+				$this->Modul_surat->get_insertketdomisilidetail($datadetail);
+                echo "berhasil";
+			}else{
+                //pesan yang muncul jika terdapat error dimasukkan pada session flashdata
+                echo "error";
+            }       
+            // print_r($this->Modul_jenisrek->get_insertjnsrek($data));die;  
+	}
+	public function addpengantar()
+	{
+        if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+            $generalcode = "SETTING_DASHBOARD";
+		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+            // $data['data']=$this->Modul_surat->viewjenisrek();
+            $this->load->view('berkas/surat/pengantar/addpengantar',$data);
+        }
+
+	}
+	public function savepengantar(){
+		$this->form_validation->set_rules('no_surat','No. Surat','required');
+		$this->form_validation->set_rules('wrg_nik','NIK','required');
+		$tgl_suratawal = explode("/",$this->input->post('tgl_surat'));
+		  $tgl_surattgl = $tgl_suratawal[0];
+		  $tgl_suratbln = $tgl_suratawal[1];
+		  $tgl_suratthn = $tgl_suratawal[2];
+		  $tgl_suratformat = $tgl_suratthn."-".$tgl_suratbln."-".$tgl_surattgl;
+		$dataheader = array(
+				  'no_surat' =>$this->input->post('no_surat'),
+				  'tgl_surat' =>$tgl_suratformat,
+				 'kat_id' =>'5',
+				 'nik_pemohon' =>$this->input->post('wrg_nik'),
+				 'tujuan' =>$this->input->post('tujuan')
+				  );
+		$datadetail = array(
+				'no_surat' =>$this->input->post('no_surat')
+				
+		);
+        // print_r($data);die;
+		if($this->form_validation->run()!=FALSE){
+                //pesan yang muncul jika berhasil diupload pada session flashdata
+				$this->Modul_surat->get_insertketdomisiliheader($dataheader); //akses model untuk menyimpan ke database
+				$this->Modul_surat->get_insertketdomisilidetail($datadetail);
+                echo "berhasil";
+			}else{
+                //pesan yang muncul jika terdapat error dimasukkan pada session flashdata
+                echo "error";
+            }       
+            // print_r($this->Modul_jenisrek->get_insertjnsrek($data));die;  
+	}
+	public function addsuratkematian()
+	{
+        if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+            $generalcode = "SETTING_DASHBOARD";
+		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+            // $data['data']=$this->Modul_surat->viewjenisrek();
+            $this->load->view('berkas/surat/kematian/addsuratkematian',$data);
+        }
+
+	}
+	public function savesuratkematian(){
+		$this->form_validation->set_rules('no_surat','No. Surat','required');
+		$this->form_validation->set_rules('wrg_nik','NIK','required');
+		$tgl_suratawal = explode("/",$this->input->post('tgl_surat'));
+		  $tgl_surattgl = $tgl_suratawal[0];
+		  $tgl_suratbln = $tgl_suratawal[1];
+		  $tgl_suratthn = $tgl_suratawal[2];
+		  $tgl_suratformat = $tgl_suratthn."-".$tgl_suratbln."-".$tgl_surattgl;
+
+		  $wrg_tglmeninggalawal = explode("/",$this->input->post('wrg_tglmeninggal'));
+		  $wrg_tglmeninggaltgl = $wrg_tglmeninggalawal[0];
+		  $wrg_tglmeninggalbln = $wrg_tglmeninggalawal[1];
+		  $wrg_tglmeninggalthn = $wrg_tglmeninggalawal[2];
+		  $wrg_tglmeninggalformat = $wrg_tglmeninggalthn."-".$wrg_tglmeninggalbln."-".$wrg_tglmeninggaltgl;
+		$dataheader = array(
+				  'no_surat' =>$this->input->post('no_surat'),
+				  'tgl_surat' =>$tgl_suratformat,
+				 'kat_id' =>'4',
+				 'nik_pemohon' =>$this->input->post('wrg_nik'),
+				 'tujuan' =>$this->input->post('tujuan')
+				  );
+		$datadetail = array(
+				'no_surat' =>$this->input->post('no_surat'),
+				'wrg_harimeninggal' =>$this->input->post('wrg_harimeninggal'),
+				'wrg_tglmeninggal' =>$wrg_tglmeninggalformat
+								
+		);
+		$datameninggal = array(
+			'wrgmeninggal_nik' =>$this->input->post('wrg_nik'),
+			'wrgmeninggal_tgl' =>$wrg_tglmeninggalformat,
+			'wrgmeninggal_tempat' =>$this->input->post('wrgmeninggal_tempat'),
+			'wrgmeninggal_sebab' =>$this->input->post('wrgmeninggal_sebab')
+			);
+  $data = array(
+		  'wrg_nik' =>$this->input->post('wrg_nik'),
+		  'is_active' =>"0"
+  );
+        // print_r($data);die;
+		if($this->form_validation->run()!=FALSE){
+                //pesan yang muncul jika berhasil diupload pada session flashdata
+				$this->Modul_surat->get_insertketdomisiliheader($dataheader); //akses model untuk menyimpan ke database
+				$this->Modul_surat->get_insertketdomisilidetail($datadetail);
+				$this->Modul_warga->get_insertmeninggalwarga($datameninggal); //akses model untuk menyimpan ke database
+					$this->Modul_warga->moduleditwarga($data);
+                echo "berhasil";
+			}else{
+                //pesan yang muncul jika terdapat error dimasukkan pada session flashdata
+                echo "error";
+            }       
+            // print_r($this->Modul_jenisrek->get_insertjnsrek($data));die;  
 	}
 	// end added
 	

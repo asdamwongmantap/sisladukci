@@ -152,7 +152,9 @@ class PDF extends FPDF
                  $this->cell(10,10,'Hari                        : '.$u->wrg_harimeninggal) ;
                  $this->Ln(7);
                  $this->cell(30,6,'',0,0,'C',0);
-                 $this->cell(10,10,'Tanggal                  : '.$u->wrg_tglmeninggal) ;
+                 $tglawalmeninggal = date_create($u->wrgmeninggal_tgl);
+		         $tglmeninggal = date_format($tglawalmeninggal,"d-m-Y");
+                 $this->cell(10,10,'Tanggal                  : '.$tglmeninggal) ;
 
                  $this->Ln(13);
                 

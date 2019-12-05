@@ -143,7 +143,7 @@ class PDF extends FPDF
                  $this->cell(10,10,'Nama                        : '.$u->nama_pihak2) ;
                 $this->Ln(7);
                  $this->cell(30,6,'',0,0,'C',0);
-                 $this->cell(10,10,'Tempat/Tgl Lahir      : '.$u->tmpatlahir_pihak2.",  ".$tgllahir_pihak2) ;
+                 $this->cell(10,10,'Tempat/Tgl Lahir      : '.$u->tmpatlahir_pihak2.",  ".$u->tgllahir_pihak2) ;
                  $this->Ln(7);
                  $this->cell(30,6,'',0,0,'C',0);
                  $this->cell(10,10,'Pekerjaan                 : '.$u->pekerjaan_pihak2) ;

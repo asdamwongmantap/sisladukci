@@ -38,14 +38,14 @@
                   </div>
                   <div class="x_content">
 				  <input type="hidden" id="usergroup" value="<?=$this->session->userdata('usergroupid');?>">
-				  <a href="<?=base_url('app/surat/add_mohonkk');?>" class="btn btn-success" title="Tambah user group" data-target=".bs-example-modal-smadd" style="float:right;display:block;" 
+				  <a href="<?=base_url('app/surat/addsuratkematian');?>" class="btn btn-success" title="Tambah user group" data-target=".bs-example-modal-smadd" style="float:right;display:block;" 
 				  id="tomboltambah"><i class="fa fa-plus"></i> Buat Surat Kematian</a></br>
 				  </br>
 				  <table id="mydata" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
                       <thead>
                         <tr>
 							<th>No. Surat</th>
-							<th>Nama Pemohon</th>
+							<th>Nama Warga</th>
 							<th>Kewarganegaraan</th>
 							<th>Tanggal Pembuatan</th>
 							<th>Action</th>
@@ -59,10 +59,14 @@
 									<td><?=$row->no_surat;?></td>							
 									<td><?=$row->wrg_nama;?></td>
 									<td><?=$row->wrg_kwarganegaraan;?></td>
-									<td><?=$row->tgl_surat;?></td>							
-									<td><a class="btn btn-success" href='pdfsuratkematian/<?=$row->no_surat;?>'><i class="glyphicon glyphicon-zoom-in icon-white"></i></a>
-									<a class="btn btn-primary" href='editmohonkk/<?=$row->no_surat;?>'><i class="glyphicon glyphicon-edit icon-white"></i></a>
-									<a class="btn btn-danger item_deletemohonkk" data-id="<?=$row->no_surat;?>"><i class="glyphicon glyphicon-trash icon-white"></i></a></td>
+									<td><?=$row->tgl_surat;?></td>		
+									<?php
+										$nosurat = preg_replace("/\//", '-', $row->no_surat);
+									?>					
+									<td><a class="btn btn-success" href='pdfsuratkematian/<?=$nosurat;?>'><i class="glyphicon glyphicon-print icon-white"></i></a>
+									<!-- <a class="btn btn-primary" href='editmohonkk/<?=$nosurat;?>'><i class="glyphicon glyphicon-edit icon-white"></i></a>
+									<a class="btn btn-danger item_deletemohonkk" data-id="<?=$nosurat;?>"><i class="glyphicon glyphicon-trash icon-white"></i></a> -->
+								</td>
 								</tr>
 							<?php
 								}

@@ -71,7 +71,7 @@
                 </li>
                 <!-- <h3>Laporan</h3> -->
                 <li>
-                  <a href="<?=base_url();?>app/surat/mohonktp"><i class="fa fa-calculator"></i>Keuangan</a>
+                  <a href="<?=base_url();?>app/transaksi/listtransaksi"><i class="fa fa-calculator"></i>Keuangan</a>
                 </li>
                 <li>
                   <a href="<?=base_url();?>app/surat/mohonktp"><i class="fa fa-file"></i>SMS Blast</a>
@@ -85,7 +85,7 @@
                   <a href="<?=base_url();?>app/laporan/warga">Report Data Penduduk</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/laporan/keuangan">Report Data Surat</a>
+                  <a href="<?=base_url();?>app/laporan/surat">Report Data Surat</a>
                 </li>
                 <li>
                   <a href="<?=base_url();?>app/laporan/keuangan">Report Data Keuangan</a>
@@ -102,7 +102,7 @@
                     <h3>General</h3>
                <li><a href="<?=base_url();?>app/main/dashboard"><i class="fa fa-home"></i> Dashboard </a></li>
                <li>
-                  <a href="<?=base_url();?>app/surat/mohonktp"><i class="fa fa-calculator"></i>Keuangan</a>
+                  <a href="<?=base_url();?>app/transaksi/listtransaksi"><i class="fa fa-calculator"></i>Keuangan</a>
                 </li>
               <li>
                <a href="#"><i class="fa fa-file"></i>Report </a>
@@ -112,7 +112,7 @@
                   <a href="<?=base_url();?>app/laporan/warga">Report Data Penduduk</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/laporan/keuangan">Report Data Surat</a>
+                  <a href="<?=base_url();?>app/laporan/surat">Report Data Surat</a>
                 </li>
                 <li>
                   <a href="<?=base_url();?>app/laporan/keuangan">Report Data Keuangan</a>
@@ -171,7 +171,7 @@
                 </li>
                 <!-- <h3>Laporan</h3> -->
                 <li>
-                  <a href="<?=base_url();?>app/surat/mohonktp"><i class="fa fa-calculator"></i>Keuangan</a>
+                  <a href="<?=base_url();?>app/transaksi/listtransaksi"><i class="fa fa-calculator"></i>Keuangan</a>
                 </li>
                 <li>
                   <a href="<?=base_url();?>app/surat/mohonktp"><i class="fa fa-file"></i>SMS Blast</a>
@@ -185,7 +185,7 @@
                   <a href="<?=base_url();?>app/laporan/warga">Report Data Penduduk</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/laporan/keuangan">Report Data Surat</a>
+                  <a href="<?=base_url();?>app/laporan/surat">Report Data Surat</a>
                 </li>
                 <li>
                   <a href="<?=base_url();?>app/laporan/keuangan">Report Data Keuangan</a>
@@ -200,7 +200,7 @@
                       else if ($this->session->userdata('usergroupid')=='4'){?>
                         <ul class="nav side-menu">
                         <li>
-                  <a href="<?=base_url();?>app/surat/mohonktp"><i class="fa fa-calculator"></i>Keuangan</a>
+                  <a href="<?=base_url();?>app/transaksi/listtransaksi"><i class="fa fa-calculator"></i>Keuangan</a>
                 </li>
                 
                 <!-- <h3>Laporan</h3> -->
@@ -212,7 +212,7 @@
                   <a href="<?=base_url();?>app/laporan/warga">Report Data Penduduk</a>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/laporan/keuangan">Report Data Surat</a>
+                  <a href="<?=base_url();?>app/laporan/surat">Report Data Surat</a>
                 </li>
                 <li>
                   <a href="<?=base_url();?>app/laporan/keuangan">Report Data Keuangan</a>

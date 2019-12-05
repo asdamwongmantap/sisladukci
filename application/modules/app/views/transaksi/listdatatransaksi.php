@@ -32,38 +32,44 @@
               <div class="col-md-12 col-sm-4 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>List Data Pengantar Domisili</h2>
+                    <h2>List Data Transaksi</h2>
                     <div class="clearfix"></div>
 					
                   </div>
                   <div class="x_content">
 				  <input type="hidden" id="usergroup" value="<?=$this->session->userdata('usergroupid');?>">
-				  <a href="<?=base_url('app/surat/addketdomisili');?>" class="btn btn-success" title="Tambah user group" data-target=".bs-example-modal-smadd" style="float:right;display:block;" 
-				  id="tomboltambah"><i class="fa fa-plus"></i> Buat Pengantar Domisili</a></br>
+				  <a href="<?=base_url('app/transaksi/addtransaksi');?>" class="btn btn-success" title="Tambah user group" data-target=".bs-example-modal-smadd" style="float:right;display:block;" 
+				  id="tomboltambah"><i class="fa fa-plus"></i> Buat Transaksi</a></br>
 				  </br>
 				  <table id="mydata" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
                       <thead>
                         <tr>
-							<th>No. Surat</th>
-							<th>Nama Pemohon</th>
-							<th>Kewarganegaraan</th>
-							<th>Tanggal Pembuatan</th>
-							<th>Action</th>
+							<th>No. Transaksi</th>
+							<th>Tanggal Transaksi</th>
+							<th>Jenis Transaksi</th>
+							<th>Keterangan</th>
+							<th>Pemasukan</th>
+							<th>Pengeluaran</th>
+							<th>Saldo Akhir</th>
+							<!-- <th>Action</th> -->
                         </tr>
                       </thead>
                       <tbody id="show_data">
 					  
 							<?php 
-							foreach ($dataketdomisili as $row) {?>	 
+							foreach ($datatransaksi as $row) {?>	 
 							<tr>
-									<td><?=$row->no_surat;?></td>							
-									<td><?=$row->wrg_nama;?></td>
-									<td><?=$row->wrg_kwarganegaraan;?></td>
-									<td><?=$row->tgl_surat;?></td>	
+									<td><?=$row->no_transaksi;?></td>							
+									<td><?=$row->tgl_transaksi;?></td>	
+									<td><?=$row->jenis_transaksi;?></td>
+									<td><?=$row->ket_transaksi;?></td>							
+									<td><?=$row->saldo_debit;?></td>
+									<td><?=$row->saldo_kredit;?></td>
+									<td><?=$row->saldo_akhir;?></td>	
 									<?php
-										$nosurat = preg_replace("/\//", '-', $row->no_surat);
+										$notransaksi = preg_replace("/\//", '-', $row->no_transaksi);
 									?>
-									<td><a class="btn btn-success" href='pdfketdomisili/<?=$nosurat;?>'><i class="glyphicon glyphicon-print icon-white"></i></a>
+									<!-- <td><a class="btn btn-success" href='pdfketdomisili/<?=$nosurat;?>'><i class="glyphicon glyphicon-print icon-white"></i></a> -->
 									<!-- <a class="btn btn-primary" href='editmohonkk/<?=$nosurat;?>'><i class="glyphicon glyphicon-edit icon-white"></i></a>
 									<a class="btn btn-danger item_deletemohonkk" data-id="<?=$nosurat;?>"><i class="glyphicon glyphicon-trash icon-white"></i></a> -->
 								</td>
