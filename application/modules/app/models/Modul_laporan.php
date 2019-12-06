@@ -28,6 +28,37 @@
 			$query = $this->db->get('view_wargameninggal');
 	return $query->result(); 
 	}
+
+	public function get_pdflaporanketdomisili()
+	{
+			// $this->db->where('no_surat',$id); 
+			$query = $this->db->get('view_ketdomisili');
+	return $query->result(); 
+	}
+	public function get_pdflaporansuratpengantar()
+	{
+			// $this->db->where('no_surat',$id); 
+			$query = $this->db->get('view_pengantar');
+	return $query->result(); 
+	}
+	public function get_pdflaporansuratkuasa()
+	{
+			// $this->db->where('no_surat',$id); 
+			$query = $this->db->get('view_wargapindah');
+	return $query->result(); 
+	}
+	public function get_pdflaporanizinmenikah()
+	{
+			// $this->db->where('no_surat',$id); 
+			$query = $this->db->get('view_izinmenikah');
+	return $query->result(); 
+	}
+	public function get_pdflaporansuratkematian()
+	{
+			// $this->db->where('no_surat',$id); 
+			$query = $this->db->get('view_ketkematian');
+	return $query->result(); 
+	}
 	
 	
 }

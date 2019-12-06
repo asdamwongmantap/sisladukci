@@ -30,22 +30,7 @@ class Laporan extends CI_Controller
 		// $this->load->view('setup/data/listdatawarga');
 		
 	}
-	public function listallwarga($id)
-	{
-        if (!$this->session->userdata('username')){
-			redirect(base_url());
-        }else{
-			$nokk = $this->uri->segment(5);
-            $generalcode = "SETTING_DASHBOARD";
-			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
-			$data['namakry'] = $this->session->userdata('fullname');
-			// print_r($nokk);die;
-            $data['dataallwarga']=$this->Modul_warga->viewallwarga();
-            $this->load->view('setup/data/warga/listdataallwarga',$data);
-		}
-		// $this->load->view('setup/data/listdatawarga');
-		
-	}
+	
 	public function listpindahwarga()
 	{
         if (!$this->session->userdata('username')){
@@ -169,6 +154,96 @@ class Laporan extends CI_Controller
 			$data['data1']=$this->Modul_laporan->get_pdflaporanmeninggalwarga();
 			// print_r($this->Modul_laporan->get_pdflaporanmeninggalwarga());die;
 			$this->load->view('laporan/warga/pdfmeninggalwarga',$data);
+        }
+
+	}
+	public function surat()
+	{
+        if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+			$generalcode = "SETTING_DASHBOARD";
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['namakry'] = $this->session->userdata('fullname');
+            $data['datakepalakeluarga']=$this->Modul_warga->viewkepalakeluarga();
+            $this->load->view('laporan/surat/laporansurat',$data);
+		}
+		// $this->load->view('setup/data/listdatasurat');
+		
+	}
+	public function pdfsuratpengantardomisili()
+	{
+		
+		if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+            $generalcode = "SETTING_DASHBOARD";
+		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			// $id = preg_replace("/-/", '/', $id);
+			$data['data1']=$this->Modul_laporan->get_pdflaporanketdomisili();
+			// print_r($this->Modul_laporan->get_pdflaporansuratpengantardomisili());die;
+			$this->load->view('laporan/surat/pdfsuratpengantardomisili',$data);
+        }
+
+	}
+	public function pdfsuratpengantar()
+	{
+		
+		if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+            $generalcode = "SETTING_DASHBOARD";
+		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			// $id = preg_replace("/-/", '/', $id);
+			$data['data1']=$this->Modul_laporan->get_pdflaporansuratpengantar();
+			// print_r($this->Modul_laporan->get_pdflaporansuratpengantar());die;
+			$this->load->view('laporan/surat/pdfsuratpengantar',$data);
+        }
+
+	}
+	
+	public function pdfsuratkuasa()
+	{
+		
+		if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+            $generalcode = "SETTING_DASHBOARD";
+		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			// $id = preg_replace("/-/", '/', $id);
+			$data['data1']=$this->Modul_laporan->get_pdflaporansuratkuasa();
+			// print_r($this->Modul_laporan->get_pdflaporansuratkuasa());die;
+			$this->load->view('laporan/surat/pdfsuratkuasa',$data);
+        }
+
+	}
+	public function pdfsuratkematian()
+	{
+		
+		if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+            $generalcode = "SETTING_DASHBOARD";
+		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			// $id = preg_replace("/-/", '/', $id);
+			$data['data1']=$this->Modul_laporan->get_pdflaporansuratkematian();
+			// print_r($this->Modul_laporan->get_pdflaporansuratkematian());die;
+			$this->load->view('laporan/surat/pdfsuratkematian',$data);
+        }
+
+	}
+	public function pdfsuratizinmenikah()
+	{
+		
+		if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+            $generalcode = "SETTING_DASHBOARD";
+		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			// $id = preg_replace("/-/", '/', $id);
+			$data['data1']=$this->Modul_laporan->get_pdflaporanizinmenikah();
+			// print_r($this->Modul_laporan->get_pdflaporanizinmenikah());die;
+			$this->load->view('laporan/surat/pdfsuratizinmenikah',$data);
         }
 
 	}
