@@ -18,12 +18,50 @@ $(document).ready(function(){
 			$("#idbtn").text("Check No.KTP");
 			document.getElementById("wrg_nik").style.display = "block";
 			document.getElementById("wrg_nokk").style.display = "none";
-		}else {
+			document.getElementById("idbtn").style.display = "block";
+			document.getElementById("idbtnnama").style.display = "none";
+			document.getElementById("idbtnalamat").style.display = "none";
+			$("#wrg_nik").val("");
+			$("#wrg_nama").val("");
+			$("#wrg_alamat").val("");
+		}else if (searchby == "nokk"){
 			$("#labelwrg_nik").text("Nomor KK");
 			$("#labelwrg_nama").text("Nama Kepala Keluarga");
 			$("#idbtn").text("Check No.KK");
 			document.getElementById("wrg_nokk").style.display = "block";
 			document.getElementById("wrg_nik").style.display = "none";
+			document.getElementById("idbtn").style.display = "block";
+			document.getElementById("idbtnnama").style.display = "none";
+			document.getElementById("idbtnalamat").style.display = "none";
+			$("#wrg_nik").val("");
+			$("#wrg_nama").val("");
+			$("#wrg_alamat").val("");
+		}else if (searchby == "nama"){
+			$("#labelwrg_nik").text("Nomor KTP");
+			$("#labelwrg_nama").text("Nama Penduduk");
+			$("#idbtn").text("Check No.KK");
+			$("#idbtnnama").text("Check Nama");
+			document.getElementById("wrg_nokk").style.display = "none";
+			document.getElementById("wrg_nik").style.display = "block";
+			document.getElementById("idbtn").style.display = "none";
+			document.getElementById("idbtnnama").style.display = "block";
+			document.getElementById("idbtnalamat").style.display = "none";
+			$("#wrg_nik").val("");
+			$("#wrg_nama").val("");
+			$("#wrg_alamat").val("");
+		}else {
+			$("#labelwrg_nik").text("Nomor KTP");
+			$("#labelwrg_nama").text("Nama Penduduk");
+			$("#idbtn").text("Check No.KK");
+			$("#idbtnalamat").text("Check Alamat");
+			document.getElementById("wrg_nokk").style.display = "none";
+			document.getElementById("wrg_nik").style.display = "block";
+			document.getElementById("idbtn").style.display = "none";
+			document.getElementById("idbtnnama").style.display = "none";
+			document.getElementById("idbtnalamat").style.display = "block";
+			$("#wrg_nik").val("");
+			$("#wrg_nama").val("");
+			$("#wrg_alamat").val("");
 		}
 	});
 	$("#idbtn").click(function(){
@@ -86,6 +124,123 @@ $(document).ready(function(){
 		// alert(APPNO);
 		
 	});
+	// added 20191209 by asdam
+	$("#idbtnnama").click(function(){
+		var searchby = document.getElementById("searchby").value;
+			var wrgnama = document.getElementById("wrg_nama").value;
+            //    alert(wrgnama);
+			    $.post( "<?php echo base_url("app/data/warga/get_nama"); ?>",{ wrgnama : wrgnama,searchby:searchby}, function(data) {
+
+                var obj = JSON.parse(data);
+				if (data == "[]"){
+						alert("Data Tidak ditemukan");
+						$("#wrg_statushubungan").html("<option value='Kepala Keluarga'>Kepala Keluarga</option><option value='Istri'>Istri</option><option value='Anak'>Anak</option>");
+						$("#wrg_nik").val("");
+						// $("#wrg_nama").val("");
+						$("#wrg_alamat").val("");
+						$("#savebtn").text("Tambah");
+
+				}
+				else{
+					obj.forEach(function(items) {
+					var nik = items.wrg_nik;
+					var nama = items.wrg_nama;
+					var alamat = items.wrg_alamat;
+					var statushubungan = items.wrg_statushubungan;
+					var nokk = items.wrg_nokk;
+						$("#wrg_nik").html(nik);
+						$("#wrg_nik").val(nik);
+						// $("#wrg_nama").html(nama);
+						// $("#wrg_nama").val(nama);
+						$("#wrg_alamat").html(alamat);
+						$("#wrg_alamat").val(alamat);
+						$("#wrg_nokkdb").html(nokk);
+						$("#wrg_nokkdb").val(nokk);
+						// $("#wrg_statushubungan").html(statushubungan);
+						// $("#wrg_statushubungan").val(statushubungan);
+					
+						// alert(statushubungan);
+						// $("#wrg_statushubungan").html("<option value='Kepala Keluarga'>Kepala Keluarga</option><option value='Istri'>Istri</option><option value='Anak'>Anak</option>");
+						if (statushubungan == "Kepala Keluarga") {
+							$("#wrg_statushubungan").html("<option value='Kepala Keluarga' selected>Kepala Keluarga</option><option value='Istri'>Istri</option><option value='Anak'>Anak</option>");
+						}else if (statushubungan == "Istri") {
+							$("#wrg_statushubungan").html("<option value='Kepala Keluarga'>Kepala Keluarga</option><option value='Istri' selected>Istri</option><option value='Anak'>Anak</option>");
+						}else if (statushubungan == "Anak") {
+							$("#wrg_statushubungan").html("<option value='Kepala Keluarga'>Kepala Keluarga</option><option value='Istri'>Istri</option><option value='Anak' selected>Anak</option>");
+						}else {
+							$("#wrg_statushubungan").html("<option value='Kepala Keluarga'>Kepala Keluarga</option><option value='Istri'>Istri</option><option value='Anak'>Anak</option>");
+						}
+						
+						// $("#savebtn").text("Ubah");
+				
+			
+					});
+				}
+				
+					
+        });
+		// alert(APPNO);
+		
+	});
+
+	$("#idbtnalamat").click(function(){
+		var searchby = document.getElementById("searchby").value;
+			var wrgalamat = document.getElementById("wrg_alamat").value;
+            //    alert(wrgalamat);
+			    $.post( "<?php echo base_url("app/data/warga/get_alamat"); ?>",{ wrgalamat : wrgalamat,searchby:searchby}, function(data) {
+
+                var obj = JSON.parse(data);
+				if (data == "[]"){
+						alert("Data Tidak ditemukan");
+						$("#wrg_statushubungan").html("<option value='Kepala Keluarga'>Kepala Keluarga</option><option value='Istri'>Istri</option><option value='Anak'>Anak</option>");
+						$("#wrg_nik").val("");
+						$("#wrg_nama").val("");
+						// $("#wrg_alamat").val("");
+						$("#savebtn").text("Tambah");
+
+				}
+				else{
+					obj.forEach(function(items) {
+					var nik = items.wrg_nik;
+					var nama = items.wrg_nama;
+					var alamat = items.wrg_alamat;
+					var statushubungan = items.wrg_statushubungan;
+					var nokk = items.wrg_nokk;
+						$("#wrg_nik").html(nik);
+						$("#wrg_nik").val(nik);
+						$("#wrg_nama").html(nama);
+						$("#wrg_nama").val(nama);
+						// $("#wrg_alamat").html(alamat);
+						// $("#wrg_alamat").val(alamat);
+						$("#wrg_nokkdb").html(nokk);
+						$("#wrg_nokkdb").val(nokk);
+						// $("#wrg_statushubungan").html(statushubungan);
+						// $("#wrg_statushubungan").val(statushubungan);
+					
+						// alert(statushubungan);
+						// $("#wrg_statushubungan").html("<option value='Kepala Keluarga'>Kepala Keluarga</option><option value='Istri'>Istri</option><option value='Anak'>Anak</option>");
+						if (statushubungan == "Kepala Keluarga") {
+							$("#wrg_statushubungan").html("<option value='Kepala Keluarga' selected>Kepala Keluarga</option><option value='Istri'>Istri</option><option value='Anak'>Anak</option>");
+						}else if (statushubungan == "Istri") {
+							$("#wrg_statushubungan").html("<option value='Kepala Keluarga'>Kepala Keluarga</option><option value='Istri' selected>Istri</option><option value='Anak'>Anak</option>");
+						}else if (statushubungan == "Anak") {
+							$("#wrg_statushubungan").html("<option value='Kepala Keluarga'>Kepala Keluarga</option><option value='Istri'>Istri</option><option value='Anak' selected>Anak</option>");
+						}else {
+							$("#wrg_statushubungan").html("<option value='Kepala Keluarga'>Kepala Keluarga</option><option value='Istri'>Istri</option><option value='Anak'>Anak</option>");
+						}
+						
+						// $("#savebtn").text("Ubah");
+				
+			
+					});
+				}
+				
+					
+        });
+		// alert(APPNO);
+		
+	});
+	// end added
 					
 });	
 </script>
@@ -123,10 +278,12 @@ $(document).ready(function(){
 					   <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="searchby">Search By 
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
                           <select class="select2_single form-control" tabindex="-1" id="searchby" name="searchby">
 							<option value="noktp">No. KTP</option>
 							<option value="nokk">No. KK</option>
+							<option value="nama">Nama</option>
+							<option value="alamat">Alamat</option>
 							
 						  </select>
                         </div>
@@ -149,14 +306,31 @@ $(document).ready(function(){
 					  <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_nama" id="labelwrg_nama">Nama Penduduk
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
                           <input type="text" id="wrg_nama" name="wrg_nama" required="" maxlength="50" class="form-control col-md-7 col-xs-12">
-                        </div>
+						</div>
+						<div class="col-md-5 col-sm-5 col-xs-12">
+                          <span class="input-group-btn">
+							  <button type="button" id="idbtnnama" class="btn btn-warning" style="display:none;">Check Nama</button>
+						  </span>
+						</div>
+					  </div>
+					  <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_alamat">Domisili 
+                        </label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                         <textarea id="wrg_alamat" class="form-control" name="wrg_alamat" required="" maxlength="100" ></textarea>
+						</div>
+						<div class="col-md-5 col-sm-5 col-xs-12">
+                          <span class="input-group-btn">
+							  <button type="button" id="idbtnalamat" class="btn btn-warning" style="display:none;">Check Alamat</button>
+						  </span>
+						</div>
                       </div>
 					  <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrgmeninggal_tgl">Tanggal Kematian 
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
                           <!-- <input type="date" id="wrgmeninggal_tgl" name="wrgmeninggal_tgl" required="" class="form-control col-md-7 col-xs-12"> -->
 						  <div class="input-group date" id="myDatepicker2">
 							<input type="text" class="form-control" id="wrgmeninggal_tgl" name="wrgmeninggal_tgl" value="<?=$dateto;?>"/>
@@ -170,14 +344,14 @@ $(document).ready(function(){
 					  <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrgmeninggal_tempat">Tempat Kematian 
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
                           <input type="text" id="wrgmeninggal_tempat" name="wrgmeninggal_tempat" required="" maxlength="50" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
 					  <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrgmeninggal_sebab">Penyebab Kematian 
                         </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-md-4 col-sm-4 col-xs-12">
                          <textarea id="wrgmeninggal_sebab" class="form-control" name="wrgmeninggal_sebab" required="" maxlength="100" ></textarea>
                         </div>
                       </div>

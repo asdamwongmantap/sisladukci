@@ -47,7 +47,7 @@
                 </li>
     
                 <!-- <h3>Berkas</h3> -->
-                
+                <h3>Berkas</h3>
                <li>
                <a href="#"><i class="fa fa-file"></i> Surat </a>
                
@@ -70,13 +70,30 @@
                 </ul>
                 </li>
                 <!-- <h3>Laporan</h3> -->
+                <h3>Keuangan</h3>
                 <li>
-                  <a href="<?=base_url();?>app/transaksi/listtransaksi"><i class="fa fa-calculator"></i>Keuangan</a>
+                  <a href="#"><i class="fa fa-calculator"></i>Keuangan</a>
+                  <ul class="nav child_menu">
+                <li>
+                  <a href="#">Pemasukan Keuangan</a>
+                  <ul class="nav child_menu">
+                  <li>
+                    <a href="<?=base_url();?>app/transaksi/listiuranbln">Iuran Bulanan</a>
+                  </li>
+                  <li>
+                    <a href="<?=base_url();?>app/transaksi/listsumbangan">Sumbangan</a>
+                  </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="<?=base_url();?>app/transaksi/listtransaksi">Pengeluaran Keuangan</a>
+                </li>
+                </ul>
                 </li>
                 <li>
                   <a href="<?=base_url();?>app/surat/mohonktp"><i class="fa fa-file"></i>SMS Blast</a>
                 </li>
-                <!-- <h3>Laporan</h3> -->
+                <h3>Laporan</h3>
               <li>
                <a href="#"><i class="fa fa-file"></i>Report </a>
                
@@ -101,9 +118,11 @@
                     <ul class="nav side-menu">
                     <h3>General</h3>
                <li><a href="<?=base_url();?>app/main/dashboard"><i class="fa fa-home"></i> Dashboard </a></li>
+
                <li>
                   <a href="<?=base_url();?>app/transaksi/listtransaksi"><i class="fa fa-calculator"></i>Keuangan</a>
                 </li>
+                <h3>Laporan</h3>
               <li>
                <a href="#"><i class="fa fa-file"></i>Report </a>
                
@@ -119,6 +138,7 @@
                 </li>
                 </ul>
                 </li>
+                <h3>Others</h3>
               <li><a href="<?=base_url();?>app/login_c/logout"><i class="fa fa-sign-out"></i> Logout </a></li>
               
                     </ul>
@@ -147,7 +167,7 @@
                 </li>
     
                 <!-- <h3>Berkas</h3> -->
-                
+                <h3>Berkas</h3>
                <li>
                <a href="#"><i class="fa fa-file"></i> Surat </a>
                
@@ -170,13 +190,30 @@
                 </ul>
                 </li>
                 <!-- <h3>Laporan</h3> -->
+                <h3>Keuangan</h3>
                 <li>
-                  <a href="<?=base_url();?>app/transaksi/listtransaksi"><i class="fa fa-calculator"></i>Keuangan</a>
+                  <a href="#"><i class="fa fa-calculator"></i>Keuangan</a>
+                  <ul class="nav child_menu">
+                <li>
+                  <a href="#">Pemasukan Keuangan</a>
+                  <ul class="nav child_menu">
+                  <li>
+                    <a href="<?=base_url();?>app/transaksi/listiuranbln">Iuran Bulanan</a>
+                  </li>
+                  <li>
+                    <a href="<?=base_url();?>app/transaksi/listsumbangan">Sumbangan</a>
+                  </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="<?=base_url();?>app/transaksi/listtransaksi">Pengeluaran Keuangan</a>
+                </li>
+                </ul>
                 </li>
                 <li>
                   <a href="<?=base_url();?>app/surat/mohonktp"><i class="fa fa-file"></i>SMS Blast</a>
                 </li>
-                <!-- <h3>Laporan</h3> -->
+                <h3>Laporan</h3>
               <li>
                <a href="#"><i class="fa fa-file"></i>Report </a>
                
@@ -199,11 +236,28 @@
                     <?php  }
                       else if ($this->session->userdata('usergroupid')=='4'){?>
                         <ul class="nav side-menu">
+                        <h3>Keuangan</h3>
                         <li>
-                  <a href="<?=base_url();?>app/transaksi/listtransaksi"><i class="fa fa-calculator"></i>Keuangan</a>
+                  <a href="#"><i class="fa fa-calculator"></i>Keuangan</a>
+                  <ul class="nav child_menu">
+                <li>
+                  <a href="#">Pemasukan Keuangan</a>
+                  <ul class="nav child_menu">
+                  <li>
+                    <a href="<?=base_url();?>app/transaksi/listiuranbln">Iuran Bulanan</a>
+                  </li>
+                  <li>
+                    <a href="<?=base_url();?>app/transaksi/listsumbangan">Sumbangan</a>
+                  </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="<?=base_url();?>app/transaksi/listtransaksi">Pengeluaran Keuangan</a>
+                </li>
+                </ul>
                 </li>
                 
-                <!-- <h3>Laporan</h3> -->
+                <h3>Laporan</h3>
               <li>
                <a href="#"><i class="fa fa-file"></i>Report </a>
                

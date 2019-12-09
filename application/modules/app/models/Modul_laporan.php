@@ -44,7 +44,7 @@
 	public function get_pdflaporansuratkuasa()
 	{
 			// $this->db->where('no_surat',$id); 
-			$query = $this->db->get('view_wargapindah');
+			$query = $this->db->get('view_suratkuasa');
 	return $query->result(); 
 	}
 	public function get_pdflaporanizinmenikah()

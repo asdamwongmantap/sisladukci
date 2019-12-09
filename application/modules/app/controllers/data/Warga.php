@@ -457,6 +457,27 @@ class Warga extends CI_Controller
 				}       
 				// print_r($this->Modul_jenisrek->get_insertjnsrek($data));die;  
 		}
+		// added 20191209 by asdam
+		public function get_nama()
+    {
+		$wrgnama = $this->input->get_post("wrgnama");
+		$searchby = $this->input->get_post("searchby");
+		$datanama = array(
+			'wrg_nama' => $wrgnama
+		);
+		echo $this->Modul_warga->get_namamod($datanama);
+	
+	}
+	public function get_alamat()
+    {
+		$wrgalamat = $this->input->get_post("wrgalamat");
+		$searchby = $this->input->get_post("searchby");
+		$dataalamat = array(
+			'wrg_alamat' => $wrgalamat
+		);
+		echo $this->Modul_warga->get_alamatmod($dataalamat);
+	
+	}
 	
 }
 

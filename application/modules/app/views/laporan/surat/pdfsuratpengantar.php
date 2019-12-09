@@ -111,11 +111,13 @@ class PDF extends FPDF
                 $this->setFillColor(0,79,183);
 		        $this->setTextColor(255,255,255);
                 $this->cell(10,10,'No',1,0,'C',1);
-                $this->cell(30,10,'Tgl. Pindah',1,0,'C',1);
+                $this->cell(30,10,'No. Surat',1,0,'C',1);
+                $this->cell(30,10,'Tgl. Surat',1,0,'C',1);
+
                 $this->cell(30,10,'No. KTP',1,0,'C',1);
                 $this->cell(50,10,'Nama Lengkap',1,0,'C',1);
-                $this->cell(55,10,'Alamat',1,0,'C',1);
-                $this->cell(100,10,'Alasan',1,0,'C',1);
+                $this->cell(125,10,'Alamat',1,0,'C',1);
+                
                 
                 $this->Ln(10);
                 $this->setFont('Arial','',8);
@@ -127,11 +129,11 @@ class PDF extends FPDF
                 {
                  
                 $this->cell(10,10,$no++,1,0,'C',1);
-                $this->cell(30,10,$u->wrgpindah_tgl,1,0,'C',1);
-                $this->cell(30,10,$u->wrgpindah_nik,1,0,'C',1);
+                $this->cell(30,10,$u->no_surat,1,0,'C',1);
+                $this->cell(30,10,$u->tgl_surat,1,0,'C',1);
+                $this->cell(30,10,$u->nik_pemohon,1,0,'C',1);
                 $this->cell(50,10,$u->wrg_nama,1,0,'C',1);
-                $this->cell(55,10,$u->wrgpindah_alamat,1,0,'C',1);
-                $this->cell(100,10,$u->wrgpindah_alasan,1,0,'C',1);
+                $this->cell(125,10,$u->wrg_alamat,1,0,'C',1);
                 $this->Ln(10);
                 }
 		

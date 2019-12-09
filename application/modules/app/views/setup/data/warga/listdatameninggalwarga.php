@@ -50,6 +50,7 @@
 							<th>Tanggal Kematian</th>
 							<th>Tempat Kematian</th>
 							<th>Sebab Kematian</th>
+							<th>Usia</th>
 							<!-- <th>Action</th> -->
                         </tr>
                       </thead>
@@ -64,7 +65,8 @@
 									<td><?=$row->wrg_nama;?></td>
 									<td><?=$row->wrgmeninggal_tgl;?></td>
 									<td><?=$row->wrgmeninggal_tempat;?></td>
-									<td><?=$row->wrgmeninggal_sebab;?></td>							
+									<td><?=$row->wrgmeninggal_sebab;?></td>
+									<td><?=$row->wrg_usia;?></td>							
 									<!-- <td> -->
 									<!-- <a class="btn btn-success" href='detailwarga/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-zoom-in icon-white"></i></a> -->
 									<!-- <a class="btn btn-primary" href='editwarga/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-edit icon-white"></i></a> -->

@@ -163,6 +163,18 @@
        $this->db->insert($this->tbl_wargameninggal, $data);
        return TRUE;
 	}
+	public function get_namamod($datanama) { 
+	
+		$query = $this->db->get_where('tbl_kkdetail', $datanama);
+		echo json_encode($query->result());
+		// return $query->result();
+	}
+	public function get_alamatmod($dataalamat) { 
+	
+		$query = $this->db->get_where('tbl_kkdetail', $dataalamat);
+		echo json_encode($query->result());
+		// return $query->result();
+	}
 	
 	
 }
