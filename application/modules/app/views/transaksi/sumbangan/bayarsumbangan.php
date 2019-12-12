@@ -91,24 +91,31 @@ $(document).ready(function(){
               <div class="col-md-12 col-sm-4 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Form Bayar Iuran</h2>
+                    <h2>Form Sumbangan</h2>
                     <div class="clearfix"></div>
 					
                   </div>
                   <div class="x_content">
-				  <form id="form-bayariuran" data-parsley-validate class="form-horizontal form-label-left" method="post">
+				  <form id="form-sumbangan" data-parsley-validate class="form-horizontal form-label-left" method="post">
 				  
-				  <input type="hidden" id="no_transaksi" name="no_transaksi" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value=<?=intval(substr($nourutiuran,-3))+1;?>> 
-				  <!-- <?php foreach ($nourutiuran as $rowiuran) {?>	
-					<input type="text" id="no_transaksi" name="no_transaksi" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value=<?=intval(substr($rowiuran->no_transaksi,5))+1;?>>
+				  <input type="hidden" id="no_transaksi" name="no_transaksi" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value=<?=intval(substr($nourutsumbangan,-3))+1;?>> 
+				  <!-- <?php foreach ($nourutsumbangan as $rowsumbangan) {?>	
+					<input type="text" id="no_transaksi" name="no_transaksi" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value=<?=intval(substr($rowsumbangan->no_transaksi,5))+1;?>>
 						<?php }?> -->
 				  <input type="hidden" id="wrg_nik" name="wrg_nik" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value=<?=$this->uri->segment(4);?>>
 				  <input type="hidden" id="jenis_transaksi" name="jenis_transaksi" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value="Debit">
-				  <input type="hidden" id="ket_transaksi" name="ket_transaksi" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value="Iuran Bulanan">
+				  <input type="hidden" id="ket_transaksi" name="ket_transaksi" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value="Sumbangan">
 				  <!-- <?php foreach ($saldonik as $row) {?>	
 							<input type="text" id="saldo_terakhir" name="saldo_terakhir" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value="<?=$saldonik;?>">
 						<?php }?> -->
 						<input type="hidden" id="saldo_terakhir" name="saldo_terakhir" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value="<?=$saldonik;?>">
+						<div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="donatur_nama">Nama Penyumbang
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="donatur_nama" name="donatur_nama" required="" maxlength="50" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
 					  <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="saldo_debit">Nominal Bayar
                         </label>
@@ -132,7 +139,7 @@ $(document).ready(function(){
 					  <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                           <button type="submit" class="btn btn-primary" id="savebtn">Bayar</button>
-						  <a href="<?=base_url();?>app/transaksi/listiuranbln" class="btn btn-primary" id="savebtn">Kembali</a>
+						  <a href="<?=base_url();?>app/transaksi/listsumbangan" class="btn btn-primary" id="savebtn">Kembali</a>
                         </div>
                       </div>
 					  
@@ -154,8 +161,8 @@ $(document).ready(function(){
         		format: 'DD/MM/YYYY'
 			});
 			//proses add
-			$('#form-bayariuran').on('submit',function(e) {
-			var form = $('#form-bayariuran')[0];
+			$('#form-sumbangan').on('submit',function(e) {
+			var form = $('#form-sumbangan')[0];
 			var data = new FormData(form);
 			swal({
 			  title: "Simpan Data",
@@ -171,7 +178,7 @@ $(document).ready(function(){
 				$.ajax({
 					type: "POST",
 					enctype: 'multipart/form-data',
-					url:'<?=base_url('app/transaksi/saveiuran');?>',
+					url:'<?=base_url('app/transaksi/savesumbangan');?>',
 					data: data,
 					processData: false,
 					contentType: false,
@@ -184,7 +191,7 @@ $(document).ready(function(){
 						  text: "Data berhasil disimpan !.",
 						  type: "success"
 						},function(){
-							window.location='<?=base_url('app/transaksi/listiuranbln');?>';
+							window.location='<?=base_url('app/transaksi/listsumbangan');?>';
 						  });
 						}
 						else{

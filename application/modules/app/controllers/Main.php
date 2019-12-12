@@ -9,7 +9,7 @@
 |  
 -->
 <?php 
-error_reporting(1); 
+// error_reporting(1); 
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
@@ -21,7 +21,7 @@ class Main extends CI_Controller {
 		$this->load->model('Modul_setting');
 		// $this->load->model('Mmenu');
 		 $this->load->model('Modul_login');
-		// $this->load->library('global_setting');
+		 $this->load->model('Modul_transaksi');
 		$this->load->model('Modul_warga');
 		
 	}
@@ -42,6 +42,7 @@ class Main extends CI_Controller {
 		$generalcode = "SETTING_DASHBOARD";
 		$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
 		// print_r($this->Modul_login->get_listgeneralsetting($generalcode));die;
+		$data['saldoakhir']=$this->Modul_transaksi->getsaldototal()[0]->totalsaldo;
 		
 		// $data['hasilnik'] =$this->Modul_warga->hitungwarga();
 

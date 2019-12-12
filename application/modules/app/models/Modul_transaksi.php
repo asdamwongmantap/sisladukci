@@ -26,7 +26,7 @@
 	Function getsaldo()
 	{
 		// $this->db->where('kat_id',"KK"); 
-		$query=$this->db->get('view_totalsaldo');
+		$query=$this->db->get('view_totalsaldodebit');
 		return $query->result();
 	}
 	Function viewiuran()
@@ -90,6 +90,52 @@
 	{
 		return array();
 	}
+	}
+	Function viewsumbangan()
+	{
+		// $this->db->where('kat_id',"KK"); 
+		$query=$this->db->get('view_sumbangan');
+		if ($query->num_rows()>0)
+	{
+		return $query->result();
+	}
+		else
+	{
+		return array();
+	}
+	}
+	Function getnourutsumbangan()
+	{
+		$this->db->order_by('no_transaksi', 'DESC');
+		$this->db->like('no_transaksi', 'SMBGN', 'both'); 
+		$query=$this->db->get('tbl_trxheader');
+		return $query->result();
+	}
+	Function viewpengeluaran()
+	{
+		// $this->db->where('kat_id',"KK"); 
+		$query=$this->db->get('view_pengeluaran');
+		if ($query->num_rows()>0)
+	{
+		return $query->result();
+	}
+		else
+	{
+		return array();
+	}
+	}
+	Function getnourutpengeluaran()
+	{
+		$this->db->order_by('no_transaksi', 'DESC');
+		$this->db->like('no_transaksi', 'DNKLR', 'both'); 
+		$query=$this->db->get('tbl_trxheader');
+		return $query->result();
+	}
+	Function getsaldototal()
+	{
+		// $this->db->where('kat_id',"KK"); 
+		$query=$this->db->get('view_totalsaldo');
+		return $query->result();
 	}
 	
 	

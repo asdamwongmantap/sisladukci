@@ -86,7 +86,7 @@
                   </ul>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/transaksi/listtransaksi">Pengeluaran Keuangan</a>
+                  <a href="<?=base_url();?>app/transaksi/listpengeluaran">Pengeluaran Keuangan</a>
                 </li>
                 </ul>
                 </li>
@@ -119,8 +119,25 @@
                     <h3>General</h3>
                <li><a href="<?=base_url();?>app/main/dashboard"><i class="fa fa-home"></i> Dashboard </a></li>
 
-               <li>
-                  <a href="<?=base_url();?>app/transaksi/listtransaksi"><i class="fa fa-calculator"></i>Keuangan</a>
+               <h3>Keuangan</h3>
+                <li>
+                  <a href="#"><i class="fa fa-calculator"></i>Keuangan</a>
+                  <ul class="nav child_menu">
+                <li>
+                  <a href="#">Pemasukan Keuangan</a>
+                  <ul class="nav child_menu">
+                  <li>
+                    <a href="<?=base_url();?>app/transaksi/listiuranbln">Iuran Bulanan</a>
+                  </li>
+                  <li>
+                    <a href="<?=base_url();?>app/transaksi/listsumbangan">Sumbangan</a>
+                  </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="<?=base_url();?>app/transaksi/listpengeluaran">Pengeluaran Keuangan</a>
+                </li>
+                </ul>
                 </li>
                 <h3>Laporan</h3>
               <li>
@@ -206,7 +223,7 @@
                   </ul>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/transaksi/listtransaksi">Pengeluaran Keuangan</a>
+                  <a href="<?=base_url();?>app/transaksi/listpengeluaran">Pengeluaran Keuangan</a>
                 </li>
                 </ul>
                 </li>
@@ -252,7 +269,7 @@
                   </ul>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/transaksi/listtransaksi">Pengeluaran Keuangan</a>
+                  <a href="<?=base_url();?>app/transaksi/listpengeluaran">Pengeluaran Keuangan</a>
                 </li>
                 </ul>
                 </li>

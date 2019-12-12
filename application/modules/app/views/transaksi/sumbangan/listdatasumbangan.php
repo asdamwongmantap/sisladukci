@@ -32,36 +32,33 @@
               <div class="col-md-12 col-sm-4 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Data Iuran Bulanan</h2>
+                    <h2>Data Sumbangan</h2>
                     <div class="clearfix"></div>
 					
                   </div>
                   <div class="x_content">
 				  <input type="hidden" id="usergroup" value="<?=$this->session->userdata('usergroupid');?>">
-				  <a href="<?=base_url('app/transaksi/addiuran');?>" class="btn btn-success" title="Tambah user group" data-target=".bs-example-modal-smadd" style="float:right;display:block;" 
+				  <a href="<?=base_url('app/transaksi/bayarsumbangan');?>" class="btn btn-success" title="Tambah user group" data-target=".bs-example-modal-smadd" style="float:right;display:block;" 
 				  id="tomboltambah"><i class="fa fa-plus"></i> Tambah Data</a></br>
 				  </br>
 				  <table id="mydata" class="table table-striped table-bordered nowrap" cellspacing="0" width="100%">
                       <thead>
                         <tr>
-							<th>Nama Penduduk</th>
-							<th>Nama Kepala Keluarga</th>
-							<th>Alamat</th>
-							<th>Action</th>
+							<th>Nama Penyumbang</th>
+							<th>Nominal</th>
+							<th>Tanggal</th>
+							
                         </tr>
                       </thead>
                       <tbody id="show_data">
 					  
 							<?php 
-							foreach ($dataiuran as $row) {?>	 
+							foreach ($datasumbangan as $row) {?>	 
 							<tr>
-									<td><?=$row->wrg_nama;?></td>							
-									<td><?=$row->wrg_namakk;?></td>	
-									<td><?=$row->wrg_alamat;?></td>
-									<td><a class="btn btn-success" href='bayariuran/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-usd icon-white"></i>  Bayar</a>
-									<a class="btn btn-primary" href='detailiuran/<?=$row->wrg_nik;?>'><i class="glyphicon glyphicon-edit icon-white"></i>  Detail</a>
+									<td><?=$row->donatur_nama;?></td>							
+									<td><?=$row->saldo_debit;?></td>	
+									<td><?=$row->tgl_transaksi;?></td>
 									
-								</td>
 								</tr>
 							<?php
 								}

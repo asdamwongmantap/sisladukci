@@ -91,18 +91,35 @@ $(document).ready(function(){
               <div class="col-md-12 col-sm-4 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Form Bayar Iuran</h2>
+                    <h2>Form Iuran Warga</h2>
                     <div class="clearfix"></div>
 					
                   </div>
                   <div class="x_content">
-				  <form id="form-bayariuran" data-parsley-validate class="form-horizontal form-label-left" method="post">
+				  <form id="form-addiuran" data-parsley-validate class="form-horizontal form-label-left" method="post">
 				  
 				  <input type="hidden" id="no_transaksi" name="no_transaksi" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value=<?=intval(substr($nourutiuran,-3))+1;?>> 
-				  <!-- <?php foreach ($nourutiuran as $rowiuran) {?>	
-					<input type="text" id="no_transaksi" name="no_transaksi" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value=<?=intval(substr($rowiuran->no_transaksi,5))+1;?>>
-						<?php }?> -->
-				  <input type="hidden" id="wrg_nik" name="wrg_nik" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value=<?=$this->uri->segment(4);?>>
+				  <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_nik" id="labelwrg_nik">Nomor KTP 
+                        </label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+						  <input type="text" id="wrg_nik" name="wrg_nik" maxlength="16" class="form-control col-md-4 col-xs-12" style="display:block;">
+						  <input type="text" id="wrg_nokk" name="wrg_nokk" maxlength="16" class="form-control col-md-4 col-xs-12" style="display:none;">
+						  
+						</div>
+						<div class="col-md-5 col-sm-5 col-xs-12">
+                          <span class="input-group-btn">
+							  <button type="button" id="idbtn" class="btn btn-warning">Check No.KTP</button>
+						  </span>
+						</div>
+					  </div>
+					  <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_nama" id="labelwrg_nama">Nama Penduduk
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="wrg_nama" name="wrg_nama" required="" maxlength="50" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
 				  <input type="hidden" id="jenis_transaksi" name="jenis_transaksi" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value="Debit">
 				  <input type="hidden" id="ket_transaksi" name="ket_transaksi" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value="Iuran Bulanan">
 				  <!-- <?php foreach ($saldonik as $row) {?>	
@@ -154,8 +171,8 @@ $(document).ready(function(){
         		format: 'DD/MM/YYYY'
 			});
 			//proses add
-			$('#form-bayariuran').on('submit',function(e) {
-			var form = $('#form-bayariuran')[0];
+			$('#form-addiuran').on('submit',function(e) {
+			var form = $('#form-addiuran')[0];
 			var data = new FormData(form);
 			swal({
 			  title: "Simpan Data",

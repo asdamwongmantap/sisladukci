@@ -91,12 +91,13 @@ $(document).ready(function(){
               <div class="col-md-12 col-sm-4 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Form Bayar Iuran</h2>
+                    <h2>Detail iuran Bulanan</h2>
                     <div class="clearfix"></div>
 					
                   </div>
                   <div class="x_content">
-				  <form id="form-bayariuran" data-parsley-validate class="form-horizontal form-label-left" method="post">
+				  <?php foreach ($dataeditiuran as $row) {?>
+				  <form id="form-detailiuran" data-parsley-validate class="form-horizontal form-label-left" method="post">
 				  
 				  <input type="hidden" id="no_transaksi" name="no_transaksi" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value=<?=intval(substr($nourutiuran,-3))+1;?>> 
 				  <!-- <?php foreach ($nourutiuran as $rowiuran) {?>	
@@ -110,33 +111,51 @@ $(document).ready(function(){
 						<?php }?> -->
 						<input type="hidden" id="saldo_terakhir" name="saldo_terakhir" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value="<?=$saldonik;?>">
 					  <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="saldo_debit">Nominal Bayar
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_namakk">Nama Kepala Keluarga
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="saldo_debit" name="saldo_debit" required="" maxlength="50" class="form-control col-md-7 col-xs-12">
+                          <input type="text" id="wrg_namakk" name="wrg_namakk" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value="<?=$row->wrg_namakk;?>" disabled>
                         </div>
                       </div>
 					  <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tgl_transaksi">Tanggal Bayar 
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_alamat">Alamat 
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <div class="input-group date" id="myDatepicker2">
-							<input type="text" class="form-control" id="tgl_transaksi" name="tgl_transaksi" value="<?=$dateto;?>"/>
-							<span class="input-group-addon">
-								<span class="glyphicon glyphicon-calendar"></span>
-							</span>
-							</div>	
+                          	
+						<textarea id="wrg_alamat" class="form-control" name="wrg_alamat" required="" maxlength="100" disabled><?=$row->wrg_alamat;?></textarea>
+						
 						</div>
 					  </div>
 					  
-					  <div class="form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                          <button type="submit" class="btn btn-primary" id="savebtn">Bayar</button>
-						  <a href="<?=base_url();?>app/transaksi/listiuranbln" class="btn btn-primary" id="savebtn">Kembali</a>
-                        </div>
-                      </div>
-					  
+					 
 					  </form>
+					  <table id="mydata" class="table table-striped table-bordered nowrap" width="50%">
+                      <thead>
+                        <tr>
+							<th>No</th>
+							<th>Tanggal Bayar</th>
+							<th>Nominal</th>
+						
+                        </tr>
+                      </thead>
+                      <tbody id="show_data">
+					  
+							<?php 
+							foreach ($dataiuran as $row) {?>	 
+							<tr>
+									<td><?=$row->no_transaksi;?></td>							
+									<td><?=$row->tgl_transaksi;?></td>	
+									<td><?=$row->saldo_debit;?></td>
+									
+								</tr>
+							<?php
+								}
+							?>
+                      </tbody>
+                    </table>
+					  <?php
+						}
+						?>
                   </div>
                 </div>
               </div>
@@ -149,69 +168,6 @@ $(document).ready(function(){
 		<?php
 			$this->load->view('ui/footermeta.php');
 		?>
-		<script type="text/javascript">
-		$('#myDatepicker2').datetimepicker({
-        		format: 'DD/MM/YYYY'
-			});
-			//proses add
-			$('#form-bayariuran').on('submit',function(e) {
-			var form = $('#form-bayariuran')[0];
-			var data = new FormData(form);
-			swal({
-			  title: "Simpan Data",
-			  text: "Apakah anda ingin menyimpan data ini ?",
-			  confirmButtonText:"Yakin",
-			  confirmButtonColor: "#002855",
-			  cancelButtonText:"Tidak",
-			  showCancelButton: true,
-			  closeOnConfirm: false,
-			  type: "warning",
-			  showLoaderOnConfirm: true
-			}, function () {
-				$.ajax({
-					type: "POST",
-					enctype: 'multipart/form-data',
-					url:'<?=base_url('app/transaksi/saveiuran');?>',
-					data: data,
-					processData: false,
-					contentType: false,
-					cache: false,
-					success:function(e){
-						if (e !== "error") {
-						swal({
-						  title: "Success",
-						  confirmButtonColor: "#002855",
-						  text: "Data berhasil disimpan !.",
-						  type: "success"
-						},function(){
-							window.location='<?=base_url('app/transaksi/listiuranbln');?>';
-						  });
-						}
-						else{
-						swal({
-						  title: "Failed",
-						  confirmButtonColor: "#002855",
-						  text: e+"1",
-						  type: "error"
-						});
-						}
-						
-					},
-					error:function(xhr, ajaxOptions, thrownError){
-						swal({
-						  title: "Failed",
-						  confirmButtonColor: "#002855",
-						  text: e+"2",
-						  type: "error"
-						});
-					}
-					
-				});
-				return false;
-			});
-			e.preventDefault(); 
-		  });
-		  
-		</script>
+		
   </body>
 </html>

@@ -34,7 +34,7 @@
 			<div class="tile-stats">
 				<div class="icon"><i class="fa fa-calculator"></i>
 				</div>
-				<div class="count">Rp.30000</div>
+				<div class="count">Rp.<?=number_format($saldoakhir,0,",",".");?></div>
 
 				<h3>Jumlah Uang KAS RT.007</h3>
 				<!-- <p>Price List Harga Rumah</p> -->
