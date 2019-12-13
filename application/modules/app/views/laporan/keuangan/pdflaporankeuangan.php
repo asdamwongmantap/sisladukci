@@ -68,21 +68,21 @@ class PDF extends FPDF
                 $this->Ln(12);
                 $this->setFont('Arial','B',12);
                 $this->setFillColor(255,255,255);
-                $this->cell(133,6,'',0,0,'C',0); 
+                $this->cell(90,6,'',0,0,'C',0); 
                 $this->cell(14,6,'RT. 007 RW. 003',0,1,'C',1); 
-                $this->cell(130,6,'',0,0,'C',0); 
+                $this->cell(87,6,'',0,0,'C',0); 
                 $this->cell(20,6,"KEL. MARGATANI-KEC. KRAMATWATU",0,1,'C',1); 
-				 $this->cell(130,6,'',0,0,'C',0); 
+				 $this->cell(87,6,'',0,0,'C',0); 
 				 $this->cell(20,6,"JAKARTA TIMUR",0,1,'C',1);
 				 $this->Ln(5);
 				 $this->setFont('Arial','',12);
 				 $this->setFillColor(0,0,0);
 				 // $this->setTextColor(255,255,255);
 				 $this->cell(20);
-				 $this->cell(235,2,'',0,0,'C',1);
+				 $this->cell(150,2,'',0,0,'C',1);
 				 $this->Ln(3);
 				 $this->cell(20);
-				 $this->cell(235,0,'',0,1,'C',1);
+				 $this->cell(150,0,'',0,1,'C',1);
 				
 
 				 $this->Ln(10);
@@ -97,26 +97,31 @@ class PDF extends FPDF
 		        $this->setFont('Arial','B',12);
                 $this->setFillColor(255,255,255);
                
-				 $this->cell(130,6,'',0,0,'C',0); 
-				 $this->cell(20,6,"LAPORAN SURAT KETERANGAN MENINGGAL DUNIA",0,1,'C',1);
-				 $this->Ln(1);
+				 $this->cell(87,6,'',0,0,'C',0); 
+				 $this->cell(20,6,"LAPORAN KEUANGAN",0,1,'C',1);
+				//  $this->Ln(1);
 				 $this->setFont('Arial','',12);
 				 $this->setFillColor(0,0,0);
 				 $this->cell(75);
                  $this->cell(43,0,'',0,1,'C',1);
-
-                 $this->setFont('Arial','',8);
-                // $this->setFillColor(255,255,255);
-                // $this->setTextColor(63,52,51,100);
+                //  foreach($data1 as $u)  
+		        // {
+                 $this->setFont('Arial','',10);
+                 $this->setFillColor(255,255,255);
+				 $this->cell(83,6,'',0,0,'C',0); 
+				 $this->cell(20,6,"RT. 007 RW. 003",'C',1);
+                // }
+                $this->Ln(7);
+                
+                $this->cell(20);
                 $this->setFillColor(0,79,183);
 		        $this->setTextColor(255,255,255);
                 $this->cell(10,10,'No',1,0,'C',1);
-                $this->cell(30,10,'No. Surat',1,0,'C',1);
-                $this->cell(30,10,'Tgl. Meninggal',1,0,'C',1);
-                $this->cell(30,10,'No. KTP',1,0,'C',1);
-                $this->cell(50,10,'Nama Lengkap',1,0,'C',1);
-                $this->cell(70,10,'Tempat',1,0,'C',1);
-                $this->cell(55,10,'Sebab',1,0,'C',1);
+                $this->cell(50,10,'Uraian',1,0,'C',1);
+                $this->cell(30,10,'Pemasukan',1,0,'C',1);
+                $this->cell(30,10,'Pengeluaran',1,0,'C',1);
+                $this->cell(30,10,'Saldo Akhir',1,0,'C',1);
+               
                 
                 $this->Ln(10);
                 $this->setFont('Arial','',8);
@@ -126,16 +131,36 @@ class PDF extends FPDF
                 // //print_r($data2);
                 foreach($data1 as $u)  
                 {
-                 
+                    $this->cell(20);
                 $this->cell(10,10,$no++,1,0,'C',1);
-                $this->cell(30,10,$u->no_surat,1,0,'C',1);
-                $this->cell(30,10,$u->wrgmeninggal_tgl,1,0,'C',1);
-                $this->cell(30,10,$u->wrgmeninggal_nik,1,0,'C',1);
-                $this->cell(50,10,$u->wrg_nama,1,0,'C',1);
-                $this->cell(70,10,$u->wrgmeninggal_tempat,1,0,'C',1);
-                $this->cell(55,10,$u->wrgmeninggal_sebab,1,0,'C',1);
+                $this->cell(50,10,$u->ket_transaksi.$u->item_transaksi,1,0,'C',1);
+                $this->cell(30,10,$u->saldo_debit,1,0,'C',1);
+                $this->cell(30,10,$u->saldo_kredit,1,0,'C',1);
+                $this->cell(30,10,$u->saldo_akhir,1,0,'C',1);
+      
                 $this->Ln(10);
                 }
+                 
+                //  $this->Ln(13);
+                
+                // $this->cell(81,6,'',0,0,'C',0); 
+                // // $this->WordWrap($text,120);
+                //  $this->cell(20,6,"Demikian surat keterangan ini kami buat agar dapat dipergunakan sebagaimana mestinya",0,1,'C',1);
+                 
+                 $this->Ln(13);
+                $this->cell(146,6,'',0,0,'C',0);
+                 $this->cell(20,6,"Jakarta, ".date("d-m-Y"),0,1,'C',1);
+
+                 $this->Ln(13);
+                 $this->cell(26,6,'',0,0,'C',0);
+                  $this->cell(50,6,"Ketua RW.003            "."                                                                                 Ketua RT.007",0,1,'L',1);
+                // $this->CellFitSpaceForce(0,10,"Ketua RW.003 Ketua RT.007",1,1,'',1);
+                //   $this->cell(26,6,'',0,0,'C',0);
+                //   $this->cell(20,6,"Ketua RT.007 ",0,1,'R',1);
+                 
+
+                 $this->Ln(10);
+                //}
 		
 		// $this->setFont('Arial','',12);
 		// // $this->setFillColor(0,79,183);
@@ -173,6 +198,6 @@ class PDF extends FPDF
 
 $pdf = new PDF();
 $pdf->AliasNbPages();
-$pdf->AddPage('L','A4');
+$pdf->AddPage();
 $pdf->Content($data1);
 $pdf->Output();

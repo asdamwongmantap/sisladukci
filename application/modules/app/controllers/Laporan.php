@@ -247,6 +247,33 @@ class Laporan extends CI_Controller
         }
 
 	}
+	public function keuangan()
+	{
+        if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+			$generalcode = "SETTING_DASHBOARD";
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['namakry'] = $this->session->userdata('fullname');
+            $data['datakepalakeluarga']=$this->Modul_warga->viewkepalakeluarga();
+            $this->load->view('laporan/keuangan/laporankeuangan',$data);
+		}
+		// $this->load->view('setup/data/listdatasurat');
+		
+	}
+	public function pdflaporankeuangan($id)
+	{
+		
+		if (!$this->session->userdata('username')){
+			redirect(base_url());
+        }else{
+            $generalcode = "SETTING_DASHBOARD";
+		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$data['data1']=$this->Modul_laporan->get_pdflaporankeuangan($id);
+			$this->load->view('laporan/keuangan/pdflaporankeuangan',$data);
+        }
+
+	}
 	
 }
 

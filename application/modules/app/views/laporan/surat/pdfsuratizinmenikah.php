@@ -111,11 +111,12 @@ class PDF extends FPDF
                 $this->setFillColor(0,79,183);
 		        $this->setTextColor(255,255,255);
                 $this->cell(10,10,'No',1,0,'C',1);
-                $this->cell(30,10,'Tgl. Meninggal',1,0,'C',1);
+                $this->cell(30,10,'No. Surat',1,0,'C',1);
+                $this->cell(30,10,'Tgl. Pengajuan',1,0,'C',1);
                 $this->cell(30,10,'No. KTP',1,0,'C',1);
                 $this->cell(50,10,'Nama Lengkap',1,0,'C',1);
-                $this->cell(100,10,'Tempat',1,0,'C',1);
-                $this->cell(55,10,'Sebab',1,0,'C',1);
+                $this->cell(70,10,'Nama Ayah',1,0,'C',1);
+                $this->cell(55,10,'Nama Ibu',1,0,'C',1);
                 
                 $this->Ln(10);
                 $this->setFont('Arial','',8);
@@ -127,11 +128,12 @@ class PDF extends FPDF
                 {
                  
                 $this->cell(10,10,$no++,1,0,'C',1);
-                $this->cell(30,10,$u->wrgmeninggal_tgl,1,0,'C',1);
-                $this->cell(30,10,$u->wrgmeninggal_nik,1,0,'C',1);
+                $this->cell(30,10,$u->no_surat,1,0,'C',1);
+                $this->cell(30,10,$u->tgl_surat,1,0,'C',1);
+                $this->cell(30,10,$u->nik_pemohon,1,0,'C',1);
                 $this->cell(50,10,$u->wrg_nama,1,0,'C',1);
-                $this->cell(100,10,$u->wrgmeninggal_tempat,1,0,'C',1);
-                $this->cell(55,10,$u->wrgmeninggal_sebab,1,0,'C',1);
+                $this->cell(70,10,$u->nama_pihak2,1,0,'C',1);
+                $this->cell(55,10,$u->nama_pihak3,1,0,'C',1);
                 $this->Ln(10);
                 }
 		

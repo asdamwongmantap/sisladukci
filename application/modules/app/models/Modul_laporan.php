@@ -59,6 +59,12 @@
 			$query = $this->db->get('view_ketkematian');
 	return $query->result(); 
 	}
+	public function get_pdflaporankeuangan($id)
+	{
+			$this->db->where('digitbulan',$id); 
+			$query = $this->db->get('view_transaksiperbulan');
+	return $query->result(); 
+	}
 	
 	
 }
