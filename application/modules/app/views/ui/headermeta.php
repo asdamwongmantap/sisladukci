@@ -31,5 +31,6 @@
 	<link rel="stylesheet" href="<?=base_url();?>assets/alert/css/sweetalert.css">
 	<!-- bootstrap-datetimepicker -->
 <link href="<?=base_url();?>assets/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+<link rel="stylesheet" href="<?=base_url();?>assets/js/jquery-ui.css">
 
 <script type="text/javascript" src="<?=base_url();?>assets/chartjs/Chart.js"></script>

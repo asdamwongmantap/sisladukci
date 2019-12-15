@@ -175,6 +175,17 @@
 		echo json_encode($query->result());
 		// return $query->result();
 	}
+	public function get_noktptes($wrgnik) { 
+	
+		// $query = $this->db->get_where('tbl_kkdetail', $datanik);
+		// echo json_encode($query->result());
+		// return $query->result();
+
+		$this->db->like('wrg_nama', $wrgnik , 'both');
+        $this->db->order_by('wrg_nik', 'ASC');
+        $this->db->limit(10);
+        return $this->db->get('tbl_kkdetail')->result();
+	}
 	
 	
 }

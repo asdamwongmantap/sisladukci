@@ -9,7 +9,7 @@ class Transaksi extends CI_Controller
         $this->load->library('form_validation'); //load form validation
         $this->load->model('Modul_transaksi');
 		$this->load->model('Modul_setting');
-		// $this->load->model('Modul_warga');
+		$this->load->model('Modul_warga');
     }
 	
 	public function listtransaksi()
@@ -371,11 +371,24 @@ class Transaksi extends CI_Controller
 		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
 			$data['saldonik']=$this->Modul_transaksi->getsaldo()[0]->totalsaldodebit;
 			$data['nourutiuran']=$this->Modul_transaksi->getnourutiuran()[0]->no_transaksi;
-			// print_r($this->Modul_transaksi->getsaldo()[0]);die();
+			// print_r($this->Modul_warga->get_noktptes($_GET['term']));die();
+			
             $this->load->view('transaksi/iuranbulanan/addiuran',$data);
         }
 
 	}
+	public function get_autocomplete(){
+        if (isset($_GET['term'])) {
+			// $wrgnik = $this->uri->segment(4);
+            $result = $this->Modul_warga->get_noktptes($_GET['term']);
+            if (count($result) > 0) {
+            foreach ($result as $row)
+                $arr_result[] = $row->wrg_nama;
+                echo json_encode($arr_result);
+			}
+			// echo $_GET['term'];
+        }
+    }
 
 	
 	

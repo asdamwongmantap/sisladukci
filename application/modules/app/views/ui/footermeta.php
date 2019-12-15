@@ -45,3 +45,5 @@
 <!-- bootstrap-datetimepicker -->  
 <script src="<?=base_url();?>assets/vendors/moment/min/moment.min.js"></script>	
     <script src="<?=base_url();?>assets/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <!-- <link rel="stylesheet" href="<?=base_url();?>assets/js/jquery-ui.js"> -->
+    <script src="<?=base_url();?>assets/js/jquery-ui.js" type="text/javascript"></script>

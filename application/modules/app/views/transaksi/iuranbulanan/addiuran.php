@@ -62,10 +62,67 @@ $(document).ready(function(){
 					
         });
 		// alert(APPNO);
+		});
 		
-	});
+
+	$("#idbtnnama").click(function(){
+		var searchby = "nama";
+			var wrgnama = document.getElementById("wrg_nama").value;
+            //    alert(wrgnama);
+			    $.post( "<?php echo base_url("app/data/warga/get_nama"); ?>",{ wrgnama : wrgnama,searchby:searchby}, function(data) {
+
+                var obj = JSON.parse(data);
+				if (data == "[]"){
+						alert("Data Tidak ditemukan");
+						$("#wrg_statushubungan").html("<option value='Kepala Keluarga'>Kepala Keluarga</option><option value='Istri'>Istri</option><option value='Anak'>Anak</option>");
+						$("#wrg_nik").val("");
+						// $("#wrg_nama").val("");
+						$("#wrg_alamat").val("");
+						$("#savebtn").text("Tambah");
+
+				}
+				else{
+					obj.forEach(function(items) {
+					var nik = items.wrg_nik;
+					var nama = items.wrg_nama;
+					var alamat = items.wrg_alamat;
+					var statushubungan = items.wrg_statushubungan;
+					var nokk = items.wrg_nokk;
+						$("#wrg_nik").html(nik);
+						$("#wrg_nik").val(nik);
+						// $("#wrg_nama").html(nama);
+						// $("#wrg_nama").val(nama);
+						$("#wrg_alamat").html(alamat);
+						$("#wrg_alamat").val(alamat);
+						$("#wrg_nokkdb").html(nokk);
+						$("#wrg_nokkdb").val(nokk);
+						// $("#wrg_statushubungan").html(statushubungan);
+						// $("#wrg_statushubungan").val(statushubungan);
+					
+						// alert(statushubungan);
+						// $("#wrg_statushubungan").html("<option value='Kepala Keluarga'>Kepala Keluarga</option><option value='Istri'>Istri</option><option value='Anak'>Anak</option>");
+						if (statushubungan == "Kepala Keluarga") {
+							$("#wrg_statushubungan").html("<option value='Kepala Keluarga' selected>Kepala Keluarga</option><option value='Istri'>Istri</option><option value='Anak'>Anak</option>");
+						}else if (statushubungan == "Istri") {
+							$("#wrg_statushubungan").html("<option value='Kepala Keluarga'>Kepala Keluarga</option><option value='Istri' selected>Istri</option><option value='Anak'>Anak</option>");
+						}else if (statushubungan == "Anak") {
+							$("#wrg_statushubungan").html("<option value='Kepala Keluarga'>Kepala Keluarga</option><option value='Istri'>Istri</option><option value='Anak' selected>Anak</option>");
+						}else {
+							$("#wrg_statushubungan").html("<option value='Kepala Keluarga'>Kepala Keluarga</option><option value='Istri'>Istri</option><option value='Anak'>Anak</option>");
+						}
+						
+						// $("#savebtn").text("Ubah");
+				
+			
+					});
+				}
+				
+				});
+	});		
+        
 					
 });	
+	
 </script>
   <body class="nav-md" progress_bar="true">
   
@@ -99,7 +156,7 @@ $(document).ready(function(){
 				  <form id="form-addiuran" data-parsley-validate class="form-horizontal form-label-left" method="post">
 				  
 				  <input type="hidden" id="no_transaksi" name="no_transaksi" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value=<?=intval(substr($nourutiuran,-3))+1;?>> 
-				  <div class="form-group">
+				  <!-- <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_nik" id="labelwrg_nik">Nomor KTP 
                         </label>
                         <div class="col-md-4 col-sm-4 col-xs-12">
@@ -112,13 +169,42 @@ $(document).ready(function(){
 							  <button type="button" id="idbtn" class="btn btn-warning">Check No.KTP</button>
 						  </span>
 						</div>
-					  </div>
-					  <div class="form-group">
+					  </div> -->
+					  <!-- <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_nama" id="labelwrg_nama">Nama Penduduk
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="text" id="wrg_nama" name="wrg_nama" required="" maxlength="50" class="form-control col-md-7 col-xs-12" style="display:block;">
+						</div>
+						 <div class="col-md-5 col-sm-5 col-xs-12">
+                          <span class="input-group-btn">
+							  <button type="button" id="idbtn" class="btn btn-warning">Check Nama</button>
+						  </span>
+						</div> 
+					  </div> -->
+					  <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_nama" id="labelwrg_nama">Nama Penduduk
+                        </label>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
                           <input type="text" id="wrg_nama" name="wrg_nama" required="" maxlength="50" class="form-control col-md-7 col-xs-12">
-                        </div>
+						</div>
+						<div class="col-md-5 col-sm-5 col-xs-12">
+                          <span class="input-group-btn">
+							  <button type="button" id="idbtnnama" class="btn btn-warning" style="display:block;">Check Nama</button>
+						  </span>
+						</div>
+					  </div>
+					  <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_alamat">Domisili 
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                         <textarea id="wrg_alamat" class="form-control" name="wrg_alamat" required="" maxlength="100" ></textarea>
+						</div>
+						<!-- <div class="col-md-5 col-sm-5 col-xs-12">
+                          <span class="input-group-btn">
+							  <button type="button" id="idbtnalamat" class="btn btn-warning" style="display:none;">Check Alamat</button>
+						  </span>
+						</div> -->
                       </div>
 				  <input type="hidden" id="jenis_transaksi" name="jenis_transaksi" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value="Debit">
 				  <input type="hidden" id="ket_transaksi" name="ket_transaksi" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value="Iuran Bulanan">
@@ -167,6 +253,11 @@ $(document).ready(function(){
 			$this->load->view('ui/footermeta.php');
 		?>
 		<script type="text/javascript">
+		$(document).ready(function(){
+            $( "#wrg_nama" ).autocomplete({
+				source: "<?php echo site_url("app/transaksi/get_autocomplete/?");?>"
+            });
+        });
 		$('#myDatepicker2').datetimepicker({
         		format: 'DD/MM/YYYY'
 			});
