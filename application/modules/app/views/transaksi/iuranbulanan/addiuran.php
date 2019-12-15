@@ -185,12 +185,12 @@ $(document).ready(function(){
 					  <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_nama" id="labelwrg_nama">Nama Penduduk
                         </label>
-                        <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
                           <input type="text" id="wrg_nama" name="wrg_nama" required="" maxlength="50" class="form-control col-md-7 col-xs-12">
 						</div>
 						<div class="col-md-5 col-sm-5 col-xs-12">
                           <span class="input-group-btn">
-							  <button type="button" id="idbtnnama" class="btn btn-warning" style="display:block;">Check Nama</button>
+							  <button type="button" id="idbtnnama" class="btn btn-warning" style="display:none;">Check Nama</button>
 						  </span>
 						</div>
 					  </div>
@@ -255,7 +255,11 @@ $(document).ready(function(){
 		<script type="text/javascript">
 		$(document).ready(function(){
             $( "#wrg_nama" ).autocomplete({
-				source: "<?php echo site_url("app/transaksi/get_autocomplete/?");?>"
+				source: "<?php echo site_url("app/transaksi/get_autocomplete/?");?>",
+				select: function (event, ui) {
+                    $(this).val(ui.item.label);
+                    $("#idbtnnama").click(); 
+                }
             });
         });
 		$('#myDatepicker2').datetimepicker({
