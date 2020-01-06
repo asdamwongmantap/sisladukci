@@ -91,7 +91,7 @@
                 </ul>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/surat/mohonktp"><i class="fa fa-file"></i>SMS Blast</a>
+                  <a href="<?=base_url();?>app/sms/smsblast"><i class="fa fa-file"></i>SMS Blast</a>
                 </li>
                 <h3>Laporan</h3>
               <li>
@@ -228,7 +228,7 @@
                 </ul>
                 </li>
                 <li>
-                  <a href="<?=base_url();?>app/surat/mohonktp"><i class="fa fa-file"></i>SMS Blast</a>
+                  <a href="<?=base_url();?>app/sms/smsblast"><i class="fa fa-file"></i>SMS Blast</a>
                 </li>
                 <h3>Laporan</h3>
               <li>
