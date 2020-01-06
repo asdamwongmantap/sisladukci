@@ -97,7 +97,7 @@
 						swal({
 						  title: "Success",
 						  confirmButtonColor: "#002855",
-						  text: "SMS Berhasil dikirim",
+						  text: "SMS Berhasil dikirim / diblast !",
 						  type: "success"
 						},function(){
 							window.location='<?=base_url('app/sms/smsblast');?>';
@@ -107,7 +107,7 @@
 						swal({
 						  title: "Failed",
 						  confirmButtonColor: "#002855",
-						  text: "SMS gagal dikirim",
+						  text: "SMS gagal dikirim / diblast !",
 						  type: "error"
 						});
 						}
