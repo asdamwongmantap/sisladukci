@@ -210,12 +210,13 @@
 					contentType: false,
 					cache: false,
 					success:function(e){
-						if (e === "duplicate") {
+						if (e === "data warga belum terdaftar") {
 						
 						  swal({
 							title: "DUPLICATE",
 						  confirmButtonColor: "#002855",
-						  text: "Nomor KTP sudah ada di database! Silahkan Koreksi!",
+						//   text: "Nomor KTP sudah ada di database! Silahkan Koreksi!",
+						text: "Warga Belum Terdaftar !",
 						  type: "error"
 						});
 						}
@@ -226,7 +227,7 @@
 						  text: "Data berhasil disimpan !.",
 						  type: "success"
 						},function(){
-							window.location='<?=base_url('app/data/warga/listdetailkeluarga');?>'+wrgnokk+'';
+							window.location='<?=base_url('app/data/warga/listdetailkeluarga/');?>'+wrgnokk+'';
 						  });
 						}
 						else{

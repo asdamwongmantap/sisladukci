@@ -1,15 +1,6 @@
-<!-- 
-|--------------------------------------------------------------------------
-| Controller Main
-|--------------------------------------------------------------------------
-|
-| @params	user		session username login
-|			password	session password login
-|			generalcode	parameter input for general setting
-|  
--->
+
 <?php 
-// error_reporting(1); 
+error_reporting(1); 
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 

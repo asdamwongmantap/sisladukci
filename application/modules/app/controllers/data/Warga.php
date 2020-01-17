@@ -273,6 +273,7 @@ class Warga extends CI_Controller
 			'wrg_statuskawin' =>$this->input->post('wrg_statuskawin'),
 			'wrg_nohp' =>$this->input->post('wrg_nohp'),
 			'wrg_nokk' =>$this->input->post('wrg_nokk'),
+			'wrg_statushubungan' =>$this->input->post('wrg_statushubungan'),
 			'is_active' =>"1"
 			);
 		if($this->form_validation->run()!=FALSE){
@@ -326,11 +327,16 @@ class Warga extends CI_Controller
 	public function saveeditdetailkeluarga() { 
 		$this->form_validation->set_rules('wrg_nik','NIK','required');
 		$this->form_validation->set_rules('wrg_nama','Nama','required');
+		$wrgtgllahirawal = explode("/",$this->input->post('wrg_tgllahir'));
+		  $wrgtgllahirtgl = $wrgtgllahirawal[0];
+		  $wrgtgllahirbln = $wrgtgllahirawal[1];
+		  $wrgtgllahirthn = $wrgtgllahirawal[2];
+		  $wrgtgllahirformat = $wrgtgllahirthn."-".$wrgtgllahirbln."-".$wrgtgllahirtgl;
 		$data = array(
 			'wrg_nik' =>$this->input->post('wrg_nik'),
 			'wrg_nama' =>$this->input->post('wrg_nama'),
 			'wrg_tmpatlahir' =>$this->input->post('wrg_tmpatlahir'),
-			'wrg_tgllahir' =>$this->input->post('wrg_tgllahir'),
+			'wrg_tgllahir' =>$wrgtgllahirformat,
 			'wrg_kwarganegaraan' =>$this->input->post('wrg_kwarganegaraan'),
 			'wrg_jeniskel' =>$this->input->post('wrg_jeniskel'),
 			'wrg_alamat' =>$this->input->post('wrg_alamat'),
@@ -338,6 +344,8 @@ class Warga extends CI_Controller
 			'wrg_agama' =>$this->input->post('wrg_agama'),
 			'wrg_pendidikan' =>$this->input->post('wrg_pendidikan'),
 			'wrg_statuskawin' =>$this->input->post('wrg_statuskawin'),
+			'wrg_nohp' =>$this->input->post('wrg_nohp'),
+			'wrg_statushubungan' =>$this->input->post('wrg_statushubungan'),
 			'is_active' =>"1"
 			);
 			$datanik = array(
@@ -346,10 +354,12 @@ class Warga extends CI_Controller
 		   $hasilnik = $this->Modul_warga->cek_nik($datanik);	
 		if($this->form_validation->run()!=FALSE){
 			if ($hasilnik->num_rows() > 0) {
-				echo "duplicate";
-			}else {
 				$this->Modul_warga->moduleditwarga($data); 
-             	echo "berhasil";
+				// echo "duplicate";
+				echo "berhasil";
+			}else {
+				// $this->Modul_warga->moduleditwarga($data); 
+             	echo "data warga belum terdaftar";
 			}
             
 			}else{
