@@ -28,6 +28,7 @@ public function Cek_logincn()
 			$sess_data['password'] = $sess->ptg_password;
 			$sess_data['fullname'] = $sess->ptg_nama;
 			$sess_data['usergroupid'] = $sess->ptg_usergroupid;
+			$sess_data['userid'] = $sess->ptg_nip;
 			$this->session->set_userdata($sess_data);
 			// print_r($this->session->userdata('usergroupid'));
 		}

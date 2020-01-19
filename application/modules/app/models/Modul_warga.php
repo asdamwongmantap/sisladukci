@@ -56,7 +56,8 @@
 		// added 20191031 by asdam
 		public function viewkepalakeluarga()
 	{
-		$this->db->where('is_active',"1"); 
+		// $this->db->where('wrg_nama !='," "); 
+		$this->db->where('is_active = 1 OR ISNULL(wrg_nama)'); 
 		$this->db->where('wrg_statushubungan',"Kepala Keluarga"); 
 		$query=$this->db->get('view_kepalakeluarga');
 		
@@ -180,10 +181,10 @@
 		// $query = $this->db->get_where('tbl_kkdetail', $datanik);
 		// echo json_encode($query->result());
 		// return $query->result();
-
+		$this->db->where('is_active',"1"); 
 		$this->db->like('wrg_nama', $wrgnik , 'both');
         $this->db->order_by('wrg_nik', 'ASC');
-        $this->db->limit(10);
+        // $this->db->limit(10);
         return $this->db->get('tbl_kkdetail')->result();
 	}
 	

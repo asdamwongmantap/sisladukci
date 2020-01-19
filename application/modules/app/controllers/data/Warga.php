@@ -131,18 +131,22 @@ class Warga extends CI_Controller
 	}
 	public function savekepalakeluarga(){
 		$this->form_validation->set_rules('wrg_nokk','No. KK','required');
-		
+		$dtmcrtformat = $this->input->post('dtm_crt');
 		$data = array(
 				  'wrg_nokk' =>$this->input->post('wrg_nokk'),
 				  'wrg_alamat' =>$this->input->post('wrg_alamat'),
-				  'is_active' =>"1"
+				  'is_active' =>"1",
+				  'dtm_crt' =>$dtmcrtformat,
+				  'usr_crt' => $this->input->post('CRTUSR')
 				  );
 		$datadetail = array(
 				'wrg_nik' =>$this->input->post('wrg_nik'),
 				'wrg_nokk' =>$this->input->post('wrg_nokk'),
 				'wrg_alamat' =>$this->input->post('wrg_alamat'),
 				'wrg_statushubungan' =>"Kepala Keluarga",
-				'is_active' =>"0"
+				'is_active' =>"0",
+				'dtm_crt' =>$dtmcrtformat,
+				'usr_crt' => $this->input->post('CRTUSR')
 		);
         // print_r($data);die;
 		if($this->form_validation->run()!=FALSE){
@@ -173,7 +177,7 @@ class Warga extends CI_Controller
 	}
 	public function saveeditkepalakeluarga(){
 		$this->form_validation->set_rules('wrg_nokk','No. KK','required');
-		
+		$dtmcrtformat = $this->input->post('dtm_crt');
 		$data = array(
 				  'wrg_nokk' =>$this->input->post('wrg_nokk'),
 				  'wrg_alamat' =>$this->input->post('wrg_alamat'),
@@ -184,7 +188,9 @@ class Warga extends CI_Controller
 				'wrg_nokk' =>$this->input->post('wrg_nokk'),
 				'wrg_alamat' =>$this->input->post('wrg_alamat'),
 				'wrg_statushubungan' =>"Kepala Keluarga",
-				'is_active' =>"1"
+				'is_active' =>"1",
+				'dtm_crt' =>$dtmcrtformat,
+			'usr_crt' => $this->input->post('CRTUSR')
 		);
         // print_r($data);die;
 		if($this->form_validation->run()!=FALSE){
@@ -258,6 +264,9 @@ class Warga extends CI_Controller
 		  $wrgtgllahirbln = $wrgtgllahirawal[1];
 		  $wrgtgllahirthn = $wrgtgllahirawal[2];
 		  $wrgtgllahirformat = $wrgtgllahirthn."-".$wrgtgllahirbln."-".$wrgtgllahirtgl;
+
+		 
+		  $dtmcrtformat = $this->input->post('dtm_crt');
 		$hasilnik = $this->Modul_warga->cek_nik($datanik);
 		$data = array(
 			'wrg_nik' =>$this->input->post('wrg_nik'),
@@ -274,7 +283,9 @@ class Warga extends CI_Controller
 			'wrg_nohp' =>$this->input->post('wrg_nohp'),
 			'wrg_nokk' =>$this->input->post('wrg_nokk'),
 			'wrg_statushubungan' =>$this->input->post('wrg_statushubungan'),
-			'is_active' =>"1"
+			'is_active' =>"1",
+			'dtm_crt' =>$dtmcrtformat,
+			'usr_crt' => $this->input->post('CRTUSR')
 			);
 		if($this->form_validation->run()!=FALSE){
 			if ($hasilnik->num_rows() > 0) {
@@ -332,6 +343,8 @@ class Warga extends CI_Controller
 		  $wrgtgllahirbln = $wrgtgllahirawal[1];
 		  $wrgtgllahirthn = $wrgtgllahirawal[2];
 		  $wrgtgllahirformat = $wrgtgllahirthn."-".$wrgtgllahirbln."-".$wrgtgllahirtgl;
+
+		  $dtmcrtformat = $this->input->post('dtm_crt');
 		$data = array(
 			'wrg_nik' =>$this->input->post('wrg_nik'),
 			'wrg_nama' =>$this->input->post('wrg_nama'),
@@ -346,7 +359,9 @@ class Warga extends CI_Controller
 			'wrg_statuskawin' =>$this->input->post('wrg_statuskawin'),
 			'wrg_nohp' =>$this->input->post('wrg_nohp'),
 			'wrg_statushubungan' =>$this->input->post('wrg_statushubungan'),
-			'is_active' =>"1"
+			'is_active' =>"1",
+			'dtm_crt' =>$dtmcrtformat,
+			'usr_crt' => $this->input->post('CRTUSR')
 			);
 			$datanik = array(
 				'wrg_nik' =>$this->input->post('wrg_nik')
@@ -386,12 +401,15 @@ class Warga extends CI_Controller
 			}else {
 				$wrgnik = $this->input->post('wrg_nokk');
 			}
+			$dtmcrtformat = $this->input->post('dtm_crt');
 			$data = array(
 					  'wrgpindah_nik' =>$wrgnik,
 					  'wrgpindah_tgl' =>$this->input->post('wrgpindah_tgl'),
 					  'wrgpindah_alamat' =>$this->input->post('wrgpindah_tujuan'),
 					  'is_active' =>"1",
-					  'wrgpindah_alasan' =>$this->input->post('wrgpindah_alasan')
+					  'wrgpindah_alasan' =>$this->input->post('wrgpindah_alasan'),
+					  'dtm_crt' =>$dtmcrtformat,
+					  'usr_crt' => $this->input->post('CRTUSR')
 					  );
 			// print_r($data);die;
 			if($this->form_validation->run()!=FALSE){
@@ -445,11 +463,15 @@ class Warga extends CI_Controller
 		  $wrgtgllahirbln = $wrgtgllahirawal[1];
 		  $wrgtgllahirthn = $wrgtgllahirawal[2];
 		  $wrgtgllahirformat = $wrgtgllahirthn."-".$wrgtgllahirbln."-".$wrgtgllahirtgl;
+
+		  $dtmcrtformat = $this->input->post('dtm_crt');
 			$datameninggal = array(
 					  'wrgmeninggal_nik' =>$wrgnik,
 					  'wrgmeninggal_tgl' =>$wrgtgllahirformat,
 					  'wrgmeninggal_tempat' =>$this->input->post('wrgmeninggal_tempat'),
-					  'wrgmeninggal_sebab' =>$this->input->post('wrgmeninggal_sebab')
+					  'wrgmeninggal_sebab' =>$this->input->post('wrgmeninggal_sebab'),
+					  'dtm_crt' =>$dtmcrtformat,
+					  'usr_crt' => $this->input->post('CRTUSR')
 					  );
 			$data = array(
 					'wrg_nik' =>$wrgnik,

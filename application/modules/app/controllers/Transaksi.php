@@ -99,6 +99,13 @@ class Transaksi extends CI_Controller
 		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
 			$data['saldonik']=$this->Modul_transaksi->getsaldonik($nik)[0]->saldo_akhir;
 			$data['nourutiuran']=$this->Modul_transaksi->getnourutiuran()[0]->no_transaksi;
+			$datanik = array(
+				'wrg_nik' =>$nik
+			 );
+	
+		   $ceknik = $this->Modul_warga->cek_nik($datanik);
+		   $hasilnik = $ceknik->result();
+		   $data['hasilnik']=$hasilnik;
 			// print_r($this->Modul_transaksi->getsaldonik($nik)[0]->saldo_akhir);die();
             $this->load->view('transaksi/iuranbulanan/bayariuran',$data);
         }
@@ -145,7 +152,12 @@ class Transaksi extends CI_Controller
                 //pesan yang muncul jika berhasil diupload pada session flashdata
 				$this->Modul_transaksi->get_inserttransaksiheader($dataheader); 
 				$this->Modul_transaksi->get_inserttransaksidetail($datadetail); 
-				// $this->Modul_surat->get_insertketdomisilidetail($datadetail);
+				$nohp = $this->input->post('wrg_nohp');
+				$message = "Pembayaran_iuran_warga_telah_diterima,Terimakasih_sudah_melakukan_pembayaran_iuran_warga";
+				
+				$url = file_get_contents('https://sms.smartme.co.id:43452/bafjson/?username=MMP2&password=Bussan1002&sender=BAF&department=MMP&msisdn='.$nohp.'&message='.$message.'&requestby=BAF');
+				
+				$response = json_decode($url);
                 echo "berhasil";
 			}else{
                 //pesan yang muncul jika terdapat error dimasukkan pada session flashdata

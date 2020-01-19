@@ -1,5 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-// error_reporting(1);
+error_reporting(1);
 class Laporan extends CI_Controller
 {
 	public function __construct()
@@ -24,8 +24,14 @@ class Laporan extends CI_Controller
             $generalcode = "SETTING_DASHBOARD";
 			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
 			$data['namakry'] = $this->session->userdata('fullname');
-            $data['datakepalakeluarga']=$this->Modul_warga->viewkepalakeluarga();
-            $this->load->view('laporan/warga/laporanwarga',$data);
+			$data['datakepalakeluarga']=$this->Modul_warga->viewkepalakeluarga();
+			if ($this->input->post('jenis_laporanwarga') == "" ){
+				$this->load->view('laporan/warga/laporanwarga',$data);
+			}else{
+				$tes = "pdf".$this->input->post('jenis_laporanwarga');
+				$this->$tes();
+			}
+            
 		}
 		// $this->load->view('setup/data/listdatawarga');
 		
@@ -104,8 +110,22 @@ class Laporan extends CI_Controller
         }else{
             $generalcode = "SETTING_DASHBOARD";
 		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
-			// $id = preg_replace("/-/", '/', $id);
-			$data['data1']=$this->Modul_laporan->get_pdflaporankepalakeluarga();
+			$dtmfromawal = explode("/",$this->input->post('dtm_from'));
+		  $dtmfromtgl = $dtmfromawal[0];
+		  $dtmfrombln = $dtmfromawal[1];
+		  $dtmfromthn = $dtmfromawal[2];
+		  $dtmfromformat = $dtmfromthn."-".$dtmfrombln."-".$dtmfromtgl;
+
+		  $dtmtoawal = explode("/",$this->input->post('dtm_to'));
+		  $dtmtotgl = $dtmtoawal[0];
+		  $dtmtobln = $dtmtoawal[1];
+		  $dtmtothn = $dtmtoawal[2];
+		  $dtmtoformat = $dtmtothn."-".$dtmtobln."-".$dtmtotgl;
+			$data = array(
+				'dtm_from' =>$dtmfromformat,
+				'dtm_to' =>$dtmtoformat
+			);
+			$data['data1']=$this->Modul_laporan->get_pdflaporankepalakeluarga($data);
 			// print_r($this->Modul_laporan->get_pdflaporankepalakeluarga());die;
 			$this->load->view('laporan/warga/pdfkepalakeluarga',$data);
         }
@@ -119,8 +139,22 @@ class Laporan extends CI_Controller
         }else{
             $generalcode = "SETTING_DASHBOARD";
 		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
-			// $id = preg_replace("/-/", '/', $id);
-			$data['data1']=$this->Modul_laporan->get_pdflaporanallwarga();
+			$dtmfromawal = explode("/",$this->input->post('dtm_from'));
+		  $dtmfromtgl = $dtmfromawal[0];
+		  $dtmfrombln = $dtmfromawal[1];
+		  $dtmfromthn = $dtmfromawal[2];
+		  $dtmfromformat = $dtmfromthn."-".$dtmfrombln."-".$dtmfromtgl;
+
+		  $dtmtoawal = explode("/",$this->input->post('dtm_to'));
+		  $dtmtotgl = $dtmtoawal[0];
+		  $dtmtobln = $dtmtoawal[1];
+		  $dtmtothn = $dtmtoawal[2];
+		  $dtmtoformat = $dtmtothn."-".$dtmtobln."-".$dtmtotgl;
+			$data = array(
+				'dtm_from' =>$dtmfromformat,
+				'dtm_to' =>$dtmtoformat
+			);
+			$data['data1']=$this->Modul_laporan->get_pdflaporanallwarga($data);
 			// print_r($this->Modul_laporan->get_pdflaporanallwarga());die;
 			$this->load->view('laporan/warga/pdfallwarga',$data);
         }
@@ -135,8 +169,22 @@ class Laporan extends CI_Controller
         }else{
             $generalcode = "SETTING_DASHBOARD";
 		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
-			// $id = preg_replace("/-/", '/', $id);
-			$data['data1']=$this->Modul_laporan->get_pdflaporanpindahwarga();
+			$dtmfromawal = explode("/",$this->input->post('dtm_from'));
+		  $dtmfromtgl = $dtmfromawal[0];
+		  $dtmfrombln = $dtmfromawal[1];
+		  $dtmfromthn = $dtmfromawal[2];
+		  $dtmfromformat = $dtmfromthn."-".$dtmfrombln."-".$dtmfromtgl;
+
+		  $dtmtoawal = explode("/",$this->input->post('dtm_to'));
+		  $dtmtotgl = $dtmtoawal[0];
+		  $dtmtobln = $dtmtoawal[1];
+		  $dtmtothn = $dtmtoawal[2];
+		  $dtmtoformat = $dtmtothn."-".$dtmtobln."-".$dtmtotgl;
+			$data = array(
+				'dtm_from' =>$dtmfromformat,
+				'dtm_to' =>$dtmtoformat
+			);
+			$data['data1']=$this->Modul_laporan->get_pdflaporanpindahwarga($data);
 			// print_r($this->Modul_laporan->get_pdflaporanpindahwarga());die;
 			$this->load->view('laporan/warga/pdfpindahwarga',$data);
         }
@@ -150,8 +198,22 @@ class Laporan extends CI_Controller
         }else{
             $generalcode = "SETTING_DASHBOARD";
 		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
-			// $id = preg_replace("/-/", '/', $id);
-			$data['data1']=$this->Modul_laporan->get_pdflaporanmeninggalwarga();
+			$dtmfromawal = explode("/",$this->input->post('dtm_from'));
+		  $dtmfromtgl = $dtmfromawal[0];
+		  $dtmfrombln = $dtmfromawal[1];
+		  $dtmfromthn = $dtmfromawal[2];
+		  $dtmfromformat = $dtmfromthn."-".$dtmfrombln."-".$dtmfromtgl;
+
+		  $dtmtoawal = explode("/",$this->input->post('dtm_to'));
+		  $dtmtotgl = $dtmtoawal[0];
+		  $dtmtobln = $dtmtoawal[1];
+		  $dtmtothn = $dtmtoawal[2];
+		  $dtmtoformat = $dtmtothn."-".$dtmtobln."-".$dtmtotgl;
+			$data = array(
+				'dtm_from' =>$dtmfromformat,
+				'dtm_to' =>$dtmtoformat
+			);
+			$data['data1']=$this->Modul_laporan->get_pdflaporanmeninggalwarga($data);
 			// print_r($this->Modul_laporan->get_pdflaporanmeninggalwarga());die;
 			$this->load->view('laporan/warga/pdfmeninggalwarga',$data);
         }
@@ -165,8 +227,14 @@ class Laporan extends CI_Controller
 			$generalcode = "SETTING_DASHBOARD";
 			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
 			$data['namakry'] = $this->session->userdata('fullname');
-            $data['datakepalakeluarga']=$this->Modul_warga->viewkepalakeluarga();
-            $this->load->view('laporan/surat/laporansurat',$data);
+			$data['datakepalakeluarga']=$this->Modul_warga->viewkepalakeluarga();
+			if ($this->input->post('jenis_laporansurat') == "" ){
+				$this->load->view('laporan/surat/laporansurat',$data);
+			}else{
+				$tes = "pdf".$this->input->post('jenis_laporansurat');
+				$this->$tes();
+			}
+            
 		}
 		// $this->load->view('setup/data/listdatasurat');
 		
@@ -177,11 +245,27 @@ class Laporan extends CI_Controller
 		if (!$this->session->userdata('username')){
 			redirect(base_url());
         }else{
+			
             $generalcode = "SETTING_DASHBOARD";
-		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
-			// $id = preg_replace("/-/", '/', $id);
-			$data['data1']=$this->Modul_laporan->get_pdflaporanketdomisili();
-			// print_r($this->Modul_laporan->get_pdflaporansuratpengantardomisili());die;
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$dtmfromawal = explode("/",$this->input->post('dtm_from'));
+		  $dtmfromtgl = $dtmfromawal[0];
+		  $dtmfrombln = $dtmfromawal[1];
+		  $dtmfromthn = $dtmfromawal[2];
+		  $dtmfromformat = $dtmfromthn."-".$dtmfrombln."-".$dtmfromtgl;
+
+		  $dtmtoawal = explode("/",$this->input->post('dtm_to'));
+		  $dtmtotgl = $dtmtoawal[0];
+		  $dtmtobln = $dtmtoawal[1];
+		  $dtmtothn = $dtmtoawal[2];
+		  $dtmtoformat = $dtmtothn."-".$dtmtobln."-".$dtmtotgl;
+			$data = array(
+				'dtm_from' =>$dtmfromformat,
+				'dtm_to' =>$dtmtoformat
+			);
+			$data['data1']=$this->Modul_laporan->get_pdflaporanketdomisili($data);
+
+			// print_r($data);die;
 			$this->load->view('laporan/surat/pdfsuratpengantardomisili',$data);
         }
 
@@ -194,8 +278,22 @@ class Laporan extends CI_Controller
         }else{
             $generalcode = "SETTING_DASHBOARD";
 		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
-			// $id = preg_replace("/-/", '/', $id);
-			$data['data1']=$this->Modul_laporan->get_pdflaporansuratpengantar();
+			$dtmfromawal = explode("/",$this->input->post('dtm_from'));
+		  $dtmfromtgl = $dtmfromawal[0];
+		  $dtmfrombln = $dtmfromawal[1];
+		  $dtmfromthn = $dtmfromawal[2];
+		  $dtmfromformat = $dtmfromthn."-".$dtmfrombln."-".$dtmfromtgl;
+
+		  $dtmtoawal = explode("/",$this->input->post('dtm_to'));
+		  $dtmtotgl = $dtmtoawal[0];
+		  $dtmtobln = $dtmtoawal[1];
+		  $dtmtothn = $dtmtoawal[2];
+		  $dtmtoformat = $dtmtothn."-".$dtmtobln."-".$dtmtotgl;
+			$data = array(
+				'dtm_from' =>$dtmfromformat,
+				'dtm_to' =>$dtmtoformat
+			);
+			$data['data1']=$this->Modul_laporan->get_pdflaporansuratpengantar($data);
 			// print_r($this->Modul_laporan->get_pdflaporansuratpengantar());die;
 			$this->load->view('laporan/surat/pdfsuratpengantar',$data);
         }
@@ -210,8 +308,22 @@ class Laporan extends CI_Controller
         }else{
             $generalcode = "SETTING_DASHBOARD";
 		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
-			// $id = preg_replace("/-/", '/', $id);
-			$data['data1']=$this->Modul_laporan->get_pdflaporansuratkuasa();
+			$dtmfromawal = explode("/",$this->input->post('dtm_from'));
+		  $dtmfromtgl = $dtmfromawal[0];
+		  $dtmfrombln = $dtmfromawal[1];
+		  $dtmfromthn = $dtmfromawal[2];
+		  $dtmfromformat = $dtmfromthn."-".$dtmfrombln."-".$dtmfromtgl;
+
+		  $dtmtoawal = explode("/",$this->input->post('dtm_to'));
+		  $dtmtotgl = $dtmtoawal[0];
+		  $dtmtobln = $dtmtoawal[1];
+		  $dtmtothn = $dtmtoawal[2];
+		  $dtmtoformat = $dtmtothn."-".$dtmtobln."-".$dtmtotgl;
+			$data = array(
+				'dtm_from' =>$dtmfromformat,
+				'dtm_to' =>$dtmtoformat
+			);
+			$data['data1']=$this->Modul_laporan->get_pdflaporansuratkuasa($data);
 			// print_r($this->Modul_laporan->get_pdflaporansuratkuasa());die;
 			$this->load->view('laporan/surat/pdfsuratkuasa',$data);
         }
@@ -225,8 +337,22 @@ class Laporan extends CI_Controller
         }else{
             $generalcode = "SETTING_DASHBOARD";
 		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
-			// $id = preg_replace("/-/", '/', $id);
-			$data['data1']=$this->Modul_laporan->get_pdflaporansuratkematian();
+			$dtmfromawal = explode("/",$this->input->post('dtm_from'));
+		  $dtmfromtgl = $dtmfromawal[0];
+		  $dtmfrombln = $dtmfromawal[1];
+		  $dtmfromthn = $dtmfromawal[2];
+		  $dtmfromformat = $dtmfromthn."-".$dtmfrombln."-".$dtmfromtgl;
+
+		  $dtmtoawal = explode("/",$this->input->post('dtm_to'));
+		  $dtmtotgl = $dtmtoawal[0];
+		  $dtmtobln = $dtmtoawal[1];
+		  $dtmtothn = $dtmtoawal[2];
+		  $dtmtoformat = $dtmtothn."-".$dtmtobln."-".$dtmtotgl;
+			$data = array(
+				'dtm_from' =>$dtmfromformat,
+				'dtm_to' =>$dtmtoformat
+			);
+			$data['data1']=$this->Modul_laporan->get_pdflaporansuratkematian($data);
 			// print_r($this->Modul_laporan->get_pdflaporansuratkematian());die;
 			$this->load->view('laporan/surat/pdfsuratkematian',$data);
         }
@@ -240,10 +366,25 @@ class Laporan extends CI_Controller
         }else{
             $generalcode = "SETTING_DASHBOARD";
 		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
-			// $id = preg_replace("/-/", '/', $id);
-			$data['data1']=$this->Modul_laporan->get_pdflaporanizinmenikah();
-			// print_r($this->Modul_laporan->get_pdflaporanizinmenikah());die;
+			$dtmfromawal = explode("/",$this->input->post('dtm_from'));
+		  $dtmfromtgl = $dtmfromawal[0];
+		  $dtmfrombln = $dtmfromawal[1];
+		  $dtmfromthn = $dtmfromawal[2];
+		  $dtmfromformat = $dtmfromthn."-".$dtmfrombln."-".$dtmfromtgl;
+
+		  $dtmtoawal = explode("/",$this->input->post('dtm_to'));
+		  $dtmtotgl = $dtmtoawal[0];
+		  $dtmtobln = $dtmtoawal[1];
+		  $dtmtothn = $dtmtoawal[2];
+		  $dtmtoformat = $dtmtothn."-".$dtmtobln."-".$dtmtotgl;
+			$data = array(
+				'dtm_from' =>$dtmfromformat,
+				'dtm_to' =>$dtmtoformat
+			);
+			$data['data1']=$this->Modul_laporan->get_pdflaporanizinmenikah($data);
+			// print_r($data);die;
 			$this->load->view('laporan/surat/pdfsuratizinmenikah',$data);
+			// echo 
         }
 
 	}
@@ -255,8 +396,14 @@ class Laporan extends CI_Controller
 			$generalcode = "SETTING_DASHBOARD";
 			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
 			$data['namakry'] = $this->session->userdata('fullname');
-            $data['datakepalakeluarga']=$this->Modul_warga->viewkepalakeluarga();
-            $this->load->view('laporan/keuangan/laporankeuangan',$data);
+			$data['datakepalakeluarga']=$this->Modul_warga->viewkepalakeluarga();
+			if ($this->input->post('jenis_laporankeuangan') == "" ){
+				$this->load->view('laporan/keuangan/laporankeuangan',$data);
+			}else{
+				$tes = "pdflaporankeuangan";
+				$this->$tes($this->input->post('jenis_laporankeuangan'));
+			}
+            
 		}
 		// $this->load->view('setup/data/listdatasurat');
 		
@@ -268,8 +415,26 @@ class Laporan extends CI_Controller
 			redirect(base_url());
         }else{
             $generalcode = "SETTING_DASHBOARD";
-		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
-			$data['data1']=$this->Modul_laporan->get_pdflaporankeuangan($id);
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			$dtmfromawal = explode("/",$this->input->post('dtm_from'));
+		  $dtmfromtgl = $dtmfromawal[0];
+		  $dtmfrombln = $dtmfromawal[1];
+		  $dtmfromthn = $dtmfromawal[2];
+		  $dtmfromformat = $dtmfromthn."-".$dtmfrombln."-".$dtmfromtgl;
+
+		  $dtmtoawal = explode("/",$this->input->post('dtm_to'));
+		  $dtmtotgl = $dtmtoawal[0];
+		  $dtmtobln = $dtmtoawal[1];
+		  $dtmtothn = $dtmtoawal[2];
+		  $dtmtoformat = $dtmtothn."-".$dtmtobln."-".$dtmtotgl;
+			$data = array(
+				'digitbulan' => $id,
+				'dtm_from' =>$dtmfromformat,
+				'dtm_to' =>$dtmtoformat
+			);
+			
+			$data['data1']=$this->Modul_laporan->get_pdflaporankeuangan($data);
+			
 			$this->load->view('laporan/keuangan/pdflaporankeuangan',$data);
         }
 

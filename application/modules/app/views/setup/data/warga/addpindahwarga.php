@@ -119,7 +119,8 @@ $(document).ready(function(){
                   </div>
                   <div class="x_content">
 				  <form id="form-addpindahwarga" data-parsley-validate class="form-horizontal form-label-left" method="post">
-					   <input type="hidden" id="CRTUSR" name="CRTUSR" class="form-control col-md-7 col-xs-12" value="<?=$this->session->userdata('userid');?>">
+				  <input type="hidden" id="CRTUSR" name="CRTUSR" class="form-control col-md-7 col-xs-12" value="<?=$this->session->userdata('userid');?>">
+					   <input type="hidden" id="dtm_crt" name="dtm_crt" class="form-control col-md-7 col-xs-12" value="<?=date('Y-m-d');?>">
 					   <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="searchby">Search By 
                         </label>

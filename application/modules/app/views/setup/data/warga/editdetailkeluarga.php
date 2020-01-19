@@ -40,7 +40,8 @@
 				  <?php foreach ($dataeditwarga as $row) {?>
 				  <form id="form-editwarga" data-parsley-validate class="form-horizontal form-label-left" method="post">
 				  
-					   <input type="hidden" id="CRTUSR" name="CRTUSR" class="form-control col-md-7 col-xs-12" value="<?=$this->session->userdata('userid');?>">
+				  <input type="hidden" id="CRTUSR" name="CRTUSR" class="form-control col-md-7 col-xs-12" value="<?=$this->session->userdata('userid');?>">
+					   <input type="hidden" id="dtm_crt" name="dtm_crt" class="form-control col-md-7 col-xs-12" value="<?=date('Y-m-d');?>">
 					   <input type="hidden" id="wrg_nokk" name="wrg_nokk" required="" maxlength="16" class="form-control col-md-4 col-xs-12" value="<?=$row->wrg_nokk;?>">
              <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="wrg_nik">No. KTP 

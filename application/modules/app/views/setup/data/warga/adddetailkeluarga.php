@@ -97,7 +97,8 @@ $(document).ready(function(){
                   </div>
                   <div class="x_content">
 				  <form id="form-adddetailkeluarga" data-parsley-validate class="form-horizontal form-label-left" method="post">
-					   <input type="hidden" id="CRTUSR" name="CRTUSR" class="form-control col-md-7 col-xs-12" value="<?=$this->session->userdata('userid');?>">
+				  <input type="hidden" id="CRTUSR" name="CRTUSR" class="form-control col-md-7 col-xs-12" value="<?=$this->session->userdata('userid');?>">
+					   <input type="hidden" id="dtm_crt" name="dtm_crt" class="form-control col-md-7 col-xs-12" value="<?=date('Y-m-d');?>">
 					   <input type="hidden" id="wrg_nokk" name="wrg_nokk" required="" maxlength="16" class="form-control col-md-4 col-xs-12" value="<?=$this->uri->segment(5);?>">
 					   <input type="hidden" id="wrg_nokkdb" name="wrg_nokkdb"  maxlength="16" class="form-control col-md-4 col-xs-12">
 					 <div class="form-group">

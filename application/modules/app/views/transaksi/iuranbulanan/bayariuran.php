@@ -102,6 +102,9 @@ $(document).ready(function(){
 				  <!-- <?php foreach ($nourutiuran as $rowiuran) {?>	
 					<input type="text" id="no_transaksi" name="no_transaksi" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value=<?=intval(substr($rowiuran->no_transaksi,5))+1;?>>
 						<?php }?> -->
+						<?php foreach ($hasilnik as $rownik) {?>
+							<input type="hidden" id="wrg_nohp" name="wrg_nohp" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value=<?=$rownik->wrg_nohp;?>>
+						<?php }?>
 				  <input type="hidden" id="wrg_nik" name="wrg_nik" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value=<?=$this->uri->segment(4);?>>
 				  <input type="hidden" id="jenis_transaksi" name="jenis_transaksi" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value="Debit">
 				  <input type="hidden" id="ket_transaksi" name="ket_transaksi" required="" maxlength="50" class="form-control col-md-7 col-xs-12" value="Iuran Bulanan">
