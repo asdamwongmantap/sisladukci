@@ -71,7 +71,7 @@ class PDF extends FPDF
                 $this->cell(90,6,'',0,0,'C',0); 
                 $this->cell(14,6,'RT. 007 RW. 003',0,1,'C',1); 
                 $this->cell(87,6,'',0,0,'C',0); 
-                $this->cell(20,6,"KEL. MARGATANI-KEC. KRAMATWATU",0,1,'C',1); 
+                $this->cell(20,6,"KEL. KEBON PALA-KEC. MAKASAR",0,1,'C',1); 
 				 $this->cell(87,6,'',0,0,'C',0); 
 				 $this->cell(20,6,"JAKARTA TIMUR",0,1,'C',1);
 				 $this->Ln(5);
