@@ -28,60 +28,29 @@ class Sms extends CI_Controller
 
 	}
 	public function sendsms(){
-		// Account details
 	
-	// // Message details
 	$datawarga = $this->Modul_warga->viewallwarga();
 	// print_r($datawarga);
+	
 	foreach ($datawarga as $value){
 		$nohp1 = substr_replace($value->wrg_nohp,'62',0,1);
 		// $nohp .= $value->wrg_nohp.",";
 		$nohp .= $nohp1.",";
+		$message = preg_replace('/\s+/', '_', $this->input->post('smskonten'));
+		
+		$url = file_get_contents('https://sms.smartme.co.id');
+		
+		$response = json_decode($url);
 		
 	}
-	$numbers = explode(',', $nohp);
-
-	$numbers1 = implode(',',  array_filter($numbers));
- 
-	// load library
-	$this->load->library('nexmo');
-	// set response format: xml or json, default json
-	$this->nexmo->set_format('json');
 	
-	// **********************************Text Message*************************************
-	$from = 'Wong Mantap';
-	// $to = $nohp;
-	$to = $numbers[0];
-	$message = array(
-		'text' => $this->input->post('smskonten'),
-	);
-	// $message = $this->input->post('smskonten');
-	$response = $this->nexmo->send_message($from, $to, $message);
-	if ($response['messages'][0]['status'] == 0){
-		echo "berhasil";
-	}else{
-		echo "gagal";
+	if (array($response->status)[0] == "SUCCESS"){
+			echo "berhasil";
+		}else {
+			echo "gagal karena".$response->message."";
+		}
+	
 	}
-	// echo $response;
-	// $this->nexmo->d_print($response['messages'][0]['status']);
-	// echo "<h3>Response Code: ".$this->nexmo->get_http_status()."</h3>";
-
-	}
-	// public function sendsms(){
-	// 	// Account details
-	// // $apiKey = urlencode('ab57e25f');
-	
-	// // // Message details
-	// $datawarga = $this->Modul_warga->viewallwarga();
-	// // // print_r($datawarga);
-	// foreach ($datawarga as $value){
-	// 	$this->sendsmsnumber($value->wrg_nohp);
-	// 	// sleep(3);
-		
-	// }
-	
-	// }
-	
 	
 }
 

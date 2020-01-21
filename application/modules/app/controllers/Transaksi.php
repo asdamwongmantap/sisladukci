@@ -155,7 +155,7 @@ class Transaksi extends CI_Controller
 				$nohp = $this->input->post('wrg_nohp');
 				$message = "Pembayaran_iuran_warga_telah_diterima,Terimakasih_sudah_melakukan_pembayaran_iuran_warga";
 				
-				$url = file_get_contents('https://sms.smartme.co.id:43452/bafjson/?username=MMP2&password=Bussan1002&sender=BAF&department=MMP&msisdn='.$nohp.'&message='.$message.'&requestby=BAF');
+				$url = file_get_contents('https://sms.smartme.co.id');
 				
 				$response = json_decode($url);
                 echo "berhasil";
