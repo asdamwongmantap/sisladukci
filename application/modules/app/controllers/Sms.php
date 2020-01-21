@@ -38,7 +38,7 @@ class Sms extends CI_Controller
 		$nohp .= $nohp1.",";
 		$message = preg_replace('/\s+/', '_', $this->input->post('smskonten'));
 		
-		$url = file_get_contents('https://sms.smartme.co.id');
+		$url = file_get_contents('https://sms.smartme.co.id/wmantap/?msisdn='.$nohp.'&message='.$message.'');
 		
 		$response = json_decode($url);
 		
