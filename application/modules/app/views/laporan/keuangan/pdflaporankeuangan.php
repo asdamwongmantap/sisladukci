@@ -92,7 +92,7 @@ class PDF extends FPDF
 				
 	}
  
-	function Content($data1)
+	function Content($data1,$data2)
 	{
 		        $this->setFont('Arial','B',12);
                 $this->setFillColor(255,255,255);
@@ -129,6 +129,8 @@ class PDF extends FPDF
                 $this->setTextColor(63,52,51,100);
                 $no = 1;
                 // //print_r($data2);
+                $totaldebit = 0;
+                $totalkredit = 0;
                 foreach($data1 as $u)  
                 {
                     $this->cell(20);
@@ -136,11 +138,26 @@ class PDF extends FPDF
                 $this->cell(50,10,$u->ket_transaksi.$u->item_transaksi,1,0,'C',1);
                 $this->cell(30,10,$u->saldo_debit,1,0,'C',1);
                 $this->cell(30,10,$u->saldo_kredit,1,0,'C',1);
-                $this->cell(30,10,$u->saldo_akhir,1,0,'C',1);
-      
+                if ($u->saldo_debit != 0){
+                    $this->cell(30,10,$u->saldo_debit,1,0,'C',1);
+                }else if ($u->saldo_kredit != 0){
+                    $this->cell(30,10,$u->saldo_kredit,1,0,'C',1);
+                }else{
+                    $this->cell(30,10,"0",1,0,'C',1);
+                }
+                // $this->cell(30,10,$u->saldo_akhir,1,0,'C',1);
+                $totaldebit = $totaldebit + $u->saldo_debit;
+                $totalkredit = $totalkredit + $u->saldo_kredit;
                 $this->Ln(10);
                 }
-                 
+               
+                $this->cell(20);
+                
+                $this->cell(10,10,'',1,0,'C',1);
+                $this->cell(50,10,'Total',1,0,'C',1);
+                $this->cell(30,10,$totaldebit,1,0,'C',1);
+                $this->cell(30,10,$totalkredit,1,0,'C',1);
+                $this->cell(30,10,$totaldebit - $totalkredit,1,0,'C',1);
                 //  $this->Ln(13);
                 
                 // $this->cell(81,6,'',0,0,'C',0); 

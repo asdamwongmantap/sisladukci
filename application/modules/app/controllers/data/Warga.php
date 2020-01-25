@@ -239,16 +239,36 @@ class Warga extends CI_Controller
 		$searchby = $this->input->get_post("searchby");
 		if ($searchby == "noktp"){
 			$datanik = array(
-				'wrg_nik' => $wrgnik
+				'wrg_nik' => $wrgnik,
+				'is_active' => "1"
 			);
 			// echo $this->Modul_warga->get_noktpmod($datanik);
 		}else {
 			$datanik = array(
-				'wrg_nokk' => $wrgnik
+				'wrg_nokk' => $wrgnik,
+				'is_active' => "1"
 			);
 			// echo $this->Modul_warga->get_noktpmod($datanik);
 		}
 		echo $this->Modul_warga->get_noktpmod($datanik);
+	
+	}
+	public function get_noktpwargameninggal()
+    {
+		$wrgnik = $this->input->get_post("wrgnik");
+		$searchby = $this->input->get_post("searchby");
+		if ($searchby == "noktp"){
+			$datanik = array(
+				'wrgmeninggal_nik' => $wrgnik
+			);
+			// echo $this->Modul_warga->get_noktpmod($datanik);
+		}else {
+			$datanik = array(
+				'wrgmeninggal_nokk' => $wrgnik
+			);
+			// echo $this->Modul_warga->get_noktpmod($datanik);
+		}
+		echo $this->Modul_warga->get_noktpmodwargameninggal($datanik);
 	
 	}
 	public function savedetailkeluarga(){
@@ -401,20 +421,31 @@ class Warga extends CI_Controller
 			}else {
 				$wrgnik = $this->input->post('wrg_nokk');
 			}
+			$wrgpindah_tglawal = explode("/",$this->input->post('wrgpindah_tgl'));
+		  $wrgpindah_tgltgl = $wrgpindah_tglawal[0];
+		  $wrgpindah_tglbln = $wrgpindah_tglawal[1];
+		  $wrgpindah_tglthn = $wrgpindah_tglawal[2];
+		  $wrgpindah_tglformat = $wrgpindah_tglthn."-".$wrgpindah_tglbln."-".$wrgpindah_tgltgl;
+
 			$dtmcrtformat = $this->input->post('dtm_crt');
 			$data = array(
 					  'wrgpindah_nik' =>$wrgnik,
-					  'wrgpindah_tgl' =>$this->input->post('wrgpindah_tgl'),
+					  'wrgpindah_tgl' =>$wrgpindah_tglformat,
 					  'wrgpindah_alamat' =>$this->input->post('wrgpindah_tujuan'),
 					  'is_active' =>"1",
 					  'wrgpindah_alasan' =>$this->input->post('wrgpindah_alasan'),
 					  'dtm_crt' =>$dtmcrtformat,
 					  'usr_crt' => $this->input->post('CRTUSR')
 					  );
+			$datawarga = array(
+					'wrg_nik' =>$wrgnik,
+					'is_active' =>"0"
+				);
 			// print_r($data);die;
 			if($this->form_validation->run()!=FALSE){
 					//pesan yang muncul jika berhasil diupload pada session flashdata
 					$this->Modul_warga->get_insertpindahwarga($data); //akses model untuk menyimpan ke database
+					$this->Modul_warga->moduleditwarga($datawarga);
 					echo "berhasil";
 				}else{
 					//pesan yang muncul jika terdapat error dimasukkan pada session flashdata

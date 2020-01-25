@@ -109,18 +109,27 @@ class Laporan extends CI_Controller
 			redirect(base_url());
         }else{
             $generalcode = "SETTING_DASHBOARD";
-		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
-			$dtmfromawal = explode("/",$this->input->post('dtm_from'));
-		  $dtmfromtgl = $dtmfromawal[0];
-		  $dtmfrombln = $dtmfromawal[1];
-		  $dtmfromthn = $dtmfromawal[2];
-		  $dtmfromformat = $dtmfromthn."-".$dtmfrombln."-".$dtmfromtgl;
-
-		  $dtmtoawal = explode("/",$this->input->post('dtm_to'));
-		  $dtmtotgl = $dtmtoawal[0];
-		  $dtmtobln = $dtmtoawal[1];
-		  $dtmtothn = $dtmtoawal[2];
-		  $dtmtoformat = $dtmtothn."-".$dtmtobln."-".$dtmtotgl;
+			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
+			if ($this->input->post('dtm_from') !== ""){
+				$dtmfromawal = explode("/",$this->input->post('dtm_from'));
+				$dtmfromtgl = $dtmfromawal[0];
+				$dtmfrombln = $dtmfromawal[1];
+				$dtmfromthn = $dtmfromawal[2];
+				$dtmfromformat = $dtmfromthn."-".$dtmfrombln."-".$dtmfromtgl;
+			}else{
+				$dtmfromformat = "";
+			}
+			
+			if ($this->input->post('dtm_to') !== ""){
+				$dtmtoawal = explode("/",$this->input->post('dtm_to'));
+				$dtmtotgl = $dtmtoawal[0];
+				$dtmtobln = $dtmtoawal[1];
+				$dtmtothn = $dtmtoawal[2];
+				$dtmtoformat = $dtmtothn."-".$dtmtobln."-".$dtmtotgl;
+			}else{
+				$dtmtoformat = "";
+			}
+		 
 			$data = array(
 				'dtm_from' =>$dtmfromformat,
 				'dtm_to' =>$dtmtoformat
@@ -139,17 +148,36 @@ class Laporan extends CI_Controller
         }else{
             $generalcode = "SETTING_DASHBOARD";
 		    $data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
-			$dtmfromawal = explode("/",$this->input->post('dtm_from'));
-		  $dtmfromtgl = $dtmfromawal[0];
-		  $dtmfrombln = $dtmfromawal[1];
-		  $dtmfromthn = $dtmfromawal[2];
-		  $dtmfromformat = $dtmfromthn."-".$dtmfrombln."-".$dtmfromtgl;
+		// 	$dtmfromawal = explode("/",$this->input->post('dtm_from'));
+		//   $dtmfromtgl = $dtmfromawal[0];
+		//   $dtmfrombln = $dtmfromawal[1];
+		//   $dtmfromthn = $dtmfromawal[2];
+		//   $dtmfromformat = $dtmfromthn."-".$dtmfrombln."-".$dtmfromtgl;
 
-		  $dtmtoawal = explode("/",$this->input->post('dtm_to'));
-		  $dtmtotgl = $dtmtoawal[0];
-		  $dtmtobln = $dtmtoawal[1];
-		  $dtmtothn = $dtmtoawal[2];
-		  $dtmtoformat = $dtmtothn."-".$dtmtobln."-".$dtmtotgl;
+		//   $dtmtoawal = explode("/",$this->input->post('dtm_to'));
+		//   $dtmtotgl = $dtmtoawal[0];
+		//   $dtmtobln = $dtmtoawal[1];
+		//   $dtmtothn = $dtmtoawal[2];
+		//   $dtmtoformat = $dtmtothn."-".$dtmtobln."-".$dtmtotgl;
+		if ($this->input->post('dtm_from') !== ""){
+			$dtmfromawal = explode("/",$this->input->post('dtm_from'));
+			$dtmfromtgl = $dtmfromawal[0];
+			$dtmfrombln = $dtmfromawal[1];
+			$dtmfromthn = $dtmfromawal[2];
+			$dtmfromformat = $dtmfromthn."-".$dtmfrombln."-".$dtmfromtgl;
+		}else{
+			$dtmfromformat = "";
+		}
+		
+		if ($this->input->post('dtm_to') !== ""){
+			$dtmtoawal = explode("/",$this->input->post('dtm_to'));
+			$dtmtotgl = $dtmtoawal[0];
+			$dtmtobln = $dtmtoawal[1];
+			$dtmtothn = $dtmtoawal[2];
+			$dtmtoformat = $dtmtothn."-".$dtmtobln."-".$dtmtotgl;
+		}else{
+			$dtmtoformat = "";
+		}
 			$data = array(
 				'dtm_from' =>$dtmfromformat,
 				'dtm_to' =>$dtmtoformat
@@ -416,24 +444,23 @@ class Laporan extends CI_Controller
         }else{
             $generalcode = "SETTING_DASHBOARD";
 			$data['setting'] = $this->Modul_setting->get_listgeneralsetting($generalcode); //untuk general setting
-			$dtmfromawal = explode("/",$this->input->post('dtm_from'));
-		  $dtmfromtgl = $dtmfromawal[0];
-		  $dtmfrombln = $dtmfromawal[1];
-		  $dtmfromthn = $dtmfromawal[2];
-		  $dtmfromformat = $dtmfromthn."-".$dtmfrombln."-".$dtmfromtgl;
+		// 	$dtmfromawal = explode("/",$this->input->post('dtm_from'));
+		//   $dtmfromtgl = $dtmfromawal[0];
+		//   $dtmfrombln = $dtmfromawal[1];
+		//   $dtmfromthn = $dtmfromawal[2];
+		//   $dtmfromformat = $dtmfromthn."-".$dtmfrombln."-".$dtmfromtgl;
 
-		  $dtmtoawal = explode("/",$this->input->post('dtm_to'));
-		  $dtmtotgl = $dtmtoawal[0];
-		  $dtmtobln = $dtmtoawal[1];
-		  $dtmtothn = $dtmtoawal[2];
-		  $dtmtoformat = $dtmtothn."-".$dtmtobln."-".$dtmtotgl;
+		//   $dtmtoawal = explode("/",$this->input->post('dtm_to'));
+		//   $dtmtotgl = $dtmtoawal[0];
+		//   $dtmtobln = $dtmtoawal[1];
+		//   $dtmtothn = $dtmtoawal[2];
+		//   $dtmtoformat = $dtmtothn."-".$dtmtobln."-".$dtmtotgl;
 			$data = array(
-				'digitbulan' => $id,
-				'dtm_from' =>$dtmfromformat,
-				'dtm_to' =>$dtmtoformat
+				'digitbulan' => $id
 			);
 			
 			$data['data1']=$this->Modul_laporan->get_pdflaporankeuangan($data);
+			// $data['data2']=$this->Modul_laporan->get_totalsaldo();
 			
 			$this->load->view('laporan/keuangan/pdflaporankeuangan',$data);
         }

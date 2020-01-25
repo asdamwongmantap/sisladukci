@@ -200,6 +200,8 @@ $(document).ready(function(){
                         <div class="col-md-6 col-sm-6 col-xs-12">
                          <textarea id="wrg_alamat" class="form-control" name="wrg_alamat" required="" maxlength="100" ></textarea>
 						</div>
+						<input type="hidden" id="wrg_nik" name="wrg_nik" maxlength="16" class="form-control col-md-4 col-xs-12">
+
 						<!-- <div class="col-md-5 col-sm-5 col-xs-12">
                           <span class="input-group-btn">
 							  <button type="button" id="idbtnalamat" class="btn btn-warning" style="display:none;">Check Alamat</button>

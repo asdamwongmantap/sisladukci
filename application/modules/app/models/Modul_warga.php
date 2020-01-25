@@ -131,6 +131,17 @@
 		echo json_encode($query->result());
 		// return $query->result();
 	}
+	public function get_noktpmodwargameninggal($datanik) { 
+	
+		// $query = $this->db->get_where('tbl_wargameninggal', $datanik);
+		$this->db->select('*');
+		$this->db->from('tbl_wargameninggal');
+		$this->db->join('tbl_kkdetail', 'tbl_kkdetail.wrg_nik = tbl_wargameninggal.wrgmeninggal_nik');
+		$this->db->where('tbl_wargameninggal.wrgmeninggal_nik', $datanik['wrgmeninggal_nik']);
+		$query = $this->db->get();
+		echo json_encode($query->result());
+		// return $query->result();
+	}
 	public function cek_nik($datanik) { 
 	
 		$query = $this->db->get_where('tbl_kkdetail', $datanik);

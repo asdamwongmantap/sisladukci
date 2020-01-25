@@ -6,25 +6,35 @@
 	
 	public function get_pdflaporankepalakeluarga($data)
 	{
+		if ($data['dtm_from'] == ""){
+			$this->db->where('is_active',1); 
+		}else{
 			$this->db->where('is_active = 1 AND dtm_crt BETWEEN "'.$data['dtm_from'].'" AND "'.$data['dtm_to'].'"'); 
+		}
+			
 			$query = $this->db->get('view_kepalakeluarga');
 	return $query->result(); 
 	}
 	public function get_pdflaporanallwarga($data)
 	{
+		if ($data['dtm_from'] == ""){
+			$this->db->where('is_active',1); 
+		}else{
 			$this->db->where('is_active = 1 AND dtm_crt BETWEEN "'.$data['dtm_from'].'" AND "'.$data['dtm_to'].'"'); 
+		}
+			
 			$query = $this->db->get('view_allwarga');
 	return $query->result(); 
 	}
 	public function get_pdflaporanpindahwarga($data)
 	{
-			$this->db->where('dtm_crt BETWEEN "'.$data['dtm_from'].'" AND "'.$data['dtm_to'].'"'); 
+			$this->db->where('wrgpindah_tgl BETWEEN "'.$data['dtm_from'].'" AND "'.$data['dtm_to'].'"'); 
 			$query = $this->db->get('view_wargapindah');
 	return $query->result(); 
 	}
 	public function get_pdflaporanmeninggalwarga($data)
 	{
-			$this->db->where('dtm_crt BETWEEN "'.$data['dtm_from'].'" AND "'.$data['dtm_to'].'"'); 
+			$this->db->where('wrgmeninggal_tgl BETWEEN "'.$data['dtm_from'].'" AND "'.$data['dtm_to'].'"'); 
 			$query = $this->db->get('view_wargameninggal');
 	return $query->result(); 
 	}
@@ -67,12 +77,18 @@
 	}
 	public function get_pdflaporankeuangan($data)
 	{
-		$this->db->where('digitbulan ="'.$data['digitbulan'].'" AND tgl_transaksi BETWEEN "'.$data['dtm_from'].'" AND "'.$data['dtm_to'].'"'); 
-			// $this->db->where('digitbulan',$data['dtm_from']); 
+		// $this->db->where('digitbulan ="'.$data['digitbulan'].'" AND tgl_transaksi BETWEEN "'.$data['dtm_from'].'" AND "'.$data['dtm_to'].'"'); 
+		$this->db->order_by('tgl_transaksi','ASC'); 
+			$this->db->where('digitbulan',$data['digitbulan']); 
 			
 			$query = $this->db->get('view_transaksiperbulan');
 	return $query->result(); 
 	}
+	// public function get_totalsaldo()
+	// {
+	// 		$query = $this->db->get('view_totalsaldo');
+	// return $query->result(); 
+	// }
 	
 	
 }

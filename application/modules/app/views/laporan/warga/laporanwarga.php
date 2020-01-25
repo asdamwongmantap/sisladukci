@@ -64,7 +64,26 @@ $(document).ready(function(){
 		// alert(APPNO);
 		
 	});
-					
+	$(document).on('change','#jenis_laporanwarga',function(e){
+		var searchby = document.getElementById("jenis_laporanwarga").value;
+		if (searchby == "kepalakeluarga"){
+			
+			document.getElementById("tgldarike").style.display = "none";
+			
+		}else if (searchby == "allwarga"){
+			
+			document.getElementById("tgldarike").style.display = "none";
+			
+		}else if (searchby == "pindahwarga"){
+			
+			document.getElementById("tgldarike").style.display = "block";
+			
+		}else if (searchby == "meninggalwarga"){
+			
+			document.getElementById("tgldarike").style.display = "block";
+			
+		}
+	});		
 });	
 </script>
   <body class="nav-md" progress_bar="true">
@@ -110,7 +129,7 @@ $(document).ready(function(){
 						  </select>
                         </div>
 					  </div>
-					  <div class="form-group">
+					  <div class="form-group" id="tgldarike" style="display:none;">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="dtm_from">Dari Tanggal 
                         </label>
                         <div class="col-md-3 col-sm-3 col-xs-12">

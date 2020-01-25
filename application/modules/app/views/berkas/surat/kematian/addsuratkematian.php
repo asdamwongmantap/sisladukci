@@ -12,7 +12,7 @@ $(document).ready(function(){
 		$("#idbtn").click(function(){
 			var wrgnik = document.getElementById('wrg_nik').value;
 			var searchby = "noktp";
-                $.post( "<?php echo base_url("app/data/warga/get_noktp"); ?>",{ wrgnik : wrgnik,searchby:searchby}, function(data) {
+                $.post( "<?php echo base_url("app/data/warga/get_noktpwargameninggal"); ?>",{ wrgnik : wrgnik,searchby:searchby}, function(data) {
 
 				var obj = JSON.parse(data);
 				// console.log(data)

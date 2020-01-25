@@ -108,12 +108,12 @@ $(document).ready(function(){
 						  </select>
                         </div>
 					  </div>
-					  <div class="form-group">
+					  <!-- <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="dtm_from">Dari Tanggal 
                         </label>
-                        <div class="col-md-3 col-sm-3 col-xs-12">
+                        <div class="col-md-3 col-sm-3 col-xs-12"> -->
                           <!-- <input type="date" id="dtm_from" name="dtm_from" required="" class="form-control col-md-7 col-xs-12"> -->
-						  <div class="input-group date" id="myDatepicker2">
+						  <!-- <div class="input-group date" id="myDatepicker2">
 							<input type="text" class="form-control" id="dtm_from" name="dtm_from" value="<?=$dateto;?>"/>
 							<span class="input-group-addon">
 								<span class="glyphicon glyphicon-calendar"></span>
@@ -134,7 +134,7 @@ $(document).ready(function(){
 							</span>
 							</div>	
 						</div>
-					  </div>
+					  </div> -->
 					  <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                           <button type="submit" class="btn btn-primary" id="savebtn">Cetak</button>
